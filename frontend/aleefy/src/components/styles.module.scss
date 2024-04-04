@@ -1,0 +1,22 @@
+// styles.module.scss
+
+$primary: #ED6436;
+$secondary: #65C178;
+$light: #F2F2F4;
+$dark: #181818;
+
+.primary {
+  color: $primary;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+.light {
+  background-color: $light;
+}
+
+.dark {
+  color: $dark;
+}
