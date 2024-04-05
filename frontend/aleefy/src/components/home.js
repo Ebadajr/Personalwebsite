@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import './style.scss'; 
 import "bootstrap/dist/css/bootstrap.min.css";
-import './home.css';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
-import styles from './styles.module.scss';
+
 import caro1 from '../img/carousel-1.jpg';
 import caro2 from '../img/carousel-2.jpg';
 import im1 from '../img/about-1.jpg';
@@ -113,10 +112,10 @@ function HomePage() {
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
                     <a href="index.html" class="nav-item nav-link ">Home</a>
-                <a href="about.html" class="nav-item nav-link active">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
+                <a href="/about" class="nav-item nav-link active">About</a>
+                <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="products.html" class="nav-item nav-link">products</a>
-                <a href="clinics.html" class="nav-item nav-link">Clinics</a>
+                <a href="/clinic" class="nav-item nav-link">Clinics</a>
                 <a href="contact.html" class="nav-item nav-link  ">Contact</a>
                 <a href="adoption.html" class="nav-item nav-link  ">Adoption</a>
                 <div class="nav-item dropdown">
@@ -342,7 +341,7 @@ function HomePage() {
             </div>
             <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
                 <h4 class="text-secondary mb-3">Why Choose Us?</h4>
-                <h1 class="display-4 mb-4"><span class="text-primary">Special Care</span> On Pets</h1>
+                <h1 class="display-4 mb-4 primary"><span class="text-primary">Special Care</span> On Pets</h1>
                 <p class="mb-4">Dolor lorem lorem ipsum sit et ipsum. Sadip sea amet diam sed ut vero no sit. Et elitr stet sed sit sed kasd. Erat duo eos et erat sed diam duo</p>
                 <div class="row py-2">
                     <div class="col-6">

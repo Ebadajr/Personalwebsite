@@ -1,5 +1,3 @@
-// styles.module.scss
-
 $primary: #ED6436;
 $secondary: #65C178;
 $light: #F2F2F4;
@@ -20,3 +18,8 @@ $dark: #181818;
 .dark {
   color: $dark;
 }
+
+.text-primary {
+  color: $primary; // Adding this to make Bootstrap's .text-primary use your custom primary color
+}
+

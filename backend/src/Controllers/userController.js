@@ -2,13 +2,11 @@ const User = require("../Models/user.js");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../utils/auth.js");
 const nodemailer = require("nodemailer");
-const jwt = require('jsonwebtoken')
-
-
-
+const jwt = require('jsonwebtoken');
 
 const addUser = async (req, res) => {
   try {
+   
     console.log(req.body.username);
     const { username, password } = req.body;
     const salt = await bcrypt.genSalt();

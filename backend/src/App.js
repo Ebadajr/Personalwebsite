@@ -14,6 +14,8 @@ const MongoURI =
 //App variables
 const app = express();
 const userController = require("./Controllers/userController");
+const bookingController = require("./Controllers/bookingController");
+
 const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
@@ -55,7 +57,7 @@ const server = app.listen(port, () => {
 });
 
 app.get("/users", userController.getUsers);
-
+app.post("/newBooking", bookingController.addBooking);
 
 app.use("/logout", userController.logout);
 
