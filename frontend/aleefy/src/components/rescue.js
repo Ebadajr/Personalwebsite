@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss'; 
+import '../style.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
-
 var res= 0;
-function ServicePage() {
+function Rescue() {
 
   const divStyle = {
-    maxWidth: '900px',
-    padding: '3px'
+    maxWidth: '100%',
+    padding: '500px'
   };
   const style2 = {
     height: '47px'
@@ -32,34 +31,33 @@ function ServicePage() {
   
   return (
     <div>
-    <head>
-    <meta charset="utf-8"/>
+        
+        <meta charset="utf-8"/>
     <title>Rafeeky</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="Free HTML Templates" name="keywords"/>
     <meta content="Free HTML Templates" name="description"/>
 
-   
+    
     <link href="img/favicon.ico" rel="icon"/>
 
-    
+   
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/> 
 
    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
 
-    
+   
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"/>
 
-   
+    
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    
+   
     <link href="css/style.css" rel="stylesheet"/>
-</head>
 
-<body>
+    <body>
     
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-lg-5">
@@ -116,18 +114,18 @@ function ServicePage() {
             </div>
         </div>
     </div>
-    
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Rafeeky</span></h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">Home</a>
+   
+   <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+        <a href="" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Rafeeky</span></h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+            <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="products.html" class="nav-item nav-link">products</a>
@@ -145,78 +143,53 @@ function ServicePage() {
                     </div>
                 </div>
                 <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+        </div>
+    </nav>
+</div>
+
+    <div class="container-fluid pt-5">
+        <div class="d-flex flex-column text-center mb-5 pt-5">
+            <h4 class="text-secondary mb-3">Rescue form</h4>
+            <h1 class="display-4 m-0">Contact For a <span class="text-primary">rescue team</span></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 mb-5">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="number" placeholder="Your phone number" required="required" data-validation-required-message="Please enter your phone number" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="Location" placeholder="Location" required="required" data-validation-required-message="Please enter the Location" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control p-4" rows="6" id="picture" placeholder="Add a picture" required="required" data-validation-required-message="Please Add a picture of the animal needing rescue"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send rescue</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </nav>
-    </div>
-   
-    <div class="container-fluid bg-light pt-5">
-        <div class="container py-5">
-            <div class="d-flex flex-column text-center mb-5">
-                <h4 class="text-secondary mb-3">Services</h4>
-                <h1 class="display-4 m-0"><span class="text-primary">Premium</span> Pet Services</h1>
-            </div>
-            <div class="row pb-3">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Boarding</h3>
-                        <p>Whether you're traveling for work or taking a well-deserved vacation, ensure your pet receives 
-                            the love and attention they deserve with our trusted pet boarding services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Feeding</h3>
-                        <p>Ensure your pet receives the nutrition they need to stay healthy and happy with our pet feeding 
-                            services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Grooming</h3>
-                        <p>Treat your pet to a spa day they'll never forget with our professional grooming services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-cat display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Training</h3>
-                        <p>Unlock your pet's full potential with our professional pet training services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-dog display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Exercise</h3>
-                        <p>Keep your pet active, healthy, and happy with our pet exercise programs.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-vaccine display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Treatment</h3>
-                        <p>When your pet is sick or injured, trust Aleefy to connect you with reliable veterinary care.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
+            <div class="col-12 mb-n2 p-0">
+                <iframe style={divStyle} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd" frameborder="0"  allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
     </div>
-   
-
-
     
-
-
-   
-   <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+ <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
     <div class="row pt-5">
         <div class="col-lg-4 col-md-12 mb-5">
             <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Rafeeky</span></h1>
@@ -294,25 +267,25 @@ function ServicePage() {
 
 
 
-    
-    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+<a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-   
-    <script src="js/main.js"></script>
+
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
+
+
+<script src="js/main.js"></script>
 </body>
 
 
@@ -320,4 +293,4 @@ function ServicePage() {
   );
 }
 
-export default ServicePage;
+export default Rescue;

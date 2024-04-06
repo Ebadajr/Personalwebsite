@@ -1,5 +1,7 @@
 
-import './App.css';
+
+import './style.scss';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function App() {
   return (

@@ -42,6 +42,38 @@ console.log(service);
     res.status(400).send(e);
   }
 };
+const homeBooking = async (req, res) => {
+  var service;
+  
+try {
+  switch(req.body.service){
+      case '1':
+      service = 'Adoption';
+    break;
+  case '2':
+      service = 'Clinic';
+    break;
+ 
+  default:
+    
+    break;
+    }
+console.log(service);
+    const book = await booking.create({
+      name: req.body.name,
+      email: req.body.email,
+      date: req.body.date,
+      time : req.body.time,
+      type : service
+    });
+
+    console.log(book);
+  res.status(200).send("booking made");
+} catch (e) {
+  
+  res.status(400).send(e);
+}
+};
 const listBookings = async (req, res) => {
     try {
       res.send(await booking.find());
@@ -55,4 +87,5 @@ const listBookings = async (req, res) => {
 module.exports = {
   addBooking,
  listBookings,
+ homeBooking
 };

@@ -1,17 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss'; 
+import '../style.scss';
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { useNavigate } from "react-router-dom";
 
 
+import caro1 from '../img/blog-1.jpg';
+import caro2 from '../img/blog-2.jpg';
+import caro3 from '../img/blog-3.jpg';
+
+import bookingService from '../services/booking.service';
 
 var res= 0;
-function ServicePage() {
+function Adoption() {
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        date: '',
+        time: '',
+        service: '',
+      });
+
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+       console.log(formData);
+        bookingService.newBooking(formData)
+        .then(() => {
+          alert('booking successfull')
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+        
+      };
+
+
+
 
   const divStyle = {
-    maxWidth: '900px',
-    padding: '3px'
+    top: '0',
+    left: '0',
+    background: 'rgba(0, 0, 0, .5)',
   };
+  
   const style2 = {
     height: '47px'
   };
@@ -26,41 +63,46 @@ function ServicePage() {
   const style5 = {
     background: '#111111',
   };
-
-   
+ 
+    let navigate = useNavigate();
+    async function login(e) {
+      e.preventDefault();
+      navigate("/login", { replace: true });
+      
+    }
 
   
   return (
     <div>
-    <head>
+    
     <meta charset="utf-8"/>
     <title>Rafeeky</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="Free HTML Templates" name="keywords"/>
     <meta content="Free HTML Templates" name="description"/>
 
-   
+    
     <link href="img/favicon.ico" rel="icon"/>
 
-    
+   
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/> 
 
    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
 
-    
+   
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"/>
 
-   
+    
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     
     <link href="css/style.css" rel="stylesheet"/>
-</head>
 
-<body>
-    
+
+    <body>
+  
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
@@ -117,17 +159,17 @@ function ServicePage() {
         </div>
     </div>
     
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Rafeeky</span></h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">Home</a>
+   <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+        <a href="" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Rafeeky</span></h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+            <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="products.html" class="nav-item nav-link">products</a>
@@ -145,78 +187,128 @@ function ServicePage() {
                     </div>
                 </div>
                 <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+        </div>
+    </nav>
+</div>
+
+    <div class="container pt-5">
+        <div class="d-flex flex-column text-center mb-5 pt-5">
+            <h4 class="text-secondary mb-3">Browse now through our collection</h4>
+            <h1 class="display-4 m-0"><span class="text-primary">Adoption</span></h1>
+        </div>
+        <div class="row pb-3">
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src={caro1} alt=""/>
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Max</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa flaticon-dog text-muted"></i> Domestic Shorthair</small>
+                            <small class="mr-2"><i class="fa fa-calendar text-muted"></i> 1 year old</small>
+                            <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Alexandria,Egypt</small>
+                        </div>
+                        <a class="font-weight-bold" href="">Read More</a>
+                    </div>
+                </div>
             </div>
-        </nav>
-    </div>
-   
-    <div class="container-fluid bg-light pt-5">
-        <div class="container py-5">
-            <div class="d-flex flex-column text-center mb-5">
-                <h4 class="text-secondary mb-3">Services</h4>
-                <h1 class="display-4 m-0"><span class="text-primary">Premium</span> Pet Services</h1>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src={caro2} alt=""/>
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa flaticon-dog text-muted"></i> Domestic Shorthair</small>
+                            <small class="mr-2"><i class="fa fa-calendar text-muted"></i> 1 year old</small>
+                            <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Alexandria,Egypt</small>
+                        </div>
+                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
+                        <a class="font-weight-bold" href="">Read More</a>
+                    </div>
+                </div>
             </div>
-            <div class="row pb-3">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Boarding</h3>
-                        <p>Whether you're traveling for work or taking a well-deserved vacation, ensure your pet receives 
-                            the love and attention they deserve with our trusted pet boarding services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src={caro3} alt=""/>
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa flaticon-dog text-muted"></i> Domestic Shorthair</small>
+                            <small class="mr-2"><i class="fa fa-calendar text-muted"></i> 1 year old</small>
+                            <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Alexandria,Egypt</small>
+                        </div>
+                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
+                        <a class="font-weight-bold" href="">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Feeding</h3>
-                        <p>Ensure your pet receives the nutrition they need to stay healthy and happy with our pet feeding 
-                            services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src={caro2} alt=""/>
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa flaticon-dog text-muted"></i> Domestic Shorthair</small>
+                            <small class="mr-2"><i class="fa fa-calendar text-muted"></i> 1 year old</small>
+                            <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Alexandria,Egypt</small>
+                        </div>
+                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
+                        <a class="font-weight-bold" href="">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Grooming</h3>
-                        <p>Treat your pet to a spa day they'll never forget with our professional grooming services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src={caro3} alt=""/>
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa flaticon-dog text-muted"></i> Domestic Shorthair</small>
+                            <small class="mr-2"><i class="fa fa-calendar text-muted"></i> 1 year old</small>
+                            <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Alexandria,Egypt</small>
+                        </div>
+                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
+                        <a class="font-weight-bold" href="">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-cat display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Training</h3>
-                        <p>Unlock your pet's full potential with our professional pet training services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 mb-2">
+                    <img class="card-img-top" src={caro1} alt=""/>
+                    <div class="card-body bg-light p-4">
+                        <h4 class="card-title text-truncate">Diam amet eos at no eos</h4>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2"><i class="fa flaticon-dog text-muted"></i> Domestic Shorthair</small>
+                            <small class="mr-2"><i class="fa fa-calendar text-muted"></i> 1 year old</small>
+                            <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Alexandria,Egypt</small>
+                        </div>
+                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est diam eos, rebum sit vero stet justo</p>
+                        <a class="font-weight-bold" href="">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-dog display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Exercise</h3>
-                        <p>Keep your pet active, healthy, and happy with our pet exercise programs.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                        <h3 class="flaticon-vaccine display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Pet Treatment</h3>
-                        <p>When your pet is sick or injured, trust Aleefy to connect you with reliable veterinary care.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
-                    </div>
-                </div>
+            </div>
+            <div class="col-lg-12">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-center mb-4">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo; Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">Next &raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
             </div>
         </div>
     </div>
-   
-
-
-    
-
-
-   
-   <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+  
+<div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
     <div class="row pt-5">
         <div class="col-lg-4 col-md-12 mb-5">
             <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Rafeeky</span></h1>
@@ -292,32 +384,28 @@ function ServicePage() {
     </div>
 </div>
 
+<a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-    
-    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
 
-    
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
 
-   
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
-
 
     </div>
   );
 }
 
-export default ServicePage;
+export default Adoption;

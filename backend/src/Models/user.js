@@ -23,7 +23,8 @@ const userSchema = new Schema(
      },
      mobile:{
         type: Number,
-     }
+     },
+     pets: [{ type: Schema.Types.ObjectId, ref: 'pet' }]
   },
   { timestamps: true },
   userOptions,

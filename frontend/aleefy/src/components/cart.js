@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import '../style.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
-import './home.css';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import './style.scss'; 
-import caro1 from '../img/carousel-1.jpg';
-import caro2 from '../img/carousel-2.jpg';
-import im1 from '../img/about-1.jpg';
-import im2 from '../img/about-2.jpg';
-import im3 from '../img/about-3.jpg';
-import feat1 from '../img/feature.jpg';
-import blog1 from '../img/blog-1.jpg';
-import blog2 from '../img/blog-2.jpg';
-import blog3 from '../img/blog-3.jpg';
+
 
 var res= 0;
 function Cart() {

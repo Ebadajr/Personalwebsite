@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './style.scss'; 
+import '../style.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useNavigate } from "react-router-dom";
@@ -13,10 +13,16 @@ import feat1 from '../img/feature.jpg';
 import blog1 from '../img/blog-1.jpg';
 import blog2 from '../img/blog-2.jpg';
 import blog3 from '../img/blog-3.jpg';
-
+import bookingService from '../services/booking.service';
 var res= 0;
 function HomePage() {
-
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        date: '',
+        time: '',
+        service: '',
+      });
   const divStyle = {
     maxWidth: '900px',
     padding: '3px'
@@ -35,7 +41,22 @@ function HomePage() {
   const style5 = {
     background: '#111111',
   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+   console.log(formData);
+    bookingService.newBooking(formData)
+    .then(() => {
+      alert('booking successfull')
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+  }
     let navigate = useNavigate();
     async function login(e) {
       e.preventDefault();
@@ -100,7 +121,7 @@ function HomePage() {
                 </div>
             </div>
         </div>
-    </div>
+    
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
@@ -111,24 +132,24 @@ function HomePage() {
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link ">Home</a>
+                    <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="products.html" class="nav-item nav-link">products</a>
                 <a href="/clinic" class="nav-item nav-link">Clinics</a>
-                <a href="contact.html" class="nav-item nav-link  ">Contact</a>
-                <a href="adoption.html" class="nav-item nav-link  ">Adoption</a>
+                <a href="/contact" class="nav-item nav-link  ">Contact</a>
+                <a href="/adoption" class="nav-item nav-link  ">Adoption</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="blog.html"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
-                        <a href="events.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
-                        <a href="rescue.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
-                        <a href="payment.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
+                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                        <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
+                        <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
+                        <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
                         </div>
                     </div>
                 </div>
-                <a href="profile.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
             </div>
         </nav>
     </div>
@@ -175,28 +196,69 @@ function HomePage() {
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="bg-primary py-5 px-4 px-sm-5">
-                        <form class="py-5">
-                            <div class="form-group">
-                                <input type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Date" data-target="#date" data-toggle="datetimepicker"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Time" data-target="#time" data-toggle="datetimepicker"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <select class="custom-select border-0 px-4" style={style2}>
+                    <form className="py-5" onSubmit={handleSubmit}>
+        <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="Your Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="email"
+          className="form-control border-0 p-4"
+          placeholder="Your Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <div className="date" id="date" data-target-input="nearest">
+          <input
+            type="text"
+            className="form-control border-0 p-4 datetimepicker-input"
+            placeholder="Reservation Date"
+            data-target="#date"
+            data-toggle="datetimepicker"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+      <div className="form-group">
+        <div className="time" id="time" data-target-input="nearest">
+          <input
+            type="text"
+            className="form-control border-0 p-4 datetimepicker-input"
+            placeholder="Reservation Time"
+            data-target="#time"
+            data-toggle="datetimepicker"
+            name="time"
+            value={formData.time}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+      <div className="form-group">
+        <select
+          className="custom-select border-0 px-4"
+          style={style2}
+          name="service"
+          value={formData.service}
+          onChange={handleChange}
+        >
                                     <option selected>Select A Service</option>
                                     <option value="1">Adoption</option>
                                     <option value="2">Clinic</option>
+                                    
                                 </select>
                             </div>
                             <div>
@@ -502,6 +564,7 @@ function HomePage() {
     </div>
 </div>
 
+    </div>
     </div>
   );
 }

@@ -1,24 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import '../style.scss';
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import './home.css';
-
-import ReactDOM from 'react-dom/client';
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
-import './style.scss'; 
-import caro1 from '../img/carousel-1.jpg';
-import caro2 from '../img/carousel-2.jpg';
-import im1 from '../img/about-1.jpg';
-import im2 from '../img/about-2.jpg';
-import im3 from '../img/about-3.jpg';
-import feat1 from '../img/feature.jpg';
-import blog1 from '../img/blog-1.jpg';
-import blog2 from '../img/blog-2.jpg';
-import blog3 from '../img/blog-3.jpg';
+
 import bookingService from '../services/booking.service';
 
 var res= 0;
@@ -175,24 +161,24 @@ function Clinics() {
         </button>
         <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-                <a href="/" class="nav-item nav-link ">Home</a>
+            <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="products.html" class="nav-item nav-link">products</a>
                 <a href="/clinic" class="nav-item nav-link">Clinics</a>
-                <a href="contact.html" class="nav-item nav-link  ">Contact</a>
-                <a href="adoption.html" class="nav-item nav-link  ">Adoption</a>
+                <a href="/contact" class="nav-item nav-link  ">Contact</a>
+                <a href="/adoption" class="nav-item nav-link  ">Adoption</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="blog.html"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
-                        <a href="events.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
-                        <a href="rescue.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Rescue form</a>
-                        <a href="payment.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
+                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                        <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
+                        <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
+                        <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
                         </div>
+                    </div>
                 </div>
-            </div>
-            <a href="profile.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
         </div>
     </nav>
 </div>

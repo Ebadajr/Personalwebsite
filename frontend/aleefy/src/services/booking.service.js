@@ -6,6 +6,9 @@ class BookingService {
 
     return http.post("/newBooking", book);
   }
+  homeBooking(book){
+    return http.post("/homeBooking", book);
+  }
 
   
 }

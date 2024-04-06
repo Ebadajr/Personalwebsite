@@ -3,17 +3,22 @@ const bcrypt = require("bcrypt");
 const { createToken } = require("../utils/auth.js");
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken');
+const pet= require("../Models/pet.js");
 
 const addUser = async (req, res) => {
+
   try {
    
-    console.log(req.body.username);
     const { username, password } = req.body;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.create({
       email: req.body.username,
       password: hashedPassword,
+      firstName: req.body.firstname,
+      lastName: req.body.lastname,
+      mobile: req.body.mobile
+      
     });
 
     const token = createToken(user.name);
@@ -21,6 +26,7 @@ const addUser = async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).send("admin added");
   } catch (e) {
+    console.log(e);
     res.status(400).send(e);
   }
 };
@@ -51,11 +57,13 @@ const getUsers = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+
   console.log(req.body);
+
   try {
     
     const user = await User.findOne({ email: req.body.username });
-   
+   console.log(user);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

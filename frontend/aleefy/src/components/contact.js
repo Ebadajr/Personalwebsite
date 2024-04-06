@@ -4,14 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
-
-
 var res= 0;
-function About() {
+function Contact() {
 
   const divStyle = {
-    maxWidth: '900px',
-    padding: '3px'
+    maxWidth: '100%',
+    padding: '500px'
   };
   const style2 = {
     height: '47px'
@@ -33,8 +31,7 @@ function About() {
   
   return (
     <div>
-        
-    <meta charset="utf-8"/>
+         <meta charset="utf-8"/>
     <title>Rafeeky</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="Free HTML Templates" name="keywords"/>
@@ -43,24 +40,22 @@ function About() {
    
     <link href="img/favicon.ico" rel="icon"/>
 
-    
+   
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/> 
 
    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
 
-    
+   
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"/>
 
-   
+    
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-   
-    <link href="css/style.css" rel="stylesheet"/>
-
-
-<body>
+    
+    <link href="css/style.css" rel="stylesheet"></link>
+    <body>
    
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-lg-5">
@@ -117,18 +112,18 @@ function About() {
             </div>
         </div>
     </div>
-   
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Rafeeky</span></h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">Home</a>
+    
+   <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+        <a href="" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Rafeeky</span></h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+            <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="products.html" class="nav-item nav-link">products</a>
@@ -146,95 +141,48 @@ function About() {
                     </div>
                 </div>
                 <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+        </div>
+    </nav>
+</div>
+
+    <div class="container-fluid pt-5">
+        <div class="d-flex flex-column text-center mb-5 pt-5">
+            <h4 class="text-secondary mb-3">Contact Us</h4>
+            <h1 class="display-4 m-0">Contact For <span class="text-primary">Any Query</span></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 mb-5">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control p-4" rows="6" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </nav>
+            <div class="col-12 mb-n2 p-0">
+                <iframe style={divStyle} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd" frameborder="0"  allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
     </div>
     
-    <div class="container py-5">
-        <div class="row py-5">
-            <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
-                <h4 class="text-secondary mb-3">About Us</h4>
-                
-                <h5 class="text-muted mb-3">At Aleefy, we're more than just a pet platform—we're a passionate community dedicated to 
-                    serving the needs of Egypt's pet lovers and industry professionals. Founded with a vision to 
-                    bridge gaps and enhance connections within the pet community, Aleefy is your trusted partner 
-                    in all things pet-related.</h5>
-                <ul class="list-inline">
-                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Our Mission</h5></li>
-                    <p class="mb-4">At the core of Aleefy's mission is a commitment to creating a vibrant and inclusive space where 
-                    pets and their owners can thrive. We strive to provide a platform that fosters meaningful 
-                    connections, promotes pet welfare, and empowers individuals to make informed decisions 
-                    about their pet's care. </p>
-                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Our vision</h5></li>
-                    <p class="mb-4">Our vision is to become the leading destination for pet enthusiasts in Egypt, offering a 
-                        comprehensive range of services, resources, and support to enrich the lives of pets and their 
-                        owners. Through innovation, collaboration, and a deep understanding of the needs of the pet 
-                        community, we aim to redefine the standards of pet care and advocacy in Egypt and beyond.</p>
-                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>What sets us a part</h5></li>
-                    <p class="mb-4">Aleefy stands out from other platforms thanks to our unique blend of community engagement, 
-                        convenience, and reliability. We're more than just a marketplace—we're a hub for pet lovers to 
-                        connect, learn, and grow together. Whether you're seeking pet care services, product 
-                        recommendations, or simply looking to connect with like-minded individuals, Aleefy has 
-                        something for everyone.</p>
-                </ul>
-                <a href="" class="btn btn-lg btn-primary mt-3 px-4">Learn More</a>
-            </div>
-            <div class="col-lg-5">
-                <div class="row px-3">
-                    <div class="col-12 p-0">
-                        <img class="img-fluid w-100" src="img/about-1.jpg" alt=""/>
-                    </div>
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="img/about-2.jpg" alt=""/>
-                    </div>
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="img/about-3.jpg" alt=""/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-    <div class="container-fluid bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5">
-                    <img class="img-fluid w-100" src="img/feature.jpg" alt=""/>
-                </div>
-                <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
-                    <h4 class="text-secondary mb-3">Why Choose Us?</h4>
-                    <h1 class="display-4 mb-4"><span class="text-primary">Special Care</span> On Pets</h1>
-                    <div class="row py-2">
-                        <div class="col-6">
-                            <div class="d-flex align-items-center mb-4">
-                                <h1 class="flaticon-cat font-weight-normal text-secondary m-0 mr-3"></h1>
-                                <h5 class="text-truncate m-0">Best In Industry</h5>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center mb-4">
-                                <h1 class="flaticon-doctor font-weight-normal text-secondary m-0 mr-3"></h1>
-                                <h5 class="text-truncate m-0">Emergency Services</h5>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <h1 class="flaticon-care font-weight-normal text-secondary m-0 mr-3"></h1>
-                                <h5 class="text-truncate m-0">Special Care</h5>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <h1 class="flaticon-dog font-weight-normal text-secondary m-0 mr-3"></h1>
-                                <h5 class="text-truncate m-0">Customer Support</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   
     <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
             <div class="col-lg-4 col-md-12 mb-5">
@@ -311,6 +259,9 @@ function About() {
         </div>
     </div>
    
+
+
+   
     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
@@ -327,12 +278,13 @@ function About() {
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
 
-   
+ 
     <script src="js/main.js"></script>
 </body>
+
 
     </div>
   );
 }
 
-export default About;
+export default Contact;

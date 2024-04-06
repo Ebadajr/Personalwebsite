@@ -25,7 +25,19 @@ function Login(props) {
       // Login logic
       UserService.login(user)
         .then((response) => {
-          navigate("/", { replace: true });
+          switch (response.data.__t) {
+          
+            case "clinic":
+              navigate("/clinicHome", { replace: true });
+              break;
+            case "shelter":
+           
+              navigate("/shelterHome", { replace: true });
+              break;
+            default:
+              navigate("/home", { replace: true });
+          }
+         
         })
         .catch((e) => {
           console.log(e);
@@ -34,6 +46,7 @@ function Login(props) {
       // Signup logic
       UserService.createUser(user)
         .then((response) => {
+          alert("signed up successfully, login now")
           navigate("/", { replace: true });
         })
         .catch((e) => {
