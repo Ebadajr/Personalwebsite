@@ -107,7 +107,7 @@ function ClinicHome() {
                 <div class="navbar-nav mr-auto py-0">
                     <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
-                <a href="/service" class="nav-item nav-link">Bookings</a>
+                <a href="/booking" class="nav-item nav-link">Bookings</a>
                 
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>

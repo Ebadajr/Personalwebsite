@@ -1,12 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import '../style.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import formService from '../services/form.service';
 
 
 var res= 0;
 function Rescue() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        mobile: '',
+        location: '',
+      });
 
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+       console.log(formData);
+        formService.newForm(formData)
+        .then(() => {
+          alert('rescue form sent successfully')
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+        
+      };
   const divStyle = {
     maxWidth: '100%',
     padding: '500px'
@@ -156,31 +179,66 @@ function Rescue() {
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                        <div class="control-group">
-                            <input type="text" class="form-control p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <input type="email" class="form-control p-4" id="number" placeholder="Your phone number" required="required" data-validation-required-message="Please enter your phone number" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <input type="text" class="form-control p-4" id="Location" placeholder="Location" required="required" data-validation-required-message="Please enter the Location" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <textarea class="form-control p-4" rows="6" id="picture" placeholder="Add a picture" required="required" data-validation-required-message="Please Add a picture of the animal needing rescue"></textarea>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send rescue</button>
-                        </div>
-                    </form>
+                    <form className="py-5" onSubmit={handleSubmit}>
+        <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="Your Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="email"
+          className="form-control border-0 p-4"
+          placeholder="Your Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="Your Mobile"
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="Your Location"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <select
+          className="custom-select border-0 px-4"
+          style={style2}
+          name="service"
+          value={formData.service}
+          onChange={handleChange}
+        >
+                                    
+                                </select>
+                            </div>
+                            <div>
+                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Send Now</button>
+                            </div>
+                        </form>
                 </div>
             </div>
             <div class="col-12 mb-n2 p-0">

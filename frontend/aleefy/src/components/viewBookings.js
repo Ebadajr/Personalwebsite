@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../style.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import { useNavigate } from "react-router-dom";
-
-import caro1 from '../img/carousel-1.jpg';
-import caro2 from '../img/carousel-2.jpg';
-import feat1 from '../img/feature.jpg';
 
 
 var res= 0;
-function ShelterHome() {
-   
+function ListBookings() {
+    const [bookings, setBookings] = useState([]);
+
   const divStyle = {
     maxWidth: '900px',
     padding: '3px'
@@ -31,17 +27,57 @@ function ShelterHome() {
     background: '#111111',
   };
  
-    let navigate = useNavigate();
-    async function login(e) {
-      e.preventDefault();
-      navigate("/login", { replace: true });
-      
+  useEffect(() => {
+    async function fetchBookings() {
+        try {
+            // Call the backend function listBookings here
+            const response = await fetch('http://localhost:7000/listBookings');
+            const data = await response.json();
+            console.log("Fetched data:", data);
+            setBookings(data); // Assuming data is an array of booking objects
+            
+        } catch (error) {
+            console.error('Error fetching bookings:', error);
+            // Handle error here
+        }
     }
+
+    fetchBookings();
+}, []);
 
   
   return (
     <div>
-     <div class="container-fluid">
+    <head>
+    <meta charset="utf-8"/>
+    <title>Rafeeky</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="Free HTML Templates" name="keywords"/>
+    <meta content="Free HTML Templates" name="description"/>
+
+   
+    <link href="img/favicon.ico" rel="icon"/>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/> 
+
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
+
+    
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"/>
+
+   
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+
+<body>
+    
+    <div class="container-fluid">
         <div class="row bg-secondary py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
@@ -95,7 +131,9 @@ function ShelterHome() {
                 </div>
             </div>
         </div>
+    </div>
     
+    <div class="container-fluid p-0">
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
@@ -106,17 +144,16 @@ function ShelterHome() {
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link ">Home</a>
-                <a href="/about" class="nav-item nav-link active">About</a>
-                <a href="/service" class="nav-item nav-link">Bookings</a>
-                <a href="/rescueForms" class="nav-item nav-link">Rescue forms</a>
+                    <a href="/home" class="nav-item nav-link ">Home</a>
+                
+                <a href="/booking" class="nav-item nav-link">Bookings</a>
                 
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="blog.html"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
-                        <a href="payment.html" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
+                        <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
                         </div>
                     </div>
                 </div>
@@ -124,87 +161,32 @@ function ShelterHome() {
             </div>
         </nav>
     </div>
-    <div class="container-fluid p-0">
-        <div id="header-carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src={caro1} alt="Image"/>
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style={divStyle}>
-                            <h3 class="text-white mb-3 d-none d-sm-block">Connecting the pet community</h3>
-                            <h1 class="display-3 text-white mb-3">Like never before</h1>
-                            <a href="/login" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Join now</a>
-                            <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src={caro2} alt="Image"/>
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style={divStyle}>
-                            <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
-                            <h1 class="display-3 text-white mb-3">Adoption and Clinic</h1>
-                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Join now</a>
-                            <a href="about.html" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                <div class="btn btn-primary rounded" style={style3}>
-                    <span class="carousel-control-prev-icon mb-n2"></span>
-                </div>
-            </a>
-            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                <div class="btn btn-primary rounded" style={style3}>
-                    <span class="carousel-control-next-icon mb-n2"></span>
-                </div>
-            </a>
-        </div>
     </div>
    
-   
-   
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5">
-                <img class="img-fluid w-100" src={feat1} alt=""/>
-            </div>
-            <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
-                <h4 class="text-secondary mb-3">Why Choose Us?</h4>
-                <h1 class="display-4 mb-4 primary"><span class="text-primary">Special Care</span> On Pets</h1>
-                <p class="mb-4">Dolor lorem lorem ipsum sit et ipsum. Sadip sea amet diam sed ut vero no sit. Et elitr stet sed sit sed kasd. Erat duo eos et erat sed diam duo</p>
-                <div class="row py-2">
-                    <div class="col-6">
-                        <div class="d-flex align-items-center mb-4">
-                            <h1 class="flaticon-cat font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Best In Industry</h5>
+    <div className="container">
+                <div className="row">
+                    {bookings.map((booking, index) => (
+                        <div className="col-lg-4" key={index}>
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{booking.name}</h5>
+                                    <p className="card-text">Date: {booking.date}</p>
+                                    <p className="card-text">Time: {booking.time}</p>
+                                    <p className="card-text">Type: {booking.type}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex align-items-center mb-4">
-                            <h1 class="flaticon-doctor font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Emergency Services</h5>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex align-items-center">
-                            <h1 class="flaticon-care font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Special Care</h5>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex align-items-center">
-                            <h1 class="flaticon-dog font-weight-normal text-secondary m-0 mr-3"></h1>
-                            <h5 class="text-truncate m-0">Customer Support</h5>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
-        </div>
-    </div>
+   
+
+
     
-<div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+
+
+   
+   <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
     <div class="row pt-5">
         <div class="col-lg-4 col-md-12 mb-5">
             <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Rafeeky</span></h1>
@@ -221,7 +203,7 @@ function ShelterHome() {
                     <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                     <div class="d-flex justify-content-start mt-4">
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4}href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -280,9 +262,41 @@ function ShelterHome() {
     </div>
 </div>
 
+
+
+    
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+   
+    <script src="js/main.js"></script>
+</body>
+
+
     </div>
-    </div>
+   
+
+   
+   
+   
+   
+    
+
+  
   );
 }
 
-export default ShelterHome;
+export default ListBookings;

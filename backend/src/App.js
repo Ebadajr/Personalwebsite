@@ -18,6 +18,7 @@ const petController = require("./Controllers/petController");
 const bookingController = require("./Controllers/bookingController");
 const shelterController = require("./Controllers/shelterController");
 const clinicController = require("./Controllers/clinicController");
+const rescueController = require("./Controllers/rescueController");
 const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
@@ -49,9 +50,10 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-
+app.post("/newForm", rescueController.addRescue);
 app.post("/addClinic", clinicController.addClinic);
-
+app.get("/listBookings", bookingController.listBookings);
+app.get("/listForms", rescueController.listForms);
 app.post("/addPet", petController.addPet);
 app.use("/login", userController.login);
 app.post("/add",userController.addUser );
@@ -63,6 +65,7 @@ app.use(auth);
 const server = app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });
+
 app.post("/homeBooking", bookingController.homeBooking);
 app.get("/users", userController.getUsers);
 app.post("/newBooking", bookingController.addBooking);

@@ -76,6 +76,7 @@ console.log(service);
 };
 const listBookings = async (req, res) => {
     try {
+      console.log("here");
       res.send(await booking.find());
     } catch (e) {
       res.status(400).send(e);
