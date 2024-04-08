@@ -144,7 +144,7 @@ function ListForms() {
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="/home" class="nav-item nav-link ">Home</a>
+                    <a href="/shelterHome" class="nav-item nav-link ">Home</a>
                 
                 <a href="/booking" class="nav-item nav-link">Bookings</a>
                 
@@ -157,7 +157,7 @@ function ListForms() {
                         </div>
                     </div>
                 </div>
-                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+               
             </div>
         </nav>
     </div>

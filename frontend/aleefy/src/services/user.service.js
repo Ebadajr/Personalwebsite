@@ -8,9 +8,18 @@ class UserService {
   createUser(user){
     return http.post("/add", user);
   }
+  createClinic(user){
+    return http.post("/addClinic",user);
+  }
+  createShelter(user){
+    return http.post("/addShelter",user);
+  }
 
   logout() {
     return http.get("/logout");
+  }
+  getName() {
+    return http.get("/getName");
   }
 
   

@@ -12,7 +12,7 @@ const addShelter = async (req, res) => {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const Shelter = await shelter.create({
-      email: req.body.email,
+      email: req.body.username,
       password: hashedPassword,
       address: req.body.address,
       name: req.body.name

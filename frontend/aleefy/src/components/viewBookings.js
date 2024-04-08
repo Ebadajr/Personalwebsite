@@ -144,20 +144,12 @@ function ListBookings() {
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="/home" class="nav-item nav-link ">Home</a>
+                    <a href="/clinicHome" class="nav-item nav-link ">Home</a>
                 
                 <a href="/booking" class="nav-item nav-link">Bookings</a>
                 
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
-                        <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
-                        <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
-                        </div>
-                    </div>
+               
                 </div>
-                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
             </div>
         </nav>
     </div>

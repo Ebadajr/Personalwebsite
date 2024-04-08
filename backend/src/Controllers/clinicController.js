@@ -12,9 +12,8 @@ const addClinic = async (req, res) => {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const Clinc = await clinic.create({
-      email: req.body.email,
+      email: req.body.username,
       password: hashedPassword,
-      Address: req.body.address,
 
     });
     

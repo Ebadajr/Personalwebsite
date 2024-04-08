@@ -14,6 +14,8 @@ import blog1 from '../img/blog-1.jpg';
 import blog2 from '../img/blog-2.jpg';
 import blog3 from '../img/blog-3.jpg';
 import bookingService from '../services/booking.service';
+import userService from '../services/user.service';
+
 var res= 0;
 function HomePage() {
     const [formData, setFormData] = useState({
@@ -22,11 +24,17 @@ function HomePage() {
         date: '',
         time: '',
         service: '',
+        username:'',
       });
   const divStyle = {
     maxWidth: '900px',
     padding: '3px'
   };
+  const marg = {
+  margin: '5px',
+  padding: '5px'
+  };
+
   const style2 = {
     height: '47px'
   };
@@ -41,6 +49,33 @@ function HomePage() {
   const style5 = {
     background: '#111111',
   };
+  useEffect(() => {
+    // Function to fetch username from backend when component mounts
+    async function fetchUsername() {
+        try {
+            console.log("hi");
+            userService.getName()
+        .then((response) => {
+            console.log(response.data);
+            setFormData(prevState => ({
+                   ...prevState,
+                    username: response.data // Update the username in the form data state
+                }));
+        });
+               
+          
+        } catch (error) {
+            console.error('Error fetching username:', error);
+        }
+    }
+
+    fetchUsername(); // Call the function to fetch username
+}, []);
+
+
+
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -49,7 +84,7 @@ function HomePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
    console.log(formData);
-    bookingService.newBooking(formData)
+    bookingService.homeBooking(formData)
     .then(() => {
       alert('booking successfull')
     })
@@ -146,10 +181,12 @@ function HomePage() {
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
                         <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
+                        <a href="/" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Logout</a>
                         </div>
                     </div>
                 </div>
                 <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+                
             </div>
         </nav>
     </div>
@@ -162,7 +199,7 @@ function HomePage() {
                         <div class="p-3" style={divStyle}>
                             <h3 class="text-white mb-3 d-none d-sm-block">Connecting the pet community</h3>
                             <h1 class="display-3 text-white mb-3">Like never before</h1>
-                            <a href="/login" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Join now</a>
+                            <h3 class="text-white mb-3 d-none d-sm-block">{formData.username}</h3>
                             <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
                         </div>
                     </div>
@@ -173,8 +210,8 @@ function HomePage() {
                         <div class="p-3" style={divStyle}>
                             <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
                             <h1 class="display-3 text-white mb-3">Adoption and Clinic</h1>
-                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Join now</a>
-                            <a href="about.html" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
+                            <h3 class="text-white mb-3 d-none d-sm-block">{formData.username}</h3>
+                            <a href="/about" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -194,10 +231,10 @@ function HomePage() {
     <div class="container-fluid bg-light">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-5">
+                <div class="col-lg-5 mb-4 mb-lg-0">
                     <div class="bg-primary py-5 px-4 px-sm-5">
                     <form className="py-5" onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group" style={marg}>
         <input
           type="text"
           className="form-control border-0 p-4"
@@ -208,7 +245,7 @@ function HomePage() {
           required
         />
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <input
           type="email"
           className="form-control border-0 p-4"
@@ -219,7 +256,7 @@ function HomePage() {
           required
         />
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <div className="date" id="date" data-target-input="nearest">
           <input
             type="text"
@@ -233,7 +270,7 @@ function HomePage() {
           />
         </div>
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <div className="time" id="time" data-target-input="nearest">
           <input
             type="text"
@@ -247,7 +284,7 @@ function HomePage() {
           />
         </div>
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <select
           className="custom-select border-0 px-4"
           style={style2}

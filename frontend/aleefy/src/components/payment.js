@@ -156,7 +156,7 @@ function Payment() {
                         </div>
                     </div>
                 </div>
-                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+                
             </div>
         </nav>
     </div>

@@ -14,7 +14,7 @@ userRoutes.delete("/:id", userController.deleteUser);
 
 //userRoutes.post('/forgetPassword', userController.forgetPassword)
 
-
+userRoutes.get("/getName", userController.getUser);
 
 
 

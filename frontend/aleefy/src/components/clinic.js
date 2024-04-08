@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 
 import bookingService from '../services/booking.service';
-
+import p1 from '../img/price-1.jpg';
+import p2 from '../img/price-2.jpg';
+import p3 from '../img/price-3.jpg';
 var res= 0;
 function Clinics() {
 
@@ -59,6 +61,10 @@ function Clinics() {
   const style5 = {
     background: '#111111',
   };
+  const marg = {
+    margin: '5px',
+    padding: '5px'
+    };
  
     let navigate = useNavigate();
     async function login(e) {
@@ -164,7 +170,7 @@ function Clinics() {
             <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
-                <a href="products.html" class="nav-item nav-link">products</a>
+                <a href="/cart" class="nav-item nav-link">products</a>
                 <a href="/clinic" class="nav-item nav-link">Clinics</a>
                 <a href="/contact" class="nav-item nav-link  ">Contact</a>
                 <a href="/adoption" class="nav-item nav-link  ">Adoption</a>
@@ -229,7 +235,7 @@ function Clinics() {
                     <div class="bg-primary py-5 px-4 px-sm-5">
                         
         <form className="py-5" onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group"style={marg}>
         <input
           type="text"
           className="form-control border-0 p-4"
@@ -240,7 +246,7 @@ function Clinics() {
           required
         />
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <input
           type="email"
           className="form-control border-0 p-4"
@@ -251,7 +257,7 @@ function Clinics() {
           required
         />
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <div className="date" id="date" data-target-input="nearest">
           <input
             type="text"
@@ -265,7 +271,7 @@ function Clinics() {
           />
         </div>
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <div className="time" id="time" data-target-input="nearest">
           <input
             type="text"
@@ -279,7 +285,7 @@ function Clinics() {
           />
         </div>
       </div>
-      <div className="form-group">
+      <div className="form-group"style={marg}>
         <select
           className="custom-select border-0 px-4"
           style={style2}
@@ -362,7 +368,7 @@ function Clinics() {
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0">
                         <div class="card-header position-relative border-0 p-0 mb-4">
-                            <img class="card-img-top" src="img/price-1.jpg" alt=""/>
+                            <img class="card-img-top" src={p1} alt=""/>
                             <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100" style={divStyle}>
                                 <h3 class="text-primary mb-3">Basic</h3>
                                 <h1 class="display-4 text-white mb-0">
@@ -386,7 +392,7 @@ function Clinics() {
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0">
                         <div class="card-header position-relative border-0 p-0 mb-4">
-                            <img class="card-img-top" src="img/price-2.jpg" alt=""/>
+                            <img class="card-img-top" src={p2} alt=""/>
                             <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100" style={divStyle}>
                                 <h3 class="text-secondary mb-3">Standard</h3>
                                 <h1 class="display-4 text-white mb-0">
@@ -410,7 +416,7 @@ function Clinics() {
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0">
                         <div class="card-header position-relative border-0 p-0 mb-4">
-                            <img class="card-img-top" src="img/price-3.jpg" alt=""/>
+                            <img class="card-img-top" src={p3} alt=""/>
                             <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100" style={divStyle}>
                                 <h3 class="text-primary mb-3">Premium</h3>
                                 <h1 class="display-4 text-white mb-0">

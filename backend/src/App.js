@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require('body-parser');
+
 const mongoose = require("mongoose");
 //mongoose.set('strictQuery', false);
 const cors = require("cors");
@@ -47,7 +47,7 @@ app.use(
 
 
 app.use(express.json());
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.post("/newForm", rescueController.addRescue);
@@ -69,8 +69,8 @@ const server = app.listen(port, () => {
 app.post("/homeBooking", bookingController.homeBooking);
 app.get("/users", userController.getUsers);
 app.post("/newBooking", bookingController.addBooking);
-
-
+app.get("/getName", userController.getUser);
+app.post("/addPet",userController.addPet );
 app.use("/logout", userController.logout);
 
   

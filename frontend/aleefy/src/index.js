@@ -21,6 +21,7 @@ import ListBookings from './components/viewBookings';
 import ListForms from './components/viewRescue';
 import Payment from './components/payment';
 import Cart from './components/cart';
+import AdoptionBookings from './components/adoptionBooking';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
@@ -28,7 +29,7 @@ root.render(
  
   <BrowserRouter>
   <Routes>
-      <Route path="/" element={<Cart />} />
+      <Route path="/" element={<Login />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/service" element={<ServicePage />} />
       <Route path="/clinic" element={<Clinics />} />
@@ -45,6 +46,7 @@ root.render(
       <Route path="/rescueForms" element={<ListForms />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/adoptionBookings" element={<AdoptionBookings />} />
 
       
       

@@ -134,7 +134,7 @@ function Profile() {
                 <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
-                <a href="products.html" class="nav-item nav-link">products</a>
+                <a href="/cart" class="nav-item nav-link">products</a>
                 <a href="/clinic" class="nav-item nav-link">Clinics</a>
                 <a href="/contact" class="nav-item nav-link  ">Contact</a>
                 <a href="/adoption" class="nav-item nav-link  ">Adoption</a>
@@ -148,7 +148,7 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+                
             </div>
         </nav>
     </div>
@@ -195,9 +195,9 @@ function Profile() {
         </div>
         <div class="col-md-4">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Pets</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;pets</span></div><br></br>
-                <div class="col-md-12"><label class="labels">Owned Pets</label><input type="text" class="form-control" placeholder="experience" value=""/></div> <br></br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""/></div>
+                <div class="d-flex justify-content-between align-items-center experience"><span>Add a new pet</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;pets</span></div><br></br>
+                <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="Name" value=""/></div> <br></br>
+                <div class="col-md-12"><label class="labels">Breed</label><input type="text" class="form-control" placeholder="Breed" value=""/></div>
             </div>
         </div>
   

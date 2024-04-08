@@ -126,7 +126,7 @@ function Contact() {
             <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
-                <a href="products.html" class="nav-item nav-link">products</a>
+                <a href="/cart" class="nav-item nav-link">products</a>
                 <a href="/clinic" class="nav-item nav-link">Clinics</a>
                 <a href="/contact" class="nav-item nav-link  ">Contact</a>
                 <a href="/adoption" class="nav-item nav-link  ">Adoption</a>

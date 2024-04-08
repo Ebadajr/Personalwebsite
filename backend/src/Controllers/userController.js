@@ -4,6 +4,7 @@ const { createToken } = require("../utils/auth.js");
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken');
 const pet= require("../Models/pet.js");
+const user = require("../Models/user.js");
 
 const addUser = async (req, res) => {
 
@@ -90,7 +91,40 @@ const logout = (req, res) => {
 
   res.status(200).json({ message: "Logged out successfully" });
 };
+const getUser = async (req, res) => {
+  const token = req.cookies.jwt;
+  var id;
+  jwt.verify(token, "supersecret", (err, decodedToken) => {
+    if (err) {
+      // console.log('You are not logged in.');
+      // res send status 401 you are not logged in
+      res.status(401).json({ message: "You are not logged in." });
+      // res.redirect('/login');
+    } else {
+      id = decodedToken.name;
+    }
+  });
+  const p = await user.findById(id);
+  console.log("geeeet");
+  res.status(200).json(p.email);
+};
+const addPet = async (req, res) => {
+  const token = req.cookies.jwt;
+  var id;
+  jwt.verify(token, "supersecret", (err, decodedToken) => {
+    if (err) {
+      // console.log('You are not logged in.');
+      // res send status 401 you are not logged in
+      res.status(401).json({ message: "You are not logged in." });
+      // res.redirect('/login');
+    } else {
+      id = decodedToken.name;
+    }
+  });
+  const p = await user.findById(id);
+  console.log(p.email)
 
+};
 
 module.exports = {
   addUser,
@@ -98,5 +132,7 @@ module.exports = {
   listUsers,
   getUsers,
   login,
-  logout
+  logout,
+  getUser,
+  addPet
 };

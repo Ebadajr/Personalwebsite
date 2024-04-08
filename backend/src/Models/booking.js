@@ -20,7 +20,7 @@ const bookingSchema = new Schema(
      },
      type:{
             type: String,
-            enum: ['Feeding', 'Clinic', 'Grooming', 'Train'], // Specify the options
+            enum: ['Feeding', 'Clinic', 'Grooming', 'Train','Adoption',], // Specify the options
             required: true,
      }
      

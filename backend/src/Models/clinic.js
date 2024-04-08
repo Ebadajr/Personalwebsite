@@ -7,7 +7,7 @@ const clinicSchema = new Schema({
 
   Address: {
     type: String,
-    required: true,
+    
   },
 
 });

@@ -7,10 +7,12 @@ import { useNavigate } from "react-router-dom";
 import caro1 from '../img/carousel-1.jpg';
 import caro2 from '../img/carousel-2.jpg';
 import feat1 from '../img/feature.jpg';
-import bookingService from '../services/booking.service';
+import userService from '../services/user.service';
 var res= 0;
 function ClinicHome() {
-   
+    const [formData, setFormData] = useState({
+        username:'',
+      });
   const divStyle = {
     maxWidth: '900px',
     padding: '3px'
@@ -29,6 +31,31 @@ function ClinicHome() {
   const style5 = {
     background: '#111111',
   };
+  useEffect(() => {
+    // Function to fetch username from backend when component mounts
+    async function fetchUsername() {
+        try {
+            console.log("hi");
+            userService.getName()
+        .then((response) => {
+            console.log(response.data);
+            setFormData(prevState => ({
+                   ...prevState,
+                    username: response.data // Update the username in the form data state
+                }));
+        });
+               
+          
+        } catch (error) {
+            console.error('Error fetching username:', error);
+        }
+    }
+
+    fetchUsername(); // Call the function to fetch username
+}, []);
+
+
+
  
     let navigate = useNavigate();
     async function login(e) {
@@ -112,13 +139,14 @@ function ClinicHome() {
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
-                        <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
+                   
+                        
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
+                        <a href="/" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Logout</a>
                         </div>
                     </div>
                 </div>
-                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+                <a href="/" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Logout</a>
             </div>
         </nav>
     </div>
@@ -131,7 +159,7 @@ function ClinicHome() {
                         <div class="p-3" style={divStyle}>
                             <h3 class="text-white mb-3 d-none d-sm-block">Connecting the pet community</h3>
                             <h1 class="display-3 text-white mb-3">Like never before</h1>
-                            <a href="/login" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Join now</a>
+                            <h3 class="text-white mb-3 d-none d-sm-block">{formData.username}</h3>
                             <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
                         </div>
                     </div>
@@ -142,7 +170,7 @@ function ClinicHome() {
                         <div class="p-3" style={divStyle}>
                             <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
                             <h1 class="display-3 text-white mb-3">Adoption and Clinic</h1>
-                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Join now</a>
+                            <h3 class="text-white mb-3 d-none d-sm-block">{formData.username}</h3>
                             <a href="about.html" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
                         </div>
                     </div>

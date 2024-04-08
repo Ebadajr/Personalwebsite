@@ -6,11 +6,11 @@ function Login(props) {
   const initialUserState = {
     username: "",
     password: "",
-    confirmPassword: "", // New field for confirming password
   };
 
   const [user, setUser] = useState(initialUserState);
   const [signupMode, setSignupMode] = useState(false); // Default mode is login
+  const [selectedSignupType, setSelectedSignupType] = useState(""); // State for selected signup type
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -26,32 +26,67 @@ function Login(props) {
       UserService.login(user)
         .then((response) => {
           switch (response.data.__t) {
-          
             case "clinic":
               navigate("/clinicHome", { replace: true });
               break;
             case "shelter":
-           
               navigate("/shelterHome", { replace: true });
               break;
             default:
               navigate("/home", { replace: true });
           }
-         
         })
         .catch((e) => {
           console.log(e);
         });
     } else {
       // Signup logic
-      UserService.createUser(user)
+      if (!selectedSignupType) {
+        alert("Please select a signup type");
+        return;
+      }
+
+      const userData = {
+        ...user,
+        type: selectedSignupType, // Include selected signup type in user data
+      };
+      switch (selectedSignupType) {
+        case "user":
+          UserService.createUser(user)
         .then((response) => {
-          alert("signed up successfully, login now")
+          alert("signed up successfully, welcome ")
           navigate("/", { replace: true });
         })
         .catch((e) => {
           console.log(e);
         });
+          break;
+        case "clinic":
+          UserService.createClinic(user)
+        .then((response) => {
+          alert("signed up successfully, welcome ")
+          navigate("/clinicHome", { replace: true });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+          break;
+        case "shelter":
+          UserService.createShelter(user)
+          .then((response) => {
+            alert("signed up successfully, login now ")
+            navigate("/", { replace: true });
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+          break;
+        default:
+          alert("Invalid signup type");
+          return;
+      }
+  
+
     }
   }
 
@@ -60,10 +95,36 @@ function Login(props) {
     setUser(initialUserState); // Reset user fields when toggling mode
   };
 
+  const handleSignupTypeChange = (event) => {
+    setSelectedSignupType(event.target.value);
+  };
+
   return (
     <div>
       <div className="App-header">
         <form className="App-header" onSubmit={handleSubmit}>
+          {signupMode && (
+            <>
+              {/* Display signup type options */}
+              <div className="form-group">
+                <label htmlFor="signupType">Signup Type</label>
+                <select
+                  className="form-control"
+                  id="signupType"
+                  value={selectedSignupType}
+                  onChange={handleSignupTypeChange}
+                >
+                  <option value="">Select Signup Type</option>
+                  <option value="user">User</option>
+                  <option value="clinic">Clinic</option>
+                  <option value="shelter">Shelter</option>
+                </select>
+              </div>
+              
+              
+            </>
+          )}
+
           <div className="form-group">
             <label htmlFor="InputUsername">Username</label>
             <input
@@ -88,21 +149,6 @@ function Login(props) {
               onChange={handleInputChange}
             />
           </div>
-
-          {signupMode && ( // Show confirm password field only in signup mode
-            <div className="form-group">
-              <label htmlFor="InputConfirmPassword">Confirm Password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={user.confirmPassword}
-                placeholder="Confirm Password"
-                onChange={handleInputChange}
-              />
-            </div>
-          )}
 
           <div className="form-check">
             <input
