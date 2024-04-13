@@ -1,13 +1,87 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss'; 
+import '../styles.scss'; 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useNavigate } from "react-router-dom";
+import userService from '../services/user.service';
 
 
 var res= 0;
 function Profile() {
+    const [formData, setFormData] = useState({
+        name: '',
+        breed: '',
+        username: '',
+        firstname: '',
+        lastname: '',
+        mobile: 0,
+        gotMobile: 0,
+      });
 
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+       console.log(formData);
+        userService.addPet(formData)
+        .then(() => {
+          alert('Pet added');
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+        
+      };
+
+      const handleSubmituser = (e) => {
+        e.preventDefault();
+       console.log(formData);
+        userService.update(formData)
+        .then(() => {
+          alert('Info updated');
+          window.location.reload();
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+        
+      };
+
+      useEffect(() => {
+        // Function to fetch username from backend when component mounts
+        async function fetchUsername() {
+            try {
+                
+                userService.getName()
+            .then((response) => {
+                
+                setFormData(prevState => ({
+                       ...prevState,
+                        username: response.data // Update the username in the form data state
+                    }));
+            });
+            userService.getMobile()
+            .then((response) => {
+                
+                setFormData(prevState => ({
+                       ...prevState,
+                        gotMobile: response.data
+                
+                    }));
+                    console.log(response.data);
+            });
+                   
+              
+            } catch (error) {
+                console.error('Error fetching username:', error);
+            }
+        }
+    
+        fetchUsername(); // Call the function to fetch username
+    }, []);
   const divStyle = {
     maxWidth: '900px',
     padding: '3px'
@@ -141,7 +215,7 @@ function Profile() {
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                       
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
                         <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
@@ -155,12 +229,12 @@ function Profile() {
    
 
     <form action="profile.php" method="POST" enctype="multipart/form-data">
-    
+    </form>
 
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"/><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"/><span class="font-weight-bold">{formData.username}</span><span class="text-black-50">{formData.gotMobile}</span> <span> </span></div>
 
 <div class="container rounded bg-white mt-5 mb-5">
     <label class="labels">Profile Picture</label>
@@ -174,38 +248,101 @@ function Profile() {
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""/></div>
-                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"/></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""/></div>
-                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""/></div>
-                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""/></div>
-                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""/></div>
-                    <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""/></div>
-                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""/></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""/></div>
-                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"/></div>
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-            </div>
+                <form className="py-5" onSubmit={handleSubmituser}>
+        <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="first name"
+          name="firstname"
+          value={formData.firstname}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="last name"
+          name="lastname"
+          value={formData.lastname}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="number"
+          className="form-control border-0 p-4"
+          placeholder="mobile"
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div class="row mt-3">
+                   
+                   <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line " value=""/></div>
+                   <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="Postcode" value=""/></div>
+                   
+                   
+               </div>
+               <div class="row mt-3">
+                   <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""/></div>
+                   <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"/></div>
+               </div>
+      <div class="mt-5 text-center">
+     <button class="btn btn-primary profile-button" type="submit">Update</button>
         </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Add a new pet</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;pets</span></div><br></br>
-                <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="Name" value=""/></div> <br></br>
-                <div class="col-md-12"><label class="labels">Breed</label><input type="text" class="form-control" placeholder="Breed" value=""/></div>
+      </form>
+    
+               
+               
             </div>
+           
+        </div>
+       
+        <div class="col-md-4">
+            
+        <form className="py-5" onSubmit={handleSubmit}>
+        <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control border-0 p-4"
+          placeholder="Breed"
+          name="breed"
+          value={formData.breed}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+     <button class="btn btn-dark btn-block border-0 py-3" type="submit">Add pet</button>
+        </div>
+      </form>
+            
+
+
         </div>
   
 
 
 </div>
 </div>
-</form>
+
 
 
  <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">

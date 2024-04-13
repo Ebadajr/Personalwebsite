@@ -1,6 +1,5 @@
-
-$primary: #ED6436;
-$secondary: #65C178;
+$primary: #f888bb;
+$secondary:  #f888bb;
 $light: #F2F2F4;
 $dark: #181818;
 
@@ -10,6 +9,7 @@ $theme-colors: (
     "light": $light,
     "dark": $dark,
 );
+
 
 $font-family-sans-serif: 'Nunito Sans', sans-serif;
 
@@ -21,7 +21,8 @@ $headings-color: $dark;
 
 $enable-responsive-font-sizes: true;
 
-@import "bootstrap/scss/bootstrap";
+@import "./bootstrap/scss/bootstrap.scss";
+
 
 
 /********** Custom CSS ************/
@@ -57,6 +58,7 @@ h6 {
     -webkit-animation: action 1s infinite alternate;
     animation: action 1s infinite alternate;
 }
+
 
 @-webkit-keyframes action {
     0% {

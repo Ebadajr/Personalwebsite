@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss'
+import '../styles.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useNavigate } from "react-router-dom";
@@ -146,7 +146,7 @@ function ClinicHome() {
                         </div>
                     </div>
                 </div>
-                <a href="/" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Logout</a>
+                <a href="/clinicProfile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
             </div>
         </nav>
     </div>

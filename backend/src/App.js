@@ -58,7 +58,8 @@ app.post("/addPet", petController.addPet);
 app.use("/login", userController.login);
 app.post("/add",userController.addUser );
 app.post("/addShelter", shelterController.addShelter);
-
+app.get("/myPet",userController.myPets );
+app.get("allpets",petController.getPets);
 app.use(auth);
 
 
@@ -70,7 +71,9 @@ app.post("/homeBooking", bookingController.homeBooking);
 app.get("/users", userController.getUsers);
 app.post("/newBooking", bookingController.addBooking);
 app.get("/getName", userController.getUser);
-app.post("/addPet",userController.addPet );
+app.get("/getMobile", userController.getMobile);
+app.post("/newPet",userController.addPet );
+app.post("/updateUser",userController.updateUser);
 app.use("/logout", userController.logout);
 
   

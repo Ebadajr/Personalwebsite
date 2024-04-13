@@ -40,6 +40,7 @@ const listUsers = async (req, res) => {
   }
 };
 
+
 const deleteUser = async (req, res) => {
   try {
     res.send(await User.findByIdAndDelete(req.params.id));
@@ -108,7 +109,9 @@ const getUser = async (req, res) => {
   console.log("geeeet");
   res.status(200).json(p.email);
 };
-const addPet = async (req, res) => {
+
+
+const getMobile = async (req, res) => {
   const token = req.cookies.jwt;
   var id;
   jwt.verify(token, "supersecret", (err, decodedToken) => {
@@ -122,7 +125,102 @@ const addPet = async (req, res) => {
     }
   });
   const p = await user.findById(id);
-  console.log(p.email)
+  res.status(200).json(p.mobile);
+};
+
+
+
+
+
+const updateUser = async (req, res) => {
+  const token = req.cookies.jwt;
+  var id;
+  jwt.verify(token, "supersecret",(err, decodedToken) => {
+    if (err) {
+      // console.log('You are not logged in.');
+      // res send status 401 you are not logged in
+      res.status(401).json({ message: "You are not logged in." });
+      // res.redirect('/login');
+    } else {
+      id = decodedToken.name;
+    
+    }
+  });
+    const p = await user.findById(id);
+    await User.findByIdAndUpdate(id, {
+    firstName: req.body.firstname,
+    lastName: req.body.lastname,
+    mobile: req.body.mobile,
+
+  });
+  res.status(200).send("User info updated!");
+  
+
+
+
+
+
+};
+
+
+
+
+
+
+
+const addPet = async (req, res) => {
+  const token = req.cookies.jwt;
+  var id;
+ 
+  jwt.verify(token, "supersecret", (err, decodedToken) => {
+    if (err) {
+      // console.log('You are not logged in.');
+      // res send status 401 you are not logged in
+      res.status(401).json({ message: "You are not logged in." });
+      // res.redirect('/login');
+    } else {
+      id = decodedToken.name;
+    }
+  });
+  const p = await user.findById(id);
+  console.log(p.email);
+  var c = pet.create({
+    name : req.body.name,
+    Breed : req.body.breed,
+  });
+  
+  p.pets.push((await c)._id);
+  p.save().catch((err) => res.send(err));
+  res.status(200).json(p.pets);
+
+
+};
+const myPets = async (req, res) => {
+  const token = req.cookies.jwt;
+  var id;
+  
+  jwt.verify(token, "supersecret", (err, decodedToken) => {
+    if (err) {
+      // console.log('You are not logged in.');
+      // res send status 401 you are not logged in
+      res.status(401).json({ message: "You are not logged in." });
+      // res.redirect('/login');
+    } else {
+      id = decodedToken.name;
+    }
+  });
+  const p = await user.findById(id);
+  const petNames = [];
+  for (let i = 0; i < p.pets.length; i++) {
+    var pe = p.pets[i].toString();
+    var s = await pet.findById(pe);
+    petNames.push(s);
+
+  }
+  
+  p.save().catch((err) => res.send(err));
+  res.status(200).json(petNames);
+
 
 };
 
@@ -134,5 +232,8 @@ module.exports = {
   login,
   logout,
   getUser,
-  addPet
+  addPet,
+  myPets,
+  updateUser,
+  getMobile
 };

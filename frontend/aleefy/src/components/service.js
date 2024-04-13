@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss'; 
+import '../styles.scss'; 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -137,7 +137,7 @@ function ServicePage() {
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                      
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
                         <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
@@ -162,48 +162,61 @@ function ServicePage() {
                         <h3 class="mb-3">Pet Boarding</h3>
                         <p>Whether you're traveling for work or taking a well-deserved vacation, ensure your pet receives 
                             the love and attention they deserve with our trusted pet boarding services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                            <a class="text-uppercase font-weight-bold" href="/clinic">Book now</a>
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Feeding</h3>
-                        <p>Ensure your pet receives the nutrition they need to stay healthy and happy with our pet feeding 
-                            services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <p>Never worry about your pet's nutrition again with our pet feeding services. Whether you're
+                        away for the day or simply need assistance maintaining a balanced diet for your furry friend, our
+                        trusted partners offer reliable feeding solutions to keep your pet healthy, happy, and wellfed. </p>
+                        <a class="text-uppercase font-weight-bold"  href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Grooming</h3>
-                        <p>Treat your pet to a spa day they'll never forget with our professional grooming services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <p>Treat your pet to a spa day they'll never forget with our selection of professional grooming
+                        services. From baths and haircuts to nail trims and ear cleaning, our groomers are skilled in
+                        pampering pets of all shapes and sizes. Book an appointment today and watch your furry friend
+                        strut their stuff with confidence and style. </p>
+                        <a class="text-uppercase font-weight-bold" href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-cat display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Training</h3>
-                        <p>Unlock your pet's full potential with our professional pet training services.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <p>Unlock your pet's full potential with our professional pet training services. Whether you're
+                        teaching basic obedience commands or addressing behavioral issues, our experienced trainers
+                        utilize positive reinforcement techniques to help your pet become a well-behaved and obedient
+                        companion for life. </p>
+                        <a class="text-uppercase font-weight-bold"  href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-dog display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Exercise</h3>
-                        <p>Keep your pet active, healthy, and happy with our pet exercise programs.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <p>Keep your pet active, healthy, and happy with our pet exercise programs. Whether it's a brisk
+                        walk, a game of fetch, or an agility course, our trained professionals will work with your pet to
+                        develop a tailored exercise plan that meets their needs and preferences. 
+                        </p>
+                        <a class="text-uppercase font-weight-bold" href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-vaccine display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Treatment</h3>
-                        <p>When your pet is sick or injured, trust Aleefy to connect you with reliable veterinary care.</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <p>When your pet is sick or injured, trust Aleefy to connect you with reliable veterinary care. From
+                        routine check-ups to specialized treatments, our network of clinics and doctors offers
+                        compassionate care and expert advice to help your pet recover and thrive. </p>
+                        <a class="text-uppercase font-weight-bold" href="/booking">Book now</a>
                     </div>
                 </div>
             </div>

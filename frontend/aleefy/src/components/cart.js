@@ -1,70 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import '../style.scss'
+import React, { useState } from 'react';
+import '../styles.scss';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
-import im1 from '../img/about-1.jpg';
 import im2 from '../img/2.jpg';
-import im3 from '../img/3.jpg';
+import im1 from '../img/1.jpg';
 
-var res= 0;
 function Cart() {
+  const [cartItems, setCartItems] = useState([
+    { id: 1, name: "Stylish pet appearel", price: 26.00, quantity: 4,imgsrc: im2 },
+    { id: 2, name: "Interactive treat dispenser", price: 26.00, quantity: 1, imgsrc: im1 }
+  ]);
 
-  const divStyle = {
-    maxWidth: '900px',
-    padding: '3px'
-  };
-  const style2 = {
-    height: '47px'
-  };
-  const style3 = {
-    height : '45px',
-    width : '45px',
-  };
-  const style4 = {
-    height : '36px',
-    width : '36px',
-  };
-  const style5 = {
-    background: '#111111',
+  // Function to remove an item from the cart
+  const removeFromCart = (id) => {
+    setCartItems(cartItems.filter(item => item.id !== id));
   };
 
-    let navigate = useNavigate();
-    async function login(e) {
-      e.preventDefault();
-      navigate("/login", { replace: true });
-      
-    }
+  // Function to update the quantity of an item in the cart
+  const updateQuantity = (id, quantity) => {
+    const updatedCartItems = cartItems.map(item =>
+      item.id === id ? { ...item, quantity: quantity } : item
+    );
+    setCartItems(updatedCartItems);
+  };
+ 
 
-  
+  // Calculate total price
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
   return (
-    <div>
-      <meta charset="utf-8"/>
-    <title>Rafeeky</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="Free HTML Templates" name="keywords"/>
-    <meta content="Free HTML Templates" name="description"/>
-
-   
-    <link href="img/favicon.ico" rel="icon"/>
-
-   
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/> 
-
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
-
-   
-    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"/>
-
-    
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    
-    <link href="css/style.css" rel="stylesheet"></link>
-
-    <div class="container-fluid">
-        <div class="row bg-secondary py-2 px-lg-5">
+    <div className="container">
+          <div class="row bg-secondary py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
                     <a class="text-white pr-3" href="">FAQs</a>
@@ -117,7 +82,7 @@ function Cart() {
                 </div>
             </div>
         </div>
-    </div>
+    
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
@@ -128,7 +93,7 @@ function Cart() {
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">Home</a>
+                    <a href="/home" class="nav-item nav-link ">Home</a>
                 <a href="/about" class="nav-item nav-link active">About</a>
                 <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="/cart" class="nav-item nav-link">products</a>
@@ -138,170 +103,62 @@ function Cart() {
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                        <a href="/myPets"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">my pets</a>
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
                         <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
+                        <a href="/" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Logout</a>
                         </div>
                     </div>
                 </div>
                 <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
+                
             </div>
         </nav>
     </div>
-    <div class="basket-labels">
-        <ul>
-          <li class="item item-heading">Item</li>
-          <li class="price">Price</li>
-          <li class="quantity">Quantity</li>
-          <li class="subtotal">Subtotal</li>
-        </ul>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card border-0 mb-2">
-            <img class="card-img-top" src={im2} alt=""/>
-            <div class="card-body bg-light p-4">
-                <h4 class="card-title text-truncate">Stylish pet appearel</h4>
-                <div class="d-flex mb-3">
+      <div className="row">
+        <div className="col-lg-8">
+         
+          {cartItems.map(item => (
+            <div className="card border-0 mb-2" key={item.id}>
+              <img className="card-img-top" src= {item.imgsrc} alt=""/>
+              <div className="card-body bg-light p-4">
+                <h4 className="card-title text-truncate">{item.name}</h4>
+                <div className="d-flex mb-3">
+                  <div className="price">${item.price.toFixed(2)}</div>
+                  <div className="quantity">
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      min="1"
+                      className="quantity-field"
+                      onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div className="subtotal">${(item.price * item.quantity).toFixed(2)}</div>
+                  <div className="remove">
+                    <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                  </div>
                 </div>
+              </div>
             </div>
+          ))}
         </div>
-    </div>
-    <p>Product Code - 232321939</p>
-          
-        
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <input type="number" value="4" min="1" class="quantity-field"/>
-        </div>
-        <div class="subtotal">104.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-        <div class="col-lg-4 mb-4">
-                <div class="card border-0 mb-2">
-                    <img class="card-img-top" src={im3}alt=""/>
-                    <div class="card-body bg-light p-4">
-                        <h4 class="card-title text-truncate">Cat scratching post</h4>
-                        <div class="d-flex mb-3">
-                            </div>
-                            </div>
-            <p>Product Code - 232321939</p>
+        <div className="col-lg-4">
+          <div className="card border-0 mb-2">
+            <div className="card-body bg-light p-4">
+              <h4 className="card-title">Total Price</h4>
+              <div className="d-flex justify-content-between">
+                <div className="font-weight-bold">Total:</div>
+                <div className="font-weight-bold">${totalPrice.toFixed(2)}</div>
+              </div>
+              <a href="/payment" className="btn btn-primary mt-3">Checkout</a>
+
+            </div>
           </div>
         </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field"/>
-        </div>
-        <div class="subtotal">26.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-
-
-        <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
-    <div class="row pt-5">
-        <div class="col-lg-4 col-md-12 mb-5">
-            <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Rafeeky</span></h1>
-            <p class="m-0">Become a part of our growing community and experience the joy of connecting with fellow pet 
-                lovers from all walks of life. Together, let's create a safe, supportive, and inclusive environment 
-                where pets and their owners can thrive, flourish, and celebrate the unconditional love that 
-                binds us all.</p>
-        </div>
-        <div class="col-lg-8 col-md-12">
-            <div class="row">
-                <div class="col-md-4 mb-5">
-                    <h5 class="text-primary mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Location, City, Country</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                    <div class="d-flex justify-content-start mt-4">
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style={style4} href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <h5 class="text-primary mb-4">Popular Links</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                        <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                        <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                        <a class="text-white mb-2" href="clinics.html"><i class="fa fa-angle-right mr-2"></i>Our Clinics</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <h5 class="text-primary mb-4">Newsletter</h5>
-                    <form action="">
-                        <div class="form-group">
-                            <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
-                        </div>
-                        <div>
-                            <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Submit Now</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid text-white py-4 px-sm-3 px-md-5" style={style5}>
-    <div class="row">
-        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-            <p class="m-0 text-white">
-                &copy; <a class="text-white font-weight-bold">Rafeeky</a>. All Rights Reserved. Designed by
-                <a class="text-white font-weight-bold">AAST</a>
-            </p>
-        </div>
-        <div class="col-md-6 text-center text-md-right">
-            <ul class="nav d-inline-flex">
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Privacy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Terms</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">FAQs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white py-0" href="#">Help</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/tempusdominus/js/moment.min.js"></script>
-<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-
-<script src="mail/jqBootstrapValidation.min.js"></script>
-<script src="mail/contact.js"></script>
-
-
-<script src="js/main.js"></script>
       </div>
-      
-
-
-
-
-
-
-    
+    </div>
   );
 }
 

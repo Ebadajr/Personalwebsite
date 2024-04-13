@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss';
+import '../styles.scss';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useNavigate } from "react-router-dom";
-
-
 import bookingService from '../services/booking.service';
 import p1 from '../img/price-1.jpg';
 import p2 from '../img/price-2.jpg';
@@ -177,7 +175,7 @@ function Clinics() {
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                     
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
                         <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
@@ -194,34 +192,36 @@ function Clinics() {
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Paws & Claws Veterinary Clinic</h3>
-                        <p>Address: 123 Main Street, Cairo, Egypt
-                        Phone: +20 123 456 789
+                        <h3 class="mb-3">Prime vet</h3>
+                        <p>Address: New Cairo 1, Cairo Governorate, Egypt 
+                        Phone: +010 01053180
                         Website:www.pawsandclawsclinic.com
                         Services: Vaccinations, surgeries, dental care, grooming
-                        Operating Hours: Mon-Sat 9:00 AM - 7:00 PM, Sun 10:00 AM - 5:00 PM</p>
+                        Operating Hours: Mon-Sat 9:00 AM - 7:00 PM, Sun 10:00 AM - 9:00 PM</p>
                         <a  href="google.com" class="text-uppercase font-weight-bold">Location</a>
                                             </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Furry Friends Veterinary Hospital</h3>
-                        <p>DAddress: 456 Elm Avenue, Alexandria, Egypt
-                            Phone: +20 987 654 321
-                            Services: Emergency care, internal medicine, diagnostics, surgery
-                            Operating Hours: Open 24/7</p>
+                        <h3 class="mb-3">7 pets</h3>
+                        <p>Address: Mohammed Nagib Axis, Cairo Egypt
+                            Phone: + 010 66644045
+                            Website: www.7pets.net
+                            Services: Vaccinations, surgeries, dental care, grooming 
+                            Operating Hours: Mon-Sat 9:00 AM -7:00 PM, Sun 10:00 AM - 10:00 PM</p>
                             <a  href="booking.html" class="text-uppercase font-weight-bold">Location</a>
                         </div>
                     </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Happy Tails Animal Clinic</h3>
-                        <p>Address: 789 Oak Street, Giza, Egypt
-                            Phone: +20 555 123 456
-                            Services: Preventative care, wellness exams, spay/neuter, boarding
-                            Operating Hours: Mon-Fri 8:00 AM - 6:00 PM, Sat 9:00 AM - 3:00 PM</p>
+                        <h3 class="mb-3">Petsy</h3>
+                        <p>Address: 5th settlement Cairo Egypt
+                            Phone: + 012 81808459
+                            Website: www.petsy.online
+                            Services: Vaccinations, surgeries, dental care, grooming
+                            Operating Hours: Mon-Sat 9:00 AM - 7:00PM, Sun 10:00 AM - 10:00 PM</p>
                             <a  href="booking.html" class="text-uppercase font-weight-bold">Location</a>
                         </div> 
                 </div>

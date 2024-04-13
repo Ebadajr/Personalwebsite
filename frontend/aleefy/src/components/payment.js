@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss'
+import '../styles.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -149,7 +149,7 @@ function Payment() {
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                       
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
                         <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>

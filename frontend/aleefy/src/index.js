@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './style.scss';
+import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 import HomePage from './components/home';
@@ -22,6 +22,9 @@ import ListForms from './components/viewRescue';
 import Payment from './components/payment';
 import Cart from './components/cart';
 import AdoptionBookings from './components/adoptionBooking';
+import MyPets from './components/myPets';
+import ClinicProfile from './components/clinicProfile';
+import ShelterProfile from './components/shelterProfile';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
@@ -47,6 +50,9 @@ root.render(
       <Route path="/payment" element={<Payment />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/adoptionBookings" element={<AdoptionBookings />} />
+      <Route path="/myPets" element={<MyPets />} />
+      <Route path="/clinicProfile" element={<ClinicProfile />} />
+      <Route path="/shelterProfile" element={<ShelterProfile />} />
 
       
       

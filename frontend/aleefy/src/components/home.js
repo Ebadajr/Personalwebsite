@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../style.scss'
-import "bootstrap/dist/css/bootstrap.min.css";
+import '../css/styles.css';
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useNavigate } from "react-router-dom";
 
@@ -177,7 +177,7 @@ function HomePage() {
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/blog"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">blogs</a>
+                        <a href="/myPets"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">my pets</a>
                         <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
                         <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
                         <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
@@ -228,132 +228,7 @@ function HomePage() {
             </a>
         </div>
     </div>
-    <div class="container-fluid bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-4 mb-lg-0">
-                    <div class="bg-primary py-5 px-4 px-sm-5">
-                    <form className="py-5" onSubmit={handleSubmit}>
-        <div className="form-group" style={marg}>
-        <input
-          type="text"
-          className="form-control border-0 p-4"
-          placeholder="Your Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="form-group"style={marg}>
-        <input
-          type="email"
-          className="form-control border-0 p-4"
-          placeholder="Your Email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="form-group"style={marg}>
-        <div className="date" id="date" data-target-input="nearest">
-          <input
-            type="text"
-            className="form-control border-0 p-4 datetimepicker-input"
-            placeholder="Reservation Date"
-            data-target="#date"
-            data-toggle="datetimepicker"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className="form-group"style={marg}>
-        <div className="time" id="time" data-target-input="nearest">
-          <input
-            type="text"
-            className="form-control border-0 p-4 datetimepicker-input"
-            placeholder="Reservation Time"
-            data-target="#time"
-            data-toggle="datetimepicker"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className="form-group"style={marg}>
-        <select
-          className="custom-select border-0 px-4"
-          style={style2}
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-        >
-                                    <option selected>Select A Service</option>
-                                    <option value="1">Adoption</option>
-                                    <option value="2">Clinic</option>
-                                    
-                                </select>
-                            </div>
-                            <div>
-                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Book Now</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
-                    <h4 class="text-secondary mb-3">Looking for a clinic?</h4>
-                    <h1 class="display-4 mb-4">Book For <span class="text-primary">Your Pet</span></h1>
-                    <p>We've made booking appointments for a wide range of pet care services effortless and convenient. Whether 
-                        your furry friend needs a day of pampering at a grooming salon, a check-up at the vet clinic, or 
-                        expert training sessions, Aleefy's booking section has you covered.</p>
-                    <div class="row py-2">
-                        <div class="col-sm-6">
-                            <div class="d-flex flex-column">
-                                <div class="d-flex align-items-center mb-2">
-                                    <h1 class="flaticon-house font-weight-normal text-secondary m-0 mr-3"></h1>
-                                    <h5 class="text-truncate m-0">Doctor Appointment</h5>
-                                </div>
-                                <p>Ensure your pet's health and well-being with regular check-ups and medical care from our 
-                                    network of veterinary clinics and doctors.</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex flex-column">
-                                <div class="d-flex align-items-center mb-2">
-                                    <h1 class="flaticon-food font-weight-normal text-secondary m-0 mr-3"></h1>
-                                    <h5 class="text-truncate m-0">Pet Feeding</h5>
-                                </div>
-                                <p>Ensure your pet receives the nutrition they need to stay healthy and happy with our pet feeding 
-                                    services</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex flex-column">
-                                <div class="d-flex align-items-center mb-2">
-                                    <h1 class="flaticon-grooming font-weight-normal text-secondary m-0 mr-3"></h1>
-                                    <h5 class="text-truncate m-0">Pet Grooming</h5>
-                                </div>
-                                <p class="m-0">Treat your pet to a spa day they'll never forget with our professional grooming services.</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex flex-column">
-                                <div class="d-flex align-items-center mb-2">
-                                    <h1 class="flaticon-toy font-weight-normal text-secondary m-0 mr-3"></h1>
-                                    <h5 class="text-truncate m-0">Pet Training</h5>
-                                </div>
-                                <p class="m-0">Unlock your pet's full potential with our professional pet training services.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <div class="container py-5">
         <div class="row py-5">
             <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
@@ -384,7 +259,7 @@ function HomePage() {
     <div class="container-fluid bg-light pt-5">
         <div class="container py-5">
             <div class="d-flex flex-column text-center mb-5">
-                <h4 class="text-secondary mb-3">Our Services</h4>
+                <h4 class="text-secondary mb-3">Our service</h4>
                 <h1 class="display-4 m-0"><span class="text-primary">Premium</span> Pet Services</h1>
             </div>
             <div class="row pb-3">
@@ -392,42 +267,63 @@ function HomePage() {
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Boarding</h3>
-                        <a class="text-uppercase font-weight-bold" href="about.html">Read More</a>
+                        <p>Whether you're traveling for work or taking a well-deserved vacation, ensure your pet receives 
+                            the love and attention they deserve with our trusted pet boarding services.</p>
+                            <a class="text-uppercase font-weight-bold" href="/clinic">Book now</a>
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Feeding</h3>
-                        <a class="text-uppercase font-weight-bold" href="about.html">Read More</a>
+                        <p>Never worry about your pet's nutrition again with our pet feeding services. Whether you're
+                        away for the day or simply need assistance maintaining a balanced diet for your furry friend, our
+                        trusted partners offer reliable feeding solutions to keep your pet healthy, happy, and wellfed. </p>
+                        <a class="text-uppercase font-weight-bold"  href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Grooming</h3>
-                        <a class="text-uppercase font-weight-bold" href="about.html">Read More</a>
+                        <p>Treat your pet to a spa day they'll never forget with our selection of professional grooming
+                        services. From baths and haircuts to nail trims and ear cleaning, our groomers are skilled in
+                        pampering pets of all shapes and sizes. Book an appointment today and watch your furry friend
+                        strut their stuff with confidence and style. </p>
+                        <a class="text-uppercase font-weight-bold" href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-cat display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Per Training</h3>
-                        <a class="text-uppercase font-weight-bold" href="about.html">Read More</a>
+                        <h3 class="mb-3">Pet Training</h3>
+                        <p>Unlock your pet's full potential with our professional pet training services. Whether you're
+                        teaching basic obedience commands or addressing behavioral issues, our experienced trainers
+                        utilize positive reinforcement techniques to help your pet become a well-behaved and obedient
+                        companion for life. </p>
+                        <a class="text-uppercase font-weight-bold"  href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-dog display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Exercise</h3>
-                        <a class="text-uppercase font-weight-bold" href="about.html">Read More</a>
+                        <p>Keep your pet active, healthy, and happy with our pet exercise programs. Whether it's a brisk
+                        walk, a game of fetch, or an agility course, our trained professionals will work with your pet to
+                        develop a tailored exercise plan that meets their needs and preferences. 
+                        </p>
+                        <a class="text-uppercase font-weight-bold" href="/clinic">Book now</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-vaccine display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Pet Treatment</h3>
-                        <a class="text-uppercase font-weight-bold" href="about.html">Read More</a>
+                        <p>When your pet is sick or injured, trust Aleefy to connect you with reliable veterinary care. From
+                        routine check-ups to specialized treatments, our network of clinics and doctors offers
+                        compassionate care and expert advice to help your pet recover and thrive. </p>
+                        <a class="text-uppercase font-weight-bold" href="/booking">Book now</a>
                     </div>
                 </div>
             </div>
@@ -489,7 +385,7 @@ function HomePage() {
                         </div>
                         <p>Bella is a sweet and affectionate domestic shorthair with a gentle demeanor and a heart of 
                             gold.</p>
-                        <a class="font-weight-bold" href="">Read More</a>
+                        <a class="font-weight-bold" href="/adoption">Read More</a>
                     </div>
                 </div>
             </div>
@@ -504,7 +400,7 @@ function HomePage() {
                             <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Cairo,Egypt</small>
                         </div>
                         <p>DMax is a loyal and intelligent German Shepherd with a heart full of love.</p>
-                        <a class="font-weight-bold" href="">Read More</a>
+                        <a class="font-weight-bold" href="/adoption">Read More</a>
                     </div>
                 </div>
             </div>
@@ -519,7 +415,7 @@ function HomePage() {
                             <small class="mr-2"><i class="fa fa-map-marker-alt text-muted"></i> Luxor,Egypt</small>
                         </div>
                         <p>Daisy is a gentle and affectionate Golden Retriever with a heart of gold.</p>
-                        <a class="font-weight-bold" href="">Read More</a>
+                        <a class="font-weight-bold" href="/adoption">Read More</a>
                     </div>
                 </div>
             </div>
