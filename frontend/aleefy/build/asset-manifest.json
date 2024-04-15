@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4585da42.css",
+    "main.js": "/static/js/main.4324d174.js",
+    "static/media/1.jpg": "/static/media/1.14e547727f2e1ba77eed.jpg",
+    "static/media/carousel-2.jpg": "/static/media/carousel-2.bb755566d392a7dada10.jpg",
+    "static/media/carousel-1.jpg": "/static/media/carousel-1.26910c478fcfa3e58f26.jpg",
+    "static/media/feature.jpg": "/static/media/feature.0f753b429076e662cffa.jpg",
+    "static/media/blog-2.jpg": "/static/media/blog-2.3522b1cfc83a46cf3345.jpg",
+    "static/media/blog-3.jpg": "/static/media/blog-3.aa13f318f81c240f2521.jpg",
+    "static/media/about-1.jpg": "/static/media/about-1.e3495ebe64f15455d722.jpg",
+    "static/media/blog-1.jpg": "/static/media/blog-1.d08760b339c5c57f3afd.jpg",
+    "static/media/price-2.jpg": "/static/media/price-2.f9563328ec41940e76e7.jpg",
+    "static/media/price-1.jpg": "/static/media/price-1.c33a5ca35769684d6a78.jpg",
+    "static/media/about-2.jpg": "/static/media/about-2.dda338a5a9a623f52d4e.jpg",
+    "static/media/about-3.jpg": "/static/media/about-3.6de566d8102b2330a23e.jpg",
+    "static/media/price-3.jpg": "/static/media/price-3.dd20bc53aad8bee2c1ac.jpg",
+    "static/media/2.jpg": "/static/media/2.caa5d7590bd0f1dfa37e.jpg",
+    "index.html": "/index.html",
+    "main.4585da42.css.map": "/static/css/main.4585da42.css.map",
+    "main.4324d174.js.map": "/static/js/main.4324d174.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4585da42.css",
+    "static/js/main.4324d174.js"
+  ]
+}

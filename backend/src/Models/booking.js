@@ -6,27 +6,33 @@ const bookingSchema = new Schema(
     name: {
       type: String,
       required: true,
-      unique: true,
     },
     email: {
       type: String,
       required: true,
     },
     date: {
-       type: String,
-     },
-     time: {
-       type: String,
-     },
-     type:{
-            type: String,
-            enum: ['Feeding', 'Clinic', 'Grooming', 'Train','Adoption',], // Specify the options
-            required: true,
-     }
-     
+      type: String,
+    },
+    time: {
+      type: String,
+    },
+    type: {
+      type: String,
+      enum: [
+        "Feeding",
+        "Clinic",
+        "Grooming",
+        "Train",
+        "Adoption",
+        "Boarding",
+        "Exercise",
+        "Treatment",
+      ], // Specify the options
+      required: true,
+    },
   },
-  { timestamps: true },
-  
+  { timestamps: true }
 );
 
 const booking = mongoose.model("booking", bookingSchema);

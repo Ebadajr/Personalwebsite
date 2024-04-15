@@ -13,15 +13,13 @@ const rescueSchema = new Schema(
       required: true,
     },
     mobile: {
-       type: String,
-     },
-     location: {
-        type: String,
-     },
-    
+      type: String,
+    },
+    location: {
+      type: String,
+    },
   },
-  { timestamps: true },
-  
+  { timestamps: true }
 );
 
 const rescue = mongoose.model("rescue", rescueSchema);

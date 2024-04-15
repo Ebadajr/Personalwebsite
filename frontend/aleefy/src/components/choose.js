@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import '../styles.scss'; 
+import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-
 
 function Choose(props) {
   const navigate = useNavigate();
 
   const handleOptionClick = (option) => {
-    if (option === 'customer') {
-      navigate('/login');
-    } else if (option === 'clinic') {
-      navigate('/login');
-    } else if (option === 'shelter') {
-      navigate('/login');
+    if (option === "customer") {
+      navigate("/login");
+    } else if (option === "clinic") {
+      navigate("/login");
+    } else if (option === "shelter") {
+      navigate("/login");
     }
   };
 
@@ -24,17 +22,26 @@ function Choose(props) {
       <h2>Choose Your Role</h2>
       <div className="row">
         <div className="col-md-4">
-          <button className="btn btn-primary btn-block" onClick={() => handleOptionClick('customer')}>
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => handleOptionClick("customer")}
+          >
             Sign in as Customer
           </button>
         </div>
         <div className="col-md-4">
-          <button className="btn btn-primary btn-block" onClick={() => handleOptionClick('clinic')}>
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => handleOptionClick("clinic")}
+          >
             Sign in as Clinic
           </button>
         </div>
         <div className="col-md-4">
-          <button className="btn btn-primary btn-block" onClick={() => handleOptionClick('shelter')}>
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => handleOptionClick("shelter")}
+          >
             Sign in as Shelter
           </button>
         </div>

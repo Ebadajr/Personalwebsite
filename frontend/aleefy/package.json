@@ -20,7 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build-css": "sass src/styles.scss dist/css/styles.css"
+    "build-css": "sass src/styles.scss dist/css/styles.css",
+    "backend": "cd backend && cd src && nodemon App.js"
 
   },
   "eslintConfig": {

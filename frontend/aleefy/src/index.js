@@ -1,37 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './styles.scss';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import "./styles.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import HomePage from './components/home';
-import Login from './components/login';
-import ServicePage from './components/service';
-import Clinics from './components/clinic';
-import About from './components/about';
-import Choose from './components/choose';
-import Profile from './components/profile';
-import Events from './components/events';
-import Rescue from './components/rescue';
-import Contact from './components/contact';
-import Adoption from './components/adoption';
-import ClinicHome from './components/clinicHome';
-import ShelterHome from './components/shelter';
-import ListBookings from './components/viewBookings';
-import ListForms from './components/viewRescue';
-import Payment from './components/payment';
-import Cart from './components/cart';
-import AdoptionBookings from './components/adoptionBooking';
-import MyPets from './components/myPets';
-import ClinicProfile from './components/clinicProfile';
-import ShelterProfile from './components/shelterProfile';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import HomePage from "./components/home";
+import Login from "./components/login";
+import ServicePage from "./components/service";
+import Clinics from "./components/clinic";
+import About from "./components/about";
+import Choose from "./components/choose";
+import Profile from "./components/profile";
+import Events from "./components/events";
+import Rescue from "./components/rescue";
+import Contact from "./components/contact";
+import Adoption from "./components/adoption";
+import ClinicHome from "./components/clinicHome";
+import ShelterHome from "./components/shelter";
+import ListBookings from "./components/viewBookings";
+import ListForms from "./components/viewRescue";
+import Payment from "./components/payment";
+import Cart from "./components/cart";
+import AdoptionBookings from "./components/adoptionBooking";
+import MyPets from "./components/myPets";
+import ClinicProfile from "./components/clinicProfile";
+import ShelterProfile from "./components/shelterProfile";
+import DonationClinic from "./components/donateC";
+import DonationShelter from "./components/donateS";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
- 
-    
- 
   <BrowserRouter>
-  <Routes>
+    <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/service" element={<ServicePage />} />
@@ -53,9 +52,8 @@ root.render(
       <Route path="/myPets" element={<MyPets />} />
       <Route path="/clinicProfile" element={<ClinicProfile />} />
       <Route path="/shelterProfile" element={<ShelterProfile />} />
-
-      
-      
+      <Route path="/DC" element={<DonationClinic />} />
+      <Route path="/DS" element={<DonationShelter />} />
     </Routes>
   </BrowserRouter>
 );
@@ -63,4 +61,3 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-

@@ -99,25 +99,67 @@ function Login(props) {
   };
 
   return (
-    <div className="dark-bg" style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-      <div className="container"style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div
+      className="dark-bg"
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        className="container"
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
           <div id="userform">
             <ul className="nav nav-tabs nav-justified" role="tablist">
-            <li className={!signupMode ? "active" : ""} style={{ marginRight: "10px" }}>
-  <a href="#login" role="tab" data-toggle="tab" onClick={!signupMode ? null : toggleMode}>Log in</a>
-</li>
-<li className={signupMode ? "active" : ""} style={{ marginLeft: "10px" }}>
-  <a href="#signup" role="tab" data-toggle="tab" onClick={signupMode ? null : toggleMode}>Sign up</a>
-</li>
-
+              <li
+                className={!signupMode ? "active" : ""}
+                style={{ marginRight: "10px" }}
+              >
+                <a
+                  href="#login"
+                  role="tab"
+                  data-toggle="tab"
+                  onClick={!signupMode ? null : toggleMode}
+                >
+                  Log in
+                </a>
+              </li>
+              <li
+                className={signupMode ? "active" : ""}
+                style={{ marginLeft: "10px" }}
+              >
+                <a
+                  href="#signup"
+                  role="tab"
+                  data-toggle="tab"
+                  onClick={signupMode ? null : toggleMode}
+                >
+                  Sign up
+                </a>
+              </li>
             </ul>
             <div className="tab-content">
               <div className="tab-pane fade in active" id="login">
-                <h2 className="text-uppercase text-center"style={{ color: "white" }}>Log in</h2>
+                <h2
+                  className="text-uppercase text-center"
+                  style={{ color: "white" }}
+                >
+                  Log in
+                </h2>
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="email">Your Email<span className="req">*</span></label>
+                    <label htmlFor="email">
+                      Your Email<span className="req">*</span>
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -129,7 +171,9 @@ function Login(props) {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="password">Password<span className="req">*</span></label>
+                    <label htmlFor="password">
+                      Password<span className="req">*</span>
+                    </label>
                     <input
                       type="password"
                       className="form-control"
@@ -148,33 +192,38 @@ function Login(props) {
                 </form>
               </div>
               <div className="tab-pane fade in" id="signup">
-                <h2 className="text-uppercase text-center"style={{ color: "white" }}>Sign Up for Free</h2>
-                <form onSubmit={handleSubmit}>
-                {signupMode && (
-            <>
-              {/* Display signup type options */}
-              <div className="form-group">
-                <label htmlFor="signupType">Signup Type</label>
-                <select
-                  className="form-control"
-                  id="signupType"
-                  value={selectedSignupType}
-                  onChange={handleSignupTypeChange}
+                <h2
+                  className="text-uppercase text-center"
+                  style={{ color: "white" }}
                 >
-                  <option value="">Select Signup Type</option>
-                  <option value="user">User</option>
-                  <option value="clinic">Clinic</option>
-                  <option value="shelter">Shelter</option>
-                </select>
-              </div>
-              
-              
-            </>
-          )}
+                  Sign Up for Free
+                </h2>
+                <form onSubmit={handleSubmit}>
+                  {signupMode && (
+                    <>
+                      {/* Display signup type options */}
+                      <div className="form-group">
+                        <label htmlFor="signupType">Signup Type</label>
+                        <select
+                          className="form-control"
+                          id="signupType"
+                          value={selectedSignupType}
+                          onChange={handleSignupTypeChange}
+                        >
+                          <option value="">Select Signup Type</option>
+                          <option value="user">User</option>
+                          <option value="clinic">Clinic</option>
+                          <option value="shelter">Shelter</option>
+                        </select>
+                      </div>
+                    </>
+                  )}
                   <div className="row">
                     <div className="col-xs-12 col-sm-6">
                       <div className="form-group">
-                        <label htmlFor="first_name">First Name<span className="req">*</span></label>
+                        <label htmlFor="first_name">
+                          First Name<span className="req">*</span>
+                        </label>
                         <input
                           type="text"
                           className="form-control"
@@ -187,7 +236,9 @@ function Login(props) {
                     </div>
                     <div className="col-xs-12 col-sm-6">
                       <div className="form-group">
-                        <label htmlFor="last_name">Last Name<span className="req">*</span></label>
+                        <label htmlFor="last_name">
+                          Last Name<span className="req">*</span>
+                        </label>
                         <input
                           type="text"
                           className="form-control"
@@ -200,7 +251,9 @@ function Login(props) {
                     </div>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="email">Your Email<span className="req">*</span></label>
+                    <label htmlFor="email">
+                      Your Email<span className="req">*</span>
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -212,7 +265,9 @@ function Login(props) {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="phone">Your Phone<span className="req">*</span></label>
+                    <label htmlFor="phone">
+                      Your Phone<span className="req">*</span>
+                    </label>
                     <input
                       type="tel"
                       className="form-control"
@@ -223,7 +278,9 @@ function Login(props) {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="password">Password<span className="req">*</span></label>
+                    <label htmlFor="password">
+                      Password<span className="req">*</span>
+                    </label>
                     <input
                       type="password"
                       className="form-control"
@@ -249,4 +306,3 @@ function Login(props) {
 }
 
 export default Login;
-

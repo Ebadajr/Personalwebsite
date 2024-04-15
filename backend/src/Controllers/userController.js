@@ -2,14 +2,12 @@ const User = require("../Models/user.js");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../utils/auth.js");
 const nodemailer = require("nodemailer");
-const jwt = require('jsonwebtoken');
-const pet= require("../Models/pet.js");
+const jwt = require("jsonwebtoken");
+const pet = require("../Models/pet.js");
 const user = require("../Models/user.js");
 
 const addUser = async (req, res) => {
-
   try {
-   
     const { username, password } = req.body;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -18,8 +16,7 @@ const addUser = async (req, res) => {
       password: hashedPassword,
       firstName: req.body.firstname,
       lastName: req.body.lastname,
-      mobile: req.body.mobile
-      
+      mobile: req.body.mobile,
     });
 
     const token = createToken(user.name);
@@ -40,7 +37,6 @@ const listUsers = async (req, res) => {
   }
 };
 
-
 const deleteUser = async (req, res) => {
   try {
     res.send(await User.findByIdAndDelete(req.params.id));
@@ -56,16 +52,14 @@ const getUsers = async (req, res) => {
   res.status(200).send(users);
 };
 
-
 const login = async (req, res) => {
   const { email, password } = req.body;
 
   console.log(req.body);
 
   try {
-    
     const user = await User.findOne({ email: req.body.username });
-   console.log(user);
+    console.log(user);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -110,7 +104,6 @@ const getUser = async (req, res) => {
   res.status(200).json(p.email);
 };
 
-
 const getMobile = async (req, res) => {
   const token = req.cookies.jwt;
   var id;
@@ -128,14 +121,10 @@ const getMobile = async (req, res) => {
   res.status(200).json(p.mobile);
 };
 
-
-
-
-
 const updateUser = async (req, res) => {
   const token = req.cookies.jwt;
   var id;
-  jwt.verify(token, "supersecret",(err, decodedToken) => {
+  jwt.verify(token, "supersecret", (err, decodedToken) => {
     if (err) {
       // console.log('You are not logged in.');
       // res send status 401 you are not logged in
@@ -143,35 +132,21 @@ const updateUser = async (req, res) => {
       // res.redirect('/login');
     } else {
       id = decodedToken.name;
-    
     }
   });
-    const p = await user.findById(id);
-    await User.findByIdAndUpdate(id, {
+  const p = await user.findById(id);
+  await User.findByIdAndUpdate(id, {
     firstName: req.body.firstname,
     lastName: req.body.lastname,
     mobile: req.body.mobile,
-
   });
   res.status(200).send("User info updated!");
-  
-
-
-
-
-
 };
-
-
-
-
-
-
 
 const addPet = async (req, res) => {
   const token = req.cookies.jwt;
   var id;
- 
+
   jwt.verify(token, "supersecret", (err, decodedToken) => {
     if (err) {
       // console.log('You are not logged in.');
@@ -185,20 +160,18 @@ const addPet = async (req, res) => {
   const p = await user.findById(id);
   console.log(p.email);
   var c = pet.create({
-    name : req.body.name,
-    Breed : req.body.breed,
+    name: req.body.name,
+    Breed: req.body.breed,
   });
-  
+
   p.pets.push((await c)._id);
   p.save().catch((err) => res.send(err));
   res.status(200).json(p.pets);
-
-
 };
 const myPets = async (req, res) => {
   const token = req.cookies.jwt;
   var id;
-  
+
   jwt.verify(token, "supersecret", (err, decodedToken) => {
     if (err) {
       // console.log('You are not logged in.');
@@ -215,13 +188,10 @@ const myPets = async (req, res) => {
     var pe = p.pets[i].toString();
     var s = await pet.findById(pe);
     petNames.push(s);
-
   }
-  
+
   p.save().catch((err) => res.send(err));
   res.status(200).json(petNames);
-
-
 };
 
 module.exports = {
@@ -235,5 +205,5 @@ module.exports = {
   addPet,
   myPets,
   updateUser,
-  getMobile
+  getMobile,
 };

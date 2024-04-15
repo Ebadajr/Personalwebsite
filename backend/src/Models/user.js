@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const userOptions={
-  discriminationKey:'usertype',
-  collection:'users'
+const userOptions = {
+  discriminationKey: "usertype",
+  collection: "users",
 };
 const userSchema = new Schema(
   {
@@ -16,18 +16,18 @@ const userSchema = new Schema(
       required: true,
     },
     firstName: {
-       type: String,
-     },
-     lastName: {
-       type: String,
-     },
-     mobile:{
-        type: Number,
-     },
-     pets: [{ type: Schema.Types.ObjectId, ref: 'pet' }]
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    mobile: {
+      type: Number,
+    },
+    pets: [{ type: Schema.Types.ObjectId, ref: "pet" }],
   },
   { timestamps: true },
-  userOptions,
+  userOptions
 );
 
 const user = mongoose.model("user", userSchema);

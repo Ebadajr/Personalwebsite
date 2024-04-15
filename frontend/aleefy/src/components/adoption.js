@@ -12,20 +12,18 @@ import userService from "../services/user.service";
 
 var res = 0;
 function Adoption() {
-    const [bellaAdopted, setBellaAdopted] = useState(false);
-    const [daisyAdopted, setDaisyAdopted] = useState(false);
-    const [oliverAdopted, setOliverAdopted] = useState(false);
-    const [maxAdopted, setMaxAdopted] = useState(false);
-    const [charlieAdopted, setCharlieAdopted] = useState(false);
-    const [lunaAdopted, setLunaAdopted] = useState(false);
-
-  
+  const [bellaAdopted, setBellaAdopted] = useState(false);
+  const [daisyAdopted, setDaisyAdopted] = useState(false);
+  const [oliverAdopted, setOliverAdopted] = useState(false);
+  const [maxAdopted, setMaxAdopted] = useState(false);
+  const [charlieAdopted, setCharlieAdopted] = useState(false);
+  const [lunaAdopted, setLunaAdopted] = useState(false);
 
   const AdoptBella = (e) => {
-   var body = {
-    name: "bella",
-    breed: "Domestic Shorthair"
-   };
+    var body = {
+      name: "bella",
+      breed: "Domestic Shorthair",
+    };
 
     userService
       .adopt(body)
@@ -39,84 +37,84 @@ function Adoption() {
   };
   const AdoptMax = (e) => {
     var body = {
-     name: "Max",
-     breed: "German Shepherd"
+      name: "Max",
+      breed: "German Shepherd",
     };
- 
-     userService
-       .adoptMax(body)
-       .then(() => {
-         alert("Thank you for adopting Max!");
-         setMaxAdopted(true);
-       })
-       .catch((e) => {
-         console.log(e);
-       });
-   };
-   const AdoptOliver = (e) => {
+
+    userService
+      .adoptMax(body)
+      .then(() => {
+        alert("Thank you for adopting Max!");
+        setMaxAdopted(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const AdoptOliver = (e) => {
     var body = {
-     name: "Oliver",
-     breed: "Siamese"
+      name: "Oliver",
+      breed: "Siamese",
     };
- 
-     userService
-       .adoptOliver(body)
-       .then(() => {
-         alert("Thank you for adopting Oliver!");
-         setOliverAdopted(true);
-       })
-       .catch((e) => {
-         console.log(e);
-       });
-   };
-   const AdoptDaisy = (e) => {
+
+    userService
+      .adoptOliver(body)
+      .then(() => {
+        alert("Thank you for adopting Oliver!");
+        setOliverAdopted(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const AdoptDaisy = (e) => {
     var body = {
-     name: "Daisy",
-     breed: "Golden Retriever"
+      name: "Daisy",
+      breed: "Golden Retriever",
     };
- 
-     userService
-       .adoptDaisy(body)
-       .then(() => {
-         alert("Thank you for adopting Daisy!");
-         setDaisyAdopted(true);
-       })
-       .catch((e) => {
-         console.log(e);
-       });
-   };
-   const AdoptCharlie = (e) => {
+
+    userService
+      .adoptDaisy(body)
+      .then(() => {
+        alert("Thank you for adopting Daisy!");
+        setDaisyAdopted(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const AdoptCharlie = (e) => {
     var body = {
-     name: "Charlie",
-     breed: "Tabby"
+      name: "Charlie",
+      breed: "Tabby",
     };
- 
-     userService
-       .adoptCharlie(body)
-       .then(() => {
-         alert("Thank you for adopting Charlie!");
-         setCharlieAdopted(true);
-       })
-       .catch((e) => {
-         console.log(e);
-       });
-   };
-   const AdoptLuna = (e) => {
+
+    userService
+      .adoptCharlie(body)
+      .then(() => {
+        alert("Thank you for adopting Charlie!");
+        setCharlieAdopted(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const AdoptLuna = (e) => {
     var body = {
-     name: "Luna",
-     breed: "Ragdoll"
+      name: "Luna",
+      breed: "Ragdoll",
     };
- 
-     userService
-       .adoptLuna(body)
-       .then(() => {
-         alert("Thank you for adopting Charlie!");
-         setLunaAdopted(true);
-       })
-       .catch((e) => {
-         console.log(e);
-       });
-   };
+
+    userService
+      .adoptLuna(body)
+      .then(() => {
+        alert("Thank you for adopting Charlie!");
+        setLunaAdopted(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   const divStyle = {
     top: "0",
@@ -266,7 +264,7 @@ function Adoption() {
                 <a href="/home" class="nav-item nav-link ">
                   Home
                 </a>
-                <a href="/about" class="nav-item nav-link active">
+                <a href="/about" class="nav-item nav-link ">
                   About
                 </a>
                 <a href="/service" class="nav-item nav-link">
@@ -281,7 +279,7 @@ function Adoption() {
                 <a href="/contact" class="nav-item nav-link  ">
                   Contact
                 </a>
-                <a href="/adoption" class="nav-item nav-link  ">
+                <a href="/adoption" class="nav-item nav-link active ">
                   Adoption
                 </a>
                 <div class="nav-item dropdown">
@@ -293,7 +291,6 @@ function Adoption() {
                     More
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
-                    
                     <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
@@ -364,12 +361,12 @@ function Adoption() {
                     welcome Bella into your heart and home?{" "}
                   </p>
                   {!bellaAdopted ? (
-  <button className="font-weight-bold" onClick={AdoptBella}>
-    Adopt
-  </button>
-) : (
-  <p>Bella has been adopted!</p>
-)}
+                    <button className="font-weight-bold" onClick={AdoptBella}>
+                      Adopt
+                    </button>
+                  ) : (
+                    <p>Bella has been adopted!</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -397,12 +394,12 @@ function Adoption() {
                     favorite humans at the end of the day.{" "}
                   </p>
                   {!maxAdopted ? (
-  <button className="font-weight-bold" onClick={AdoptMax}>
-    Adopt
-  </button>
-) : (
-  <p>Max has been adopted!</p>
-)}
+                    <button className="font-weight-bold" onClick={AdoptMax}>
+                      Adopt
+                    </button>
+                  ) : (
+                    <p>Max has been adopted!</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -432,12 +429,12 @@ function Adoption() {
                     friends with unconditional love.{" "}
                   </p>
                   {!daisyAdopted ? (
-  <button className="font-weight-bold" onClick={AdoptDaisy}>
-    Adopt
-  </button>
-) : (
-  <p>Daisy has been adopted!</p>
-)}
+                    <button className="font-weight-bold" onClick={AdoptDaisy}>
+                      Adopt
+                    </button>
+                  ) : (
+                    <p>Daisy has been adopted!</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -467,12 +464,12 @@ function Adoption() {
                     companions.
                   </p>
                   {!oliverAdopted ? (
-  <button className="font-weight-bold" onClick={AdoptOliver}>
-    Adopt
-  </button>
-) : (
-  <p>Oliver has been adopted!</p>
-)}
+                    <button className="font-weight-bold" onClick={AdoptOliver}>
+                      Adopt
+                    </button>
+                  ) : (
+                    <p>Oliver has been adopted!</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -494,19 +491,19 @@ function Adoption() {
                     </small>
                   </div>
                   <p>
-                  Luna is a serene and gentle Ragdoll cat with a laid-back
+                    Luna is a serene and gentle Ragdoll cat with a laid-back
                     personality. With her fluffy coat and captivating blue eyes,
                     Luna is a picture of elegance and grace. She enjoys lounging
                     in cozy blankets, playing with feather toys, and sharing
                     quiet moments with her human companions.
                   </p>
                   {!lunaAdopted ? (
-  <button className="font-weight-bold" onClick={AdoptLuna}>
-    Adopt
-  </button>
-) : (
-  <p>Luna has been adopted!</p>
-)}
+                    <button className="font-weight-bold" onClick={AdoptLuna}>
+                      Adopt
+                    </button>
+                  ) : (
+                    <p>Luna has been adopted!</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -535,12 +532,12 @@ function Adoption() {
                     laps for afternoon naps.
                   </p>
                   {!charlieAdopted ? (
-  <button className="font-weight-bold" onClick={AdoptCharlie}>
-    Adopt
-  </button>
-) : (
-  <p>Charlie has been adopted!</p>
-)}
+                    <button className="font-weight-bold" onClick={AdoptCharlie}>
+                      Adopt
+                    </button>
+                  ) : (
+                    <p>Charlie has been adopted!</p>
+                  )}
                 </div>
               </div>
             </div>

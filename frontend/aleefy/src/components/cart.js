@@ -1,127 +1,207 @@
-import React, { useState } from 'react';
-import '../styles.scss';
+import React, { useState } from "react";
+import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import im2 from '../img/2.jpg';
-import im1 from '../img/1.jpg';
+import im2 from "../img/2.jpg";
+import im1 from "../img/1.jpg";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Stylish pet appearel", price: 26.00, quantity: 4,imgsrc: im2 },
-    { id: 2, name: "Interactive treat dispenser", price: 26.00, quantity: 1, imgsrc: im1 }
+    {
+      id: 1,
+      name: "Stylish pet appearel",
+      price: 26.0,
+      quantity: 4,
+      imgsrc: im2,
+    },
+    {
+      id: 2,
+      name: "Interactive treat dispenser",
+      price: 26.0,
+      quantity: 1,
+      imgsrc: im1,
+    },
   ]);
 
   // Function to remove an item from the cart
   const removeFromCart = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
   // Function to update the quantity of an item in the cart
   const updateQuantity = (id, quantity) => {
-    const updatedCartItems = cartItems.map(item =>
+    const updatedCartItems = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: quantity } : item
     );
     setCartItems(updatedCartItems);
   };
- 
 
   // Calculate total price
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="container">
-          <div class="row bg-secondary py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white pr-3" href="">FAQs</a>
-                    <span class="text-white">|</span>
-                    <a class="text-white px-3" href="">Help</a>
-                    <span class="text-white">|</span>
-                    <a class="text-white pl-3" href="">Support</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-white pl-3" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row py-3 px-lg-5">
-            <div class="col-lg-4">
-                <a href="" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Rafeeky</span></h1>
-                </a>
-            </div>
-            <div class="col-lg-8 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="d-inline-flex flex-column text-center pr-3 border-right">
-                        <h6>Opening Hours</h6>
-                        <p class="m-0">8.00AM - 9.00PM</p>
-                    </div>
-                    <div class="d-inline-flex flex-column text-center px-3 border-right">
-                        <h6>Email Us</h6>
-                        <p class="m-0">info@example.com</p>
-                    </div>
-                    <div class="d-inline-flex flex-column text-center pl-3">
-                        <h6>Call Us</h6>
-                        <p class="m-0">+012 345 6789</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Rafeeky</span></h1>
+      <div class="row bg-secondary py-2 px-lg-5">
+        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-white pr-3" href="">
+              FAQs
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                    <a href="/home" class="nav-item nav-link ">Home</a>
-                <a href="/about" class="nav-item nav-link active">About</a>
-                <a href="/service" class="nav-item nav-link">Service</a>
-                <a href="/cart" class="nav-item nav-link">products</a>
-                <a href="/clinic" class="nav-item nav-link">Clinics</a>
-                <a href="/contact" class="nav-item nav-link  ">Contact</a>
-                <a href="/adoption" class="nav-item nav-link  ">Adoption</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/myPets"  class="btn btn-lg btn-primary px-3 d-none d-lg-block">my pets</a>
-                        <a href="/events" class="btn btn-lg btn-primary px-3 d-none d-lg-block" >Events</a>
-                        <a href="/rescue" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Rescue form</a>
-                        <a href="/payment" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Donation</a>
-                        <a href="/" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Logout</a>
-                        </div>
-                    </div>
-                </div>
-                <a href="/profile" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Profile</a>
-                
+            <span class="text-white">|</span>
+            <a class="text-white px-3" href="">
+              Help
+            </a>
+            <span class="text-white">|</span>
+            <a class="text-white pl-3" href="">
+              Support
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-white px-3" href="">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="text-white px-3" href="">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="text-white px-3" href="">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="text-white px-3" href="">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a class="text-white pl-3" href="">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row py-3 px-lg-5">
+        <div class="col-lg-4">
+          <a href="" class="navbar-brand d-none d-lg-block">
+            <h1 class="m-0 display-5 text-capitalize">
+              <span class="text-primary">Rafeeky</span>
+            </h1>
+          </a>
+        </div>
+        <div class="col-lg-8 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <div class="d-inline-flex flex-column text-center pr-3 border-right">
+              <h6>Opening Hours</h6>
+              <p class="m-0">8.00AM - 9.00PM</p>
             </div>
+            <div class="d-inline-flex flex-column text-center px-3 border-right">
+              <h6>Email Us</h6>
+              <p class="m-0">info@example.com</p>
+            </div>
+            <div class="d-inline-flex flex-column text-center pl-3">
+              <h6>Call Us</h6>
+              <p class="m-0">+012 345 6789</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+          <a href="" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 display-5 text-capitalize font-italic text-white">
+              <span class="text-primary">Rafeeky</span>
+            </h1>
+          </a>
+          <button
+            type="button"
+            class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-between px-3"
+            id="navbarCollapse"
+          >
+            <div class="navbar-nav mr-auto py-0">
+              <a href="/home" class="nav-item nav-link ">
+                Home
+              </a>
+              <a href="/about" class="nav-item nav-link">
+                About
+              </a>
+              <a href="/service" class="nav-item nav-link">
+                Service
+              </a>
+              <a href="/cart" class="nav-item nav-link active">
+                products
+              </a>
+              <a href="/clinic" class="nav-item nav-link">
+                Clinics
+              </a>
+              <a href="/contact" class="nav-item nav-link  ">
+                Contact
+              </a>
+              <a href="/adoption" class="nav-item nav-link  ">
+                Adoption
+              </a>
+              <div class="nav-item dropdown">
+                <a
+                  href="#"
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  More
+                </a>
+                <div class="dropdown-menu rounded-0 m-0">
+                  <a
+                    href="/myPets"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    my pets
+                  </a>
+                  <a
+                    href="/events"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    Events
+                  </a>
+                  <a
+                    href="/rescue"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    Rescue form
+                  </a>
+                  <a
+                    href="/payment"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    Donation
+                  </a>
+                  <a
+                    href="/"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    Logout
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a
+              href="/profile"
+              class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+            >
+              Profile
+            </a>
+          </div>
         </nav>
-    </div>
+      </div>
       <div className="row">
         <div className="col-lg-8">
-         
-          {cartItems.map(item => (
+          {cartItems.map((item) => (
             <div className="card border-0 mb-2" key={item.id}>
-              <img className="card-img-top" src= {item.imgsrc} alt=""/>
+              <img className="card-img-top" src={item.imgsrc} alt="" />
               <div className="card-body bg-light p-4">
                 <h4 className="card-title text-truncate">{item.name}</h4>
                 <div className="d-flex mb-3">
@@ -132,12 +212,18 @@ function Cart() {
                       value={item.quantity}
                       min="1"
                       className="quantity-field"
-                      onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                      onChange={(e) =>
+                        updateQuantity(item.id, parseInt(e.target.value))
+                      }
                     />
                   </div>
-                  <div className="subtotal">${(item.price * item.quantity).toFixed(2)}</div>
+                  <div className="subtotal">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </div>
                   <div className="remove">
-                    <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                    <button onClick={() => removeFromCart(item.id)}>
+                      Remove
+                    </button>
                   </div>
                 </div>
               </div>
@@ -152,8 +238,9 @@ function Cart() {
                 <div className="font-weight-bold">Total:</div>
                 <div className="font-weight-bold">${totalPrice.toFixed(2)}</div>
               </div>
-              <a href="/payment" className="btn btn-primary mt-3">Checkout</a>
-
+              <a href="/payment" className="btn btn-primary mt-3">
+                Checkout
+              </a>
             </div>
           </div>
         </div>

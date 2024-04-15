@@ -2,9 +2,8 @@ const User = require("../Models/user.js");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../utils/auth.js");
 const nodemailer = require("nodemailer");
-const jwt = require('jsonwebtoken');
-const pet= require("../Models/pet.js");
-
+const jwt = require("jsonwebtoken");
+const pet = require("../Models/pet.js");
 
 const addPet = async (req, res) => {
   try {
@@ -20,8 +19,6 @@ const addPet = async (req, res) => {
   }
 };
 
-
-
 const getPets = async (req, res) => {
   //retrieve all users from the database
   const users = await pet.find({});
@@ -29,11 +26,7 @@ const getPets = async (req, res) => {
   res.status(200).send(users);
 };
 
-
-
-
 module.exports = {
   addPet,
   getPets,
- 
 };

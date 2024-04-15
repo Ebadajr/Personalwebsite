@@ -1,11 +1,8 @@
-
 const bcrypt = require("bcrypt");
 const { createToken } = require("../utils/auth.js");
 const nodemailer = require("nodemailer");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const clinic = require("../Models/clinic.js");
-
-
 
 const addClinic = async (req, res) => {
   try {
@@ -14,17 +11,14 @@ const addClinic = async (req, res) => {
     const Clinc = await clinic.create({
       email: req.body.username,
       password: hashedPassword,
-
     });
-    
+
     res.status(200).send("clinic added");
   } catch (e) {
     console.log(e);
     res.status(400).send(e);
   }
 };
-
-
 
 const getClinics = async (req, res) => {
   //retrieve all users from the database
@@ -33,11 +27,7 @@ const getClinics = async (req, res) => {
   res.status(200).send(users);
 };
 
-
-
-
 module.exports = {
   addClinic,
   getClinics,
- 
 };

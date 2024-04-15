@@ -6,11 +6,11 @@ const cors = require("cors");
 
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-const { auth} = require("./utils/auth");
+const { auth } = require("./utils/auth");
 require("dotenv").config();
 
 const MongoURI =
-"mongodb+srv://ebadajr:Y3YWONbfYohScAWw@aleefy.ez8t7x3.mongodb.net/";
+  "mongodb+srv://ebadajr:Y3YWONbfYohScAWw@aleefy.ez8t7x3.mongodb.net/";
 //App variables
 const app = express();
 const userController = require("./Controllers/userController");
@@ -22,7 +22,6 @@ const rescueController = require("./Controllers/rescueController");
 const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
-
 
 mongoose
   .connect(MongoURI)
@@ -39,12 +38,10 @@ app.get("/home", (req, res) => {
 // #Routing to userController here
 app.use(
   cors({
-    origin: ['http://localhost:4000', 'http://localhost:3000'], // Replace with the actual origin of your React app
+    origin: ["http://localhost:4000", "http://localhost:3000"], // Replace with the actual origin of your React app
     credentials: true,
   })
 );
-
-
 
 app.use(express.json());
 //app.use(bodyParser.json());
@@ -56,12 +53,11 @@ app.get("/listBookings", bookingController.listBookings);
 app.get("/listForms", rescueController.listForms);
 app.post("/addPet", petController.addPet);
 app.use("/login", userController.login);
-app.post("/add",userController.addUser );
+app.post("/add", userController.addUser);
 app.post("/addShelter", shelterController.addShelter);
-app.get("/myPet",userController.myPets );
-app.get("allpets",petController.getPets);
+app.get("/myPet", userController.myPets);
+app.get("allpets", petController.getPets);
 app.use(auth);
-
 
 const server = app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
@@ -72,13 +68,6 @@ app.get("/users", userController.getUsers);
 app.post("/newBooking", bookingController.addBooking);
 app.get("/getName", userController.getUser);
 app.get("/getMobile", userController.getMobile);
-app.post("/newPet",userController.addPet );
-app.post("/updateUser",userController.updateUser);
+app.post("/newPet", userController.addPet);
+app.post("/updateUser", userController.updateUser);
 app.use("/logout", userController.logout);
-
-  
-
-
-
-
-

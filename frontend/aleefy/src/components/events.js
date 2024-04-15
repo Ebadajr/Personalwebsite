@@ -173,7 +173,6 @@ function Events() {
                     More
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
-                   
                     <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
