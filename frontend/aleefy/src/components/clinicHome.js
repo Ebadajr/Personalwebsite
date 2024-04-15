@@ -142,12 +142,10 @@ function ClinicHome() {
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">
+                <a href="/clinicHome" class="nav-item nav-link ">
                   Home
                 </a>
-                <a href="/about" class="nav-item nav-link active">
-                  About
-                </a>
+
                 <a href="/booking" class="nav-item nav-link">
                   Bookings
                 </a>

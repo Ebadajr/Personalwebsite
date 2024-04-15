@@ -143,12 +143,10 @@ function ShelterHome() {
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">
+                <a href="/shelterHome" class="nav-item nav-link ">
                   Home
                 </a>
-                <a href="/about" class="nav-item nav-link active">
-                  About
-                </a>
+
                 <a href="/adoptionBookings" class="nav-item nav-link">
                   Bookings
                 </a>

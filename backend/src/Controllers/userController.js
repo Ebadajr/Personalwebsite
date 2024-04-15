@@ -55,11 +55,9 @@ const getUsers = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
 
-  console.log(req.body);
-
   try {
     const user = await User.findOne({ email: req.body.username });
-    console.log(user);
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -100,7 +98,7 @@ const getUser = async (req, res) => {
     }
   });
   const p = await user.findById(id);
-  console.log("geeeet");
+
   res.status(200).json(p.email);
 };
 
