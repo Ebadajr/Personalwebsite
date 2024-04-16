@@ -214,6 +214,12 @@ function HomePage() {
                       my pets
                     </a>
                     <a
+                      href="/blogs"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      blogs
+                    </a>
+                    <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >

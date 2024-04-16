@@ -27,6 +27,7 @@ import ClinicProfile from "./components/clinicProfile";
 import ShelterProfile from "./components/shelterProfile";
 import DonationClinic from "./components/donateC";
 import DonationShelter from "./components/donateS";
+import Blog from "./components/blogs";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -54,6 +55,7 @@ root.render(
       <Route path="/shelterProfile" element={<ShelterProfile />} />
       <Route path="/DC" element={<DonationClinic />} />
       <Route path="/DS" element={<DonationShelter />} />
+      <Route path="/blogs" element={<Blog />} />
     </Routes>
   </BrowserRouter>
 );
