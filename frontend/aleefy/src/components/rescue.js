@@ -10,13 +10,18 @@ function Rescue() {
     email: "",
     mobile: "",
     location: "",
+    picture: null,
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, files } = e.target;
+    if (name === "picture") {
+      // If the input is for picture, update the state with the file
+      setFormData({ ...formData, [name]: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -32,6 +37,9 @@ function Rescue() {
   const divStyle = {
     maxWidth: "100%",
     padding: "500px",
+  };
+  const font = {
+    "font-size": "24px",
   };
   const style2 = {
     height: "47px",
@@ -169,7 +177,7 @@ function Rescue() {
                 <a href="/home" class="nav-item nav-link ">
                   Home
                 </a>
-                <a href="/about" class="nav-item nav-link active">
+                <a href="/about" class="nav-item nav-link">
                   About
                 </a>
                 <a href="/service" class="nav-item nav-link">
@@ -197,6 +205,18 @@ function Rescue() {
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a
+                      href="/myPets"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      my pets
+                    </a>
+                    <a
+                      href="/blogs"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      blogs
+                    </a>
+                    <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
@@ -204,7 +224,7 @@ function Rescue() {
                     </a>
                     <a
                       href="/rescue"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block active"
                     >
                       Rescue form
                     </a>
@@ -214,14 +234,17 @@ function Rescue() {
                     >
                       Donation
                     </a>
+                    <a
+                      href="/"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
-              <a
-                href="/profile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/profile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>
@@ -283,14 +306,18 @@ function Rescue() {
                       required
                     />
                   </div>
+
                   <div className="form-group">
-                    <select
-                      className="custom-select border-0 px-4"
-                      style={style2}
-                      name="service"
-                      value={formData.service}
+                    <label htmlFor="picture">Upload Picture</label>
+                    <input
+                      type="file"
+                      className="form-control-file"
+                      id="picture"
+                      name="picture"
+                      accept="image/*"
                       onChange={handleChange}
-                    ></select>
+                      required
+                    />
                   </div>
                   <div>
                     <button

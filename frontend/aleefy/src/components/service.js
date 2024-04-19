@@ -11,6 +11,9 @@ function ServicePage() {
   const style2 = {
     height: "47px",
   };
+  const font = {
+    "font-size": "24px",
+  };
   const style3 = {
     height: "45px",
     width: "45px",
@@ -143,7 +146,7 @@ function ServicePage() {
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">
+                <a href="/home" class="nav-item nav-link  ">
                   Home
                 </a>
                 <a href="/about" class="nav-item nav-link">
@@ -174,6 +177,18 @@ function ServicePage() {
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a
+                      href="/myPets"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      my pets
+                    </a>
+                    <a
+                      href="/blogs"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      blogs
+                    </a>
+                    <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
@@ -191,14 +206,17 @@ function ServicePage() {
                     >
                       Donation
                     </a>
+                    <a
+                      href="/"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
-              <a
-                href="/profile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/profile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>

@@ -21,9 +21,7 @@ const addClinic = async (req, res) => {
 };
 
 const getClinics = async (req, res) => {
-  //retrieve all users from the database
   const users = await clinic.find({});
-  //console.log(users);
   res.status(200).send(users);
 };
 

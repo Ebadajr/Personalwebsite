@@ -9,6 +9,8 @@ function Payment() {
     cardNumber: "",
     expiryDate: "",
     cvv: "",
+    mobile: 0,
+    amount: 0,
   });
 
   const handleChange = (e) => {
@@ -27,6 +29,9 @@ function Payment() {
   };
   const style2 = {
     height: "47px",
+  };
+  const font = {
+    "font-size": "24px",
   };
   const style3 = {
     height: "45px",
@@ -156,10 +161,10 @@ function Payment() {
             id="navbarCollapse"
           >
             <div class="navbar-nav mr-auto py-0">
-              <a href="/home" class="nav-item nav-link ">
+              <a href="/home" class="nav-item nav-link  ">
                 Home
               </a>
-              <a href="/about" class="nav-item nav-link active">
+              <a href="/about" class="nav-item nav-link ">
                 About
               </a>
               <a href="/service" class="nav-item nav-link">
@@ -187,6 +192,18 @@ function Payment() {
                 </a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a
+                    href="/myPets"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    my pets
+                  </a>
+                  <a
+                    href="/blogs"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    blogs
+                  </a>
+                  <a
                     href="/events"
                     class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                   >
@@ -200,13 +217,22 @@ function Payment() {
                   </a>
                   <a
                     href="/payment"
-                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block active"
                   >
                     Donation
+                  </a>
+                  <a
+                    href="/"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    Logout
                   </a>
                 </div>
               </div>
             </div>
+            <a href="/profile">
+              <i class="fa-regular fa-user" style={font}></i>
+            </a>
           </div>
         </nav>
       </div>
@@ -229,6 +255,8 @@ function Payment() {
             <input
               type="text"
               className="form-control"
+              pattern="[0-9]{16}"
+              title="card number must be 16 digits"
               id="cardNumber"
               name="cardNumber"
               value={formData.cardNumber}
@@ -257,6 +285,32 @@ function Payment() {
               onChange={handleChange}
             />
           </div>
+          <div className="form-group">
+            <label htmlFor="mobile">Phone number</label>
+            <input
+              type="tel"
+              pattern="[0-9]{11}"
+              title="Phone number must be 11 digits"
+              className="form-control"
+              id="mobile"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="mobile">Mobile</label>
+            <input
+              type="number"
+              className="form-control"
+              id="amount"
+              name="amount"
+              value={formData.amount}
+              onChange={handleChange}
+            />
+          </div>
+
           <button type="submit" className="btn btn-primary">
             Submit
           </button>

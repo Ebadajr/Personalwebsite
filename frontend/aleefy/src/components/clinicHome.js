@@ -149,6 +149,9 @@ function ClinicHome() {
                 <a href="/booking" class="nav-item nav-link">
                   Bookings
                 </a>
+                <a href="/rescueForm" class="nav-item nav-link">
+                  Rescue form
+                </a>
 
                 <div class="nav-item dropdown">
                   <a

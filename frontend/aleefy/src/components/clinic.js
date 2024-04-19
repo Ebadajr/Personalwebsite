@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import TimePicker from "react-time-picker";
+import "react-time-picker/dist/TimePicker.css";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,12 +13,14 @@ import p2 from "../img/price-2.jpg";
 import p3 from "../img/price-3.jpg";
 var res = 0;
 function Clinics() {
+  const [bookings, setBookings] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     date: "",
     time: "",
     service: "",
+    clinicName: "",
   });
 
   const handleChange = (e) => {
@@ -34,6 +40,22 @@ function Clinics() {
         console.log(e);
       });
   };
+  useEffect(() => {
+    async function fetchClinics() {
+      try {
+        // Call the backend function listBookings here
+        const response = await fetch("http://localhost:7000/getClinics");
+        const data = await response.json();
+        console.log("Fetched data:", data);
+        setBookings(data); // Assuming data is an array of booking objects
+      } catch (error) {
+        console.error("Error fetching bookings:", error);
+        // Handle error here
+      }
+    }
+
+    fetchClinics();
+  }, []);
 
   const divStyle = {
     top: "0",
@@ -58,6 +80,9 @@ function Clinics() {
   const marg = {
     margin: "5px",
     padding: "5px",
+  };
+  const font = {
+    "font-size": "24px",
   };
 
   let navigate = useNavigate();
@@ -182,10 +207,10 @@ function Clinics() {
             id="navbarCollapse"
           >
             <div class="navbar-nav mr-auto py-0">
-              <a href="/home" class="nav-item nav-link ">
+              <a href="/home" class="nav-item nav-link  ">
                 Home
               </a>
-              <a href="/about" class="nav-item nav-link ">
+              <a href="/about" class="nav-item nav-link">
                 About
               </a>
               <a href="/service" class="nav-item nav-link">
@@ -213,6 +238,18 @@ function Clinics() {
                 </a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a
+                    href="/myPets"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    my pets
+                  </a>
+                  <a
+                    href="/blogs"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    blogs
+                  </a>
+                  <a
                     href="/events"
                     class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                   >
@@ -230,14 +267,17 @@ function Clinics() {
                   >
                     Donation
                   </a>
+                  <a
+                    href="/"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    Logout
+                  </a>
                 </div>
               </div>
             </div>
-            <a
-              href="/profile"
-              class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-            >
-              Profile
+            <a href="/profile">
+              <i class="fa-regular fa-user" style={font}></i>
             </a>
           </div>
         </nav>
@@ -255,7 +295,10 @@ function Clinics() {
                   Vaccinations, surgeries, dental care, grooming Operating
                   Hours: Mon-Sat 9:00 AM - 7:00 PM, Sun 10:00 AM - 9:00 PM
                 </p>
-                <a href="google.com" class="text-uppercase font-weight-bold">
+                <a
+                  href="https://maps.app.goo.gl/NMwVVK1mUj5XfGq57"
+                  class="text-uppercase font-weight-bold"
+                >
                   Location
                 </a>
               </div>
@@ -270,7 +313,10 @@ function Clinics() {
                   surgeries, dental care, grooming Operating Hours: Mon-Sat 9:00
                   AM -7:00 PM, Sun 10:00 AM - 10:00 PM
                 </p>
-                <a href="booking.html" class="text-uppercase font-weight-bold">
+                <a
+                  href="https://maps.app.goo.gl/K43kL49UbDiTx3oy5"
+                  class="text-uppercase font-weight-bold"
+                >
                   Location
                 </a>
               </div>
@@ -285,7 +331,10 @@ function Clinics() {
                   dental care, grooming Operating Hours: Mon-Sat 9:00 AM -
                   7:00PM, Sun 10:00 AM - 10:00 PM
                 </p>
-                <a href="booking.html" class="text-uppercase font-weight-bold">
+                <a
+                  href="https://maps.app.goo.gl/GwTQkmT7xFPspD1M7"
+                  class="text-uppercase font-weight-bold"
+                >
                   Location
                 </a>
               </div>
@@ -297,6 +346,20 @@ function Clinics() {
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-5">
+              <div className="form-group" style={marg}>
+                <select
+                  className="custom-select border-0 px-4"
+                  style={style2}
+                  onChange={handleChange}
+                >
+                  <option selected>Select a Clinic</option>
+                  {bookings.map((booking, index) => (
+                    <option key={index} value={formData.clinicName}>
+                      {booking.email}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div class="bg-primary py-5 px-4 px-sm-5">
                 <form className="py-5" onSubmit={handleSubmit}>
                   <div className="form-group" style={marg}>
@@ -324,7 +387,7 @@ function Clinics() {
                   <div className="form-group" style={marg}>
                     <div className="date" id="date" data-target-input="nearest">
                       <input
-                        type="text"
+                        type="date"
                         className="form-control border-0 p-4 datetimepicker-input"
                         placeholder="Reservation Date"
                         data-target="#date"
@@ -338,7 +401,7 @@ function Clinics() {
                   <div className="form-group" style={marg}>
                     <div className="time" id="time" data-target-input="nearest">
                       <input
-                        type="text"
+                        type="time"
                         className="form-control border-0 p-4 datetimepicker-input"
                         placeholder="Reservation Time"
                         data-target="#time"

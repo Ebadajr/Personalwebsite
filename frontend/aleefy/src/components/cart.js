@@ -3,7 +3,9 @@ import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import im2 from "../img/2.jpg";
 import im1 from "../img/1.jpg";
-
+import im3 from "../img/3.jpg";
+import im4 from "../img/4.jpg";
+import im5 from "../img/5.jpg";
 function Cart() {
   const [cartItems, setCartItems] = useState([
     {
@@ -20,12 +22,28 @@ function Cart() {
       quantity: 1,
       imgsrc: im1,
     },
+    {
+      id: 3,
+      name: "Cat scratching post",
+      price: 30.0,
+      quantity: 1,
+      imgsrc: im3,
+    },
+    {
+      id: 4,
+      name: "Pet Dental Care Kit",
+      price: 30.0,
+      quantity: 1,
+      imgsrc: im4,
+    },
+    {
+      id: 5,
+      name: "Portable water bottle for pets",
+      price: 40.0,
+      quantity: 1,
+      imgsrc: im5,
+    },
   ]);
-
-  // Function to remove an item from the cart
-  const removeFromCart = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
 
   // Function to update the quantity of an item in the cart
   const updateQuantity = (id, quantity) => {
@@ -40,7 +58,9 @@ function Cart() {
     (total, item) => total + item.price * item.quantity,
     0
   );
-
+  const font = {
+    "font-size": "24px",
+  };
   return (
     <div className="container">
       <div class="row bg-secondary py-2 px-lg-5">
@@ -125,7 +145,7 @@ function Cart() {
             id="navbarCollapse"
           >
             <div class="navbar-nav mr-auto py-0">
-              <a href="/home" class="nav-item nav-link ">
+              <a href="/home" class="nav-item nav-link  ">
                 Home
               </a>
               <a href="/about" class="nav-item nav-link">
@@ -162,6 +182,12 @@ function Cart() {
                     my pets
                   </a>
                   <a
+                    href="/blogs"
+                    class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                  >
+                    blogs
+                  </a>
+                  <a
                     href="/events"
                     class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                   >
@@ -188,11 +214,8 @@ function Cart() {
                 </div>
               </div>
             </div>
-            <a
-              href="/profile"
-              class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-            >
-              Profile
+            <a href="/profile">
+              <i class="fa-regular fa-user" style={font}></i>
             </a>
           </div>
         </nav>
@@ -219,11 +242,6 @@ function Cart() {
                   </div>
                   <div className="subtotal">
                     ${(item.price * item.quantity).toFixed(2)}
-                  </div>
-                  <div className="remove">
-                    <button onClick={() => removeFromCart(item.id)}>
-                      Remove
-                    </button>
                   </div>
                 </div>
               </div>

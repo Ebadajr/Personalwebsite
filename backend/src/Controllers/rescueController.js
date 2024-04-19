@@ -6,11 +6,13 @@ const jwt = require("jsonwebtoken");
 
 const addRescue = async (req, res) => {
   try {
+    console.log(req.body);
     const rescueForm = await Rescue.create({
       name: req.body.name,
       email: req.body.email,
       mobile: req.body.mobile,
       location: req.body.location,
+      image: req.body.picure,
     });
 
     res.status(200).send("Rescue form sent");

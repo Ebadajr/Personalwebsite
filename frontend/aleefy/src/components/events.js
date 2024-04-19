@@ -21,6 +21,9 @@ function Events() {
     height: "36px",
     width: "36px",
   };
+  const font = {
+    "font-size": "24px",
+  };
   const style5 = {
     background: "#111111",
   };
@@ -143,10 +146,10 @@ function Events() {
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">
+                <a href="/home" class="nav-item nav-link  ">
                   Home
                 </a>
-                <a href="/about" class="nav-item nav-link active">
+                <a href="/about" class="nav-item nav-link">
                   About
                 </a>
                 <a href="/service" class="nav-item nav-link">
@@ -174,8 +177,20 @@ function Events() {
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a
-                      href="/events"
+                      href="/myPets"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      my pets
+                    </a>
+                    <a
+                      href="/blogs"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      blogs
+                    </a>
+                    <a
+                      href="/events"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block active"
                     >
                       Events
                     </a>
@@ -191,14 +206,17 @@ function Events() {
                     >
                       Donation
                     </a>
+                    <a
+                      href="/"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
-              <a
-                href="/profile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/profile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>

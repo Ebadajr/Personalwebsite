@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const rescueSchema = new Schema(
+const contactSchema = new Schema(
   {
     name: {
       type: String,
@@ -12,19 +12,15 @@ const rescueSchema = new Schema(
       type: String,
       required: true,
     },
-    mobile: {
+    subject: {
       type: String,
     },
-    location: {
+    message: {
       type: String,
-    },
-    image: {
-      data: Buffer,
-      contentType: String,
     },
   },
   { timestamps: true }
 );
 
-const rescue = mongoose.model("rescue", rescueSchema);
-module.exports = rescue;
+const contact = mongoose.model("contact", contactSchema);
+module.exports = contact;

@@ -91,6 +91,9 @@ function Profile() {
   const style5 = {
     background: "#111111",
   };
+  const font = {
+    "font-size": "24px",
+  };
 
   let navigate = useNavigate();
   async function login(e) {
@@ -219,7 +222,7 @@ function Profile() {
                 <a href="/home" class="nav-item nav-link ">
                   Home
                 </a>
-                <a href="/about" class="nav-item nav-link active">
+                <a href="/about" class="nav-item nav-link">
                   About
                 </a>
                 <a href="/service" class="nav-item nav-link">
@@ -247,6 +250,18 @@ function Profile() {
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a
+                      href="/myPets"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      my pets
+                    </a>
+                    <a
+                      href="/blogs"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      blogs
+                    </a>
+                    <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
@@ -264,9 +279,18 @@ function Profile() {
                     >
                       Donation
                     </a>
+                    <a
+                      href="/"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
+              <a href="/profile">
+                <i class="fa-regular fa-user active" style={font}></i>
+              </a>
             </div>
           </nav>
         </div>

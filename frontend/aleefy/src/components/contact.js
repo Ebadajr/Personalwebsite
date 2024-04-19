@@ -1,9 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import formService from "../services/form.service";
 var res = 0;
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    formService
+      .newContact(formData)
+      .then(() => {
+        alert("message sent successfully");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   const divStyle = {
     maxWidth: "100%",
     padding: "500px",
@@ -21,6 +46,9 @@ function Contact() {
   };
   const style5 = {
     background: "#111111",
+  };
+  const font = {
+    "font-size": "24px",
   };
 
   return (
@@ -140,10 +168,10 @@ function Contact() {
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">
+                <a href="/home" class="nav-item nav-link  ">
                   Home
                 </a>
-                <a href="/about" class="nav-item nav-link active">
+                <a href="/about" class="nav-item nav-link">
                   About
                 </a>
                 <a href="/service" class="nav-item nav-link">
@@ -155,7 +183,7 @@ function Contact() {
                 <a href="/clinic" class="nav-item nav-link">
                   Clinics
                 </a>
-                <a href="/contact" class="nav-item nav-link  ">
+                <a href="/contact" class="nav-item nav-link active ">
                   Contact
                 </a>
                 <a href="/adoption" class="nav-item nav-link  ">
@@ -170,6 +198,18 @@ function Contact() {
                     More
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
+                    <a
+                      href="/myPets"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      my pets
+                    </a>
+                    <a
+                      href="/blogs"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      blogs
+                    </a>
                     <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
@@ -188,14 +228,17 @@ function Contact() {
                     >
                       Donation
                     </a>
+                    <a
+                      href="/"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
-              <a
-                href="/profile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/profile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>
@@ -212,62 +255,58 @@ function Contact() {
             <div class="col-12 col-sm-8 mb-5">
               <div class="contact-form">
                 <div id="success"></div>
-                <form
-                  name="sentMessage"
-                  id="contactForm"
-                  novalidate="novalidate"
-                >
-                  <div class="control-group">
+                <form className="py-5" onSubmit={handleSubmit}>
+                  <div className="form-group">
                     <input
                       type="text"
-                      class="form-control p-4"
-                      id="name"
+                      className="form-control border-0 p-4"
                       placeholder="Your Name"
-                      required="required"
-                      data-validation-required-message="Please enter your name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                     />
-                    <p class="help-block text-danger"></p>
                   </div>
-                  <div class="control-group">
+                  <div className="form-group">
                     <input
                       type="email"
-                      class="form-control p-4"
-                      id="email"
+                      className="form-control border-0 p-4"
                       placeholder="Your Email"
-                      required="required"
-                      data-validation-required-message="Please enter your email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                     />
-                    <p class="help-block text-danger"></p>
                   </div>
-                  <div class="control-group">
+                  <div className="form-group">
                     <input
                       type="text"
-                      class="form-control p-4"
-                      id="subject"
-                      placeholder="Subject"
-                      required="required"
-                      data-validation-required-message="Please enter a subject"
+                      className="form-control border-0 p-4"
+                      placeholder="Message subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
                     />
-                    <p class="help-block text-danger"></p>
                   </div>
-                  <div class="control-group">
-                    <textarea
-                      class="form-control p-4"
-                      rows="6"
-                      id="message"
-                      placeholder="Message"
-                      required="required"
-                      data-validation-required-message="Please enter your message"
-                    ></textarea>
-                    <p class="help-block text-danger"></p>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-4"
+                      placeholder="Your message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
+
                   <div>
                     <button
-                      class="btn btn-primary py-3 px-5"
+                      class="btn btn-dark btn-block border-0 py-3"
                       type="submit"
-                      id="sendMessageButton"
                     >
-                      Send Message
+                      Send Now
                     </button>
                   </div>
                 </form>

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import image1 from "../img/about-1.jpg";
+import image2 from "../img/about-2.jpg";
+import image3 from "../img/about-3.jpg";
+import image4 from "../img/feature.jpg";
 var res = 0;
 function About() {
   const divStyle = {
@@ -21,6 +24,9 @@ function About() {
   };
   const style5 = {
     background: "#111111",
+  };
+  const font = {
+    "font-size": "24px",
   };
 
   return (
@@ -141,7 +147,7 @@ function About() {
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link ">
+                <a href="/home" class="nav-item nav-link  ">
                   Home
                 </a>
                 <a href="/about" class="nav-item nav-link active">
@@ -172,6 +178,18 @@ function About() {
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a
+                      href="/myPets"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      my pets
+                    </a>
+                    <a
+                      href="/blogs"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      blogs
+                    </a>
+                    <a
                       href="/events"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
@@ -189,14 +207,17 @@ function About() {
                     >
                       Donation
                     </a>
+                    <a
+                      href="/"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
-              <a
-                href="/profile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/profile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>
@@ -263,13 +284,13 @@ function About() {
             <div class="col-lg-5">
               <div class="row px-3">
                 <div class="col-12 p-0">
-                  <img class="img-fluid w-100" src="img/about-1.jpg" alt="" />
+                  <img class="img-fluid w-100" src={image1} alt="" />
                 </div>
                 <div class="col-6 p-0">
-                  <img class="img-fluid w-100" src="img/about-2.jpg" alt="" />
+                  <img class="img-fluid w-100" src={image2} alt="" />
                 </div>
                 <div class="col-6 p-0">
-                  <img class="img-fluid w-100" src="img/about-3.jpg" alt="" />
+                  <img class="img-fluid w-100" src={image3} alt="" />
                 </div>
               </div>
             </div>
@@ -280,7 +301,7 @@ function About() {
           <div class="container">
             <div class="row align-items-center">
               <div class="col-lg-5">
-                <img class="img-fluid w-100" src="img/feature.jpg" alt="" />
+                <img class="img-fluid w-100" src={image4} alt="" />
               </div>
               <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
                 <h4 class="text-secondary mb-3">Why Choose Us?</h4>

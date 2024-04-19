@@ -30,13 +30,8 @@ function HomePage() {
     maxWidth: "900px",
     padding: "3px",
   };
-  const marg = {
-    margin: "5px",
-    padding: "5px",
-  };
-
-  const style2 = {
-    height: "47px",
+  const font = {
+    "font-size": "24px",
   };
   const style3 = {
     height: "45px",
@@ -94,6 +89,12 @@ function HomePage() {
 
   return (
     <div>
+      <head>
+        <script
+          src="https://kit.fontawesome.com/87374739dc.js"
+          crossorigin="anonymous"
+        ></script>
+      </head>
       <div class="container-fluid">
         <div class="row bg-secondary py-2 px-lg-5">
           <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
@@ -246,11 +247,8 @@ function HomePage() {
                   </div>
                 </div>
               </div>
-              <a
-                href="/profile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/profile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>

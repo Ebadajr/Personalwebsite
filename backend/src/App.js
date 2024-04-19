@@ -20,6 +20,7 @@ const shelterController = require("./Controllers/shelterController");
 const clinicController = require("./Controllers/clinicController");
 const rescueController = require("./Controllers/rescueController");
 const blogsController = require("./Controllers/blogsController");
+const contactController = require("./Controllers/contactController");
 const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
@@ -58,6 +59,8 @@ app.post("/add", userController.addUser);
 app.post("/addShelter", shelterController.addShelter);
 app.get("/myPet", userController.myPets);
 app.get("allpets", petController.getPets);
+app.get("/getClinics", clinicController.getClinics);
+app.post("/addContact", contactController.addContact);
 app.use(auth);
 
 const server = app.listen(port, () => {
@@ -65,6 +68,7 @@ const server = app.listen(port, () => {
 });
 
 app.post("/homeBooking", bookingController.homeBooking);
+
 app.get("/users", userController.getUsers);
 app.post("/newBooking", bookingController.addBooking);
 app.get("/getName", userController.getUser);

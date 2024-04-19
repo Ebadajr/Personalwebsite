@@ -91,7 +91,7 @@ function Login(props) {
 
   const toggleMode = () => {
     setSignupMode(!signupMode);
-    setUser(initialUserState); // Reset user fields when toggling mode
+    setUser(initialUserState);
   };
 
   const handleSignupTypeChange = (event) => {
@@ -290,6 +290,31 @@ function Login(props) {
                       required
                     />
                   </div>
+
+                  {selectedSignupType === "clinic" && (
+                    <div className="form-group">
+                      <label htmlFor="location">Location</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="location"
+                        name="location"
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  )}
+                  {selectedSignupType === "shelter" && (
+                    <div className="form-group">
+                      <label htmlFor="location">Location</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="location"
+                        name="location"
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  )}
                   <div className="mrgn-30-top">
                     <button type="submit" className="btn btn-larger btn-block">
                       Sign up

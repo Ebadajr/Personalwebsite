@@ -1,15 +1,40 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
+import formService from "../services/form.service";
 
 var res = 0;
-function ListForms() {
-  const [bookings, setBookings] = useState([]);
+function RescueClinic() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    location: "",
+  });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    formService
+      .newForm(formData)
+      .then(() => {
+        alert("rescue form sent successfully");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   const divStyle = {
-    maxWidth: "900px",
-    padding: "3px",
+    maxWidth: "100%",
+    padding: "500px",
+  };
+  const font = {
+    "font-size": "24px",
   };
   const style2 = {
     height: "47px",
@@ -26,57 +51,38 @@ function ListForms() {
     background: "#111111",
   };
 
-  useEffect(() => {
-    async function fetchBookings() {
-      try {
-        // Call the backend function listBookings here
-        const response = await fetch("http://localhost:7000/listForms");
-        const data = await response.json();
-        console.log("Fetched data:", data);
-        setBookings(data); // Assuming data is an array of booking objects
-      } catch (error) {
-        console.error("Error fetching bookings:", error);
-        // Handle error here
-      }
-    }
-
-    fetchBookings();
-  }, []);
-
   return (
     <div>
-      <head>
-        <meta charset="utf-8" />
-        <title>Rafeeky</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <meta content="Free HTML Templates" name="keywords" />
-        <meta content="Free HTML Templates" name="description" />
+      <meta charset="utf-8" />
+      <title>Rafeeky</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+      <meta content="Free HTML Templates" name="keywords" />
+      <meta content="Free HTML Templates" name="description" />
 
-        <link href="img/favicon.ico" rel="icon" />
+      <link href="img/favicon.ico" rel="icon" />
 
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
-          rel="stylesheet"
-        />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet"
+      />
 
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-          rel="stylesheet"
-        />
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        rel="stylesheet"
+      />
 
-        <link href="lib/flaticon/font/flaticon.css" rel="stylesheet" />
+      <link href="lib/flaticon/font/flaticon.css" rel="stylesheet" />
 
-        <link
-          href="lib/owlcarousel/assets/owl.carousel.min.css"
-          rel="stylesheet"
-        />
-        <link
-          href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-          rel="stylesheet"
-        />
+      <link
+        href="lib/owlcarousel/assets/owl.carousel.min.css"
+        rel="stylesheet"
+      />
+      <link
+        href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+        rel="stylesheet"
+      />
 
-        <link href="css/style.css" rel="stylesheet" />
-      </head>
+      <link href="css/style.css" rel="stylesheet" />
 
       <body>
         <div class="container-fluid">
@@ -144,50 +150,143 @@ function ListForms() {
         </div>
 
         <div class="container-fluid p-0">
-          <div class="container-fluid p-0">
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-              <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white">
-                  <span class="text-primary">Rafeeky</span>
-                </h1>
-              </a>
-              <button
-                type="button"
-                class="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbarCollapse"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div
-                class="collapse navbar-collapse justify-content-between px-3"
-                id="navbarCollapse"
-              >
-                <div class="navbar-nav mr-auto py-0">
-                  <a href="/shelterHome" class="nav-item nav-link ">
-                    Home
-                  </a>
-                </div>
-              </div>
-            </nav>
-          </div>
-        </div>
+          <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+            <a href="" class="navbar-brand d-block d-lg-none">
+              <h1 class="m-0 display-5 text-capitalize font-italic text-white">
+                <span class="text-primary">Rafeeky</span>
+              </h1>
+            </a>
+            <button
+              type="button"
+              class="navbar-toggler"
+              data-toggle="collapse"
+              data-target="#navbarCollapse"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-between px-3"
+              id="navbarCollapse"
+            >
+              <div class="navbar-nav mr-auto py-0">
+                <a href="/clinicHome" class="nav-item nav-link ">
+                  Home
+                </a>
+                <a href="/about" class="nav-item nav-link">
+                  About
+                </a>
 
-        <div className="container">
-          <div className="row">
-            {bookings.map((booking, index) => (
-              <div className="col-lg-4" key={index}>
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title">{booking.name}</h5>
-                    <p className="card-text">email: {booking.email}</p>
-                    <p className="card-text">mobile: {booking.mobile}</p>
-                    <p className="card-text">location: {booking.location}</p>
-                    <p className="card-text">Picture {booking.image}</p>
+                <div class="nav-item dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                  >
+                    More
+                  </a>
+                  <div class="dropdown-menu rounded-0 m-0">
+                    <a
+                      href="/"
+                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
+                    >
+                      Logout
+                    </a>
                   </div>
                 </div>
               </div>
-            ))}
+              <a href="/clinicProfile">
+                <i class="fa-regular fa-user" style={font}></i>
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <div class="container-fluid pt-5">
+          <div class="d-flex flex-column text-center mb-5 pt-5">
+            <h4 class="text-secondary mb-3">Rescue form</h4>
+            <h1 class="display-4 m-0">
+              Contact For a <span class="text-primary">rescue team</span>
+            </h1>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 mb-5">
+              <div class="contact-form">
+                <div id="success"></div>
+                <form className="py-5" onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-4"
+                      placeholder="Your Name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      className="form-control border-0 p-4"
+                      placeholder="Your Email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-4"
+                      placeholder="Your Mobile"
+                      name="mobile"
+                      value={formData.mobile}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-4"
+                      placeholder="Your Location"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <select
+                      className="custom-select border-0 px-4"
+                      style={style2}
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                    ></select>
+                  </div>
+                  <div>
+                    <button
+                      class="btn btn-dark btn-block border-0 py-3"
+                      type="submit"
+                    >
+                      Send Now
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-12 mb-n2 p-0">
+              <iframe
+                style={divStyle}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                frameborder="0"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+              ></iframe>
+            </div>
           </div>
         </div>
 
@@ -356,4 +455,4 @@ function ListForms() {
   );
 }
 
-export default ListForms;
+export default RescueClinic;
