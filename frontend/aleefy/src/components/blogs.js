@@ -226,7 +226,7 @@ function Blog() {
                     Rescue form
                   </a>
                   <a
-                    href="/payment"
+                    href="/donate"
                     class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                   >
                     Donation
@@ -297,6 +297,16 @@ function Blog() {
                   rows="5"
                   placeholder="Enter blog content"
                 ></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="blogImage">Image</label>
+                <input
+                  type="file"
+                  className="form-control-file"
+                  id="blogImage"
+                  name="image"
+                  onChange={handleChange}
+                />
               </div>
               <button type="submit" class="btn btn-primary">
                 Submit

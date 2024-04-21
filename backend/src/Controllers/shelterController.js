@@ -24,8 +24,8 @@ const addShelter = async (req, res) => {
 
 const getShelter = async (req, res) => {
   //retrieve all users from the database
-  const users = await pet.find({});
-  //console.log(users);
+  const users = await shelter.find({});
+
   res.status(200).send(users);
 };
 

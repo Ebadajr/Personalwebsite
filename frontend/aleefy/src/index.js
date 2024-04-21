@@ -29,6 +29,8 @@ import DonationClinic from "./components/donateC";
 import DonationShelter from "./components/donateS";
 import Blog from "./components/blogs";
 import RescueClinic from "./components/rescueClinic";
+import Donate from "./components/donation";
+import ListDonations from "./components/viewDonations";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -58,6 +60,8 @@ root.render(
       <Route path="/DS" element={<DonationShelter />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/rescueForm" element={<RescueClinic />} />
+      <Route path="/donate" element={<Donate />} />
+      <Route path="/listDonations" element={<ListDonations />} />
     </Routes>
   </BrowserRouter>
 );

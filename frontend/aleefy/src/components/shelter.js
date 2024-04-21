@@ -18,8 +18,8 @@ function ShelterHome() {
     maxWidth: "900px",
     padding: "3px",
   };
-  const style2 = {
-    height: "47px",
+  const font = {
+    "font-size": "24px",
   };
   const style3 = {
     height: "45px",
@@ -153,6 +153,9 @@ function ShelterHome() {
                 <a href="/rescueForms" class="nav-item nav-link">
                   Rescue forms
                 </a>
+                <a href="/listDonations" class="nav-item nav-link">
+                  Donations
+                </a>
 
                 <div class="nav-item dropdown">
                   <a
@@ -178,11 +181,8 @@ function ShelterHome() {
                   </div>
                 </div>
               </div>
-              <a
-                href="/shelterProfile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/shelterProfile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>

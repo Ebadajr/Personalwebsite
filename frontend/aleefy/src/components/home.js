@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../css/styles.css";
-//import "bootstrap/dist/css/bootstrap.min.css";
-
-import { useNavigate } from "react-router-dom";
 
 import caro1 from "../img/carousel-1.jpg";
 import caro2 from "../img/carousel-2.jpg";
@@ -13,10 +10,9 @@ import feat1 from "../img/feature.jpg";
 import blog1 from "../img/blog-1.jpg";
 import blog2 from "../img/blog-2.jpg";
 import blog3 from "../img/blog-3.jpg";
-import bookingService from "../services/booking.service";
+
 import userService from "../services/user.service";
 
-var res = 0;
 function HomePage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -45,7 +41,6 @@ function HomePage() {
     background: "#111111",
   };
   useEffect(() => {
-    // Function to fetch username from backend when component mounts
     async function fetchUsername() {
       try {
         console.log("hi");
@@ -53,7 +48,7 @@ function HomePage() {
           console.log(response.data);
           setFormData((prevState) => ({
             ...prevState,
-            username: response.data, // Update the username in the form data state
+            username: response.data,
           }));
         });
       } catch (error) {
@@ -63,29 +58,6 @@ function HomePage() {
 
     fetchUsername(); // Call the function to fetch username
   }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    bookingService
-      .homeBooking(formData)
-      .then(() => {
-        alert("booking successfull");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-  let navigate = useNavigate();
-  async function login(e) {
-    e.preventDefault();
-    navigate("/login", { replace: true });
-  }
 
   return (
     <div>
@@ -233,7 +205,7 @@ function HomePage() {
                       Rescue form
                     </a>
                     <a
-                      href="/payment"
+                      href="/donate"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
                       Donation

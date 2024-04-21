@@ -21,6 +21,7 @@ const clinicController = require("./Controllers/clinicController");
 const rescueController = require("./Controllers/rescueController");
 const blogsController = require("./Controllers/blogsController");
 const contactController = require("./Controllers/contactController");
+const donationController = require("./Controllers/donationController");
 const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
@@ -61,6 +62,9 @@ app.get("/myPet", userController.myPets);
 app.get("allpets", petController.getPets);
 app.get("/getClinics", clinicController.getClinics);
 app.post("/addContact", contactController.addContact);
+app.get("/getShelters", shelterController.getShelter);
+app.get("/getDonations", donationController.getDonations);
+app.post("/addDonation", donationController.addDonation);
 app.use(auth);
 
 const server = app.listen(port, () => {

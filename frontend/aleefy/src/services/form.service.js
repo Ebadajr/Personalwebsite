@@ -10,6 +10,9 @@ class formService {
     console.log("hena");
     return http.post("/addContact", form);
   }
+  newDonation(form) {
+    return http.post("/addDonation", form);
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

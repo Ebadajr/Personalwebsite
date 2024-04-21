@@ -10,6 +10,7 @@ function Rescue() {
     email: "",
     mobile: "",
     location: "",
+    description: "",
     picture: null,
   });
 
@@ -229,7 +230,7 @@ function Rescue() {
                       Rescue form
                     </a>
                     <a
-                      href="/payment"
+                      href="/donate"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
                       Donation
@@ -302,6 +303,17 @@ function Rescue() {
                       placeholder="Your Location"
                       name="location"
                       value={formData.location}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-4"
+                      placeholder="Description"
+                      name="Description"
+                      value={formData.description}
                       onChange={handleChange}
                       required
                     />

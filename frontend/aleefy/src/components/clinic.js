@@ -262,7 +262,7 @@ function Clinics() {
                     Rescue form
                   </a>
                   <a
-                    href="/payment"
+                    href="/donate"
                     class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                   >
                     Donation
@@ -346,22 +346,22 @@ function Clinics() {
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-5">
-              <div className="form-group" style={marg}>
-                <select
-                  className="custom-select border-0 px-4"
-                  style={style2}
-                  onChange={handleChange}
-                >
-                  <option selected>Select a Clinic</option>
-                  {bookings.map((booking, index) => (
-                    <option key={index} value={formData.clinicName}>
-                      {booking.email}
-                    </option>
-                  ))}
-                </select>
-              </div>
               <div class="bg-primary py-5 px-4 px-sm-5">
                 <form className="py-5" onSubmit={handleSubmit}>
+                  <div className="form-group" style={marg}>
+                    <select
+                      className="custom-select border-0 px-4"
+                      style={style2}
+                      onChange={handleChange}
+                    >
+                      <option selected>Select a Clinic</option>
+                      {bookings.map((booking, index) => (
+                        <option key={index} value={formData.clinicName}>
+                          {booking.email}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div className="form-group" style={marg}>
                     <input
                       type="text"

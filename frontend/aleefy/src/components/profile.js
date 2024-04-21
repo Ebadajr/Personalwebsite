@@ -274,7 +274,7 @@ function Profile() {
                       Rescue form
                     </a>
                     <a
-                      href="/payment"
+                      href="/donate"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
                       Donation

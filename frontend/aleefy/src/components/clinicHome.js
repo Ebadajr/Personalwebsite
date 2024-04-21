@@ -31,6 +31,9 @@ function ClinicHome() {
   const style5 = {
     background: "#111111",
   };
+  const font = {
+    "font-size": "24px",
+  };
   useEffect(() => {
     // Function to fetch username from backend when component mounts
     async function fetchUsername() {
@@ -177,11 +180,8 @@ function ClinicHome() {
                   </div>
                 </div>
               </div>
-              <a
-                href="/clinicProfile"
-                class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-              >
-                Profile
+              <a href="/clinicProfile">
+                <i class="fa-regular fa-user" style={font}></i>
               </a>
             </div>
           </nav>

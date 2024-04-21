@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import formService from "../services/form.service";
 var res = 0;
-function Payment() {
+function Donate() {
+  const [bookings, setBookings] = useState([]);
   const [formData, setFormData] = useState({
     cardHolderName: "",
     cardNumber: "",
     expiryDate: "",
     cvv: "",
     mobile: 0,
-    amount: 0,
-    
+    donationAmount: 0,
+    shelterName: "",
   });
 
   const handleChange = (e) => {
@@ -22,30 +23,34 @@ function Payment() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    formService
+      .newDonation(formData)
+      .then(() => {
+        alert("Donation sent successfully");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     // Add your form submission logic here
   };
-  const divStyle = {
-    maxWidth: "100%",
-    padding: "500px",
-  };
-  const style2 = {
-    height: "47px",
-  };
+
+  useEffect(() => {
+    async function fetchShelters() {
+      try {
+        const response = await fetch("http://localhost:7000/getShelters");
+        const data = await response.json();
+
+        setBookings(data);
+      } catch (error) {
+        console.error("Error fetching bookings:", error);
+      }
+    }
+
+    fetchShelters();
+  }, []);
   const font = {
     "font-size": "24px",
   };
-  const style3 = {
-    height: "45px",
-    width: "45px",
-  };
-  const style4 = {
-    height: "36px",
-    width: "36px",
-  };
-  const style5 = {
-    background: "#111111",
-  };
-
   return (
     <div>
       <meta charset="utf-8" />
@@ -241,6 +246,24 @@ function Payment() {
         <h2>Payment Information</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
+            <select
+              className="custom-select border-0 px-4"
+              id="shelterName"
+              name="shelterName"
+              value={formData.shelterName} // Set the value to formData.shelterName
+              onChange={handleChange}
+            >
+              <option disabled value="">
+                Select a Shelter to donate to
+              </option>
+              {bookings.map((booking, index) => (
+                <option key={index} value={booking.email}>
+                  {booking.email}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
             <label htmlFor="cardHolderName">Card Holder's Name:</label>
             <input
               type="text"
@@ -301,12 +324,12 @@ function Payment() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="mobile">Mobile</label>
+            <label htmlFor="donationAmount">donationAmount</label>
             <input
               type="number"
               className="form-control"
-              id="amount"
-              name="amount"
+              id="donationAmount"
+              name="donationAmount"
               value={formData.amount}
               onChange={handleChange}
             />
@@ -321,4 +344,4 @@ function Payment() {
   );
 }
 
-export default Payment;
+export default Donate;
