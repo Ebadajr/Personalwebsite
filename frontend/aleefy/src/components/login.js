@@ -6,6 +6,8 @@ function Login(props) {
   const initialUserState = {
     username: "",
     password: "",
+    location: "",
+    mobile: 0,
   };
 
   const [user, setUser] = useState(initialUserState);
@@ -31,6 +33,9 @@ function Login(props) {
               break;
             case "shelter":
               navigate("/shelterHome", { replace: true });
+              break;
+            case "admin":
+              navigate("/adminHome", { replace: true });
               break;
             default:
               navigate("/home", { replace: true });
@@ -63,20 +68,18 @@ function Login(props) {
             });
           break;
         case "clinic":
-          UserService.createClinic(user)
+          UserService.createClinicRequest(user)
             .then((response) => {
-              alert("Signed up successfully, welcome!");
-              navigate("/clinicHome", { replace: true });
+              alert("Your request will be reviewd by our Admins");
             })
             .catch((e) => {
               console.log(e);
             });
           break;
         case "shelter":
-          UserService.createShelter(user)
+          UserService.createShelterRequest(user)
             .then((response) => {
-              alert("Signed up successfully, login now");
-              navigate("/", { replace: true });
+              alert("Your request will be reviewd by our Admins");
             })
             .catch((e) => {
               console.log(e);
@@ -273,6 +276,7 @@ function Login(props) {
                       className="form-control"
                       id="phone"
                       name="phone"
+                      value={user.mobile}
                       onChange={handleInputChange}
                       required
                     />
@@ -299,6 +303,7 @@ function Login(props) {
                         className="form-control"
                         id="location"
                         name="location"
+                        value={user.location}
                         onChange={handleInputChange}
                       />
                     </div>
@@ -311,6 +316,7 @@ function Login(props) {
                         className="form-control"
                         id="location"
                         name="location"
+                        value={user.location}
                         onChange={handleInputChange}
                       />
                     </div>

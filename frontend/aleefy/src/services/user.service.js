@@ -8,10 +8,16 @@ class UserService {
     return http.post("/add", user);
   }
   createClinic(user) {
-    return http.post("/addClinic", user);
+    return http.post("/addClinic", { id: user });
+  }
+  createClinicRequest(user) {
+    return http.post("/addClinicRequest", user);
+  }
+  createShelterRequest(user) {
+    return http.post("/addShelterRequest", user);
   }
   createShelter(user) {
-    return http.post("/addShelter", user);
+    return http.post("/addShelter", { id: user });
   }
 
   logout() {

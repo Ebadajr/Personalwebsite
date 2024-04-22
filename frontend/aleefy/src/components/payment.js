@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -11,7 +11,6 @@ function Payment() {
     cvv: "",
     mobile: 0,
     amount: 0,
-    
   });
 
   const handleChange = (e) => {
@@ -24,26 +23,9 @@ function Payment() {
     console.log(formData);
     // Add your form submission logic here
   };
-  const divStyle = {
-    maxWidth: "100%",
-    padding: "500px",
-  };
-  const style2 = {
-    height: "47px",
-  };
+
   const font = {
     "font-size": "24px",
-  };
-  const style3 = {
-    height: "45px",
-    width: "45px",
-  };
-  const style4 = {
-    height: "36px",
-    width: "36px",
-  };
-  const style5 = {
-    background: "#111111",
   };
 
   return (

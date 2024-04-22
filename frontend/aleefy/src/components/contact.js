@@ -33,13 +33,7 @@ function Contact() {
     maxWidth: "100%",
     padding: "500px",
   };
-  const style2 = {
-    height: "47px",
-  };
-  const style3 = {
-    height: "45px",
-    width: "45px",
-  };
+
   const style4 = {
     height: "36px",
     width: "36px",

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import userService from "../services/user.service";
+import { useNavigate } from "react-router-dom";
 
 var res = 0;
-function MyPets() {
+function AdminRescue() {
   const [bookings, setBookings] = useState([]);
 
   const divStyle = {
@@ -31,17 +30,10 @@ function MyPets() {
     async function fetchBookings() {
       try {
         // Call the backend function listBookings here
-        userService
-          .myPets()
-          .then((response) => {
-            console.log(response.data);
-            setBookings(response.data);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-        // console.log("Fetched data:", data);
-        // Assuming data is an array of booking objects
+        const response = await fetch("http://localhost:7000/listForms");
+        const data = await response.json();
+        console.log("Fetched data:", data);
+        setBookings(data); // Assuming data is an array of booking objects
       } catch (error) {
         console.error("Error fetching bookings:", error);
         // Handle error here
@@ -50,9 +42,10 @@ function MyPets() {
 
     fetchBookings();
   }, []);
-  const font = {
-    "font-size": "24px",
+  const acceptRequest = (id) => {
+    alert("Accepted");
   };
+
   return (
     <div>
       <head>
@@ -174,78 +167,10 @@ function MyPets() {
                 id="navbarCollapse"
               >
                 <div class="navbar-nav mr-auto py-0">
-                  <a href="/home" class="nav-item nav-link  ">
+                  <a href="/adminHome" class="nav-item nav-link ">
                     Home
                   </a>
-                  <a href="/about" class="nav-item nav-link">
-                    About
-                  </a>
-                  <a href="/service" class="nav-item nav-link">
-                    Service
-                  </a>
-                  <a href="/cart" class="nav-item nav-link">
-                    products
-                  </a>
-                  <a href="/clinic" class="nav-item nav-link">
-                    Clinics
-                  </a>
-                  <a href="/contact" class="nav-item nav-link  ">
-                    Contact
-                  </a>
-                  <a href="/adoption" class="nav-item nav-link  ">
-                    Adoption
-                  </a>
-                  <div class="nav-item dropdown">
-                    <a
-                      href="#"
-                      class="nav-link dropdown-toggle"
-                      data-toggle="dropdown"
-                    >
-                      More
-                    </a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                      <a
-                        href="/myPets"
-                        class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                      >
-                        my pets
-                      </a>
-                      <a
-                        href="/blogs"
-                        class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                      >
-                        blogs
-                      </a>
-                      <a
-                        href="/events"
-                        class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                      >
-                        Events
-                      </a>
-                      <a
-                        href="/rescue"
-                        class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                      >
-                        Rescue form
-                      </a>
-                      <a
-                        href="/donate"
-                        class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                      >
-                        Donation
-                      </a>
-                      <a
-                        href="/"
-                        class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                      >
-                        Logout
-                      </a>
-                    </div>
-                  </div>
                 </div>
-                <a href="/profile">
-                  <i class="fa-regular fa-user" style={font}></i>
-                </a>
               </div>
             </nav>
           </div>
@@ -258,8 +183,20 @@ function MyPets() {
                 <div className="card">
                   <div className="card-body">
                     <h5 className="card-title">{booking.name}</h5>
-                    <p className="card-text">Breed: {booking.Breed}</p>
+                    <p className="card-text">email: {booking.email}</p>
+                    <p className="card-text">mobile: {booking.mobile}</p>
+                    <p className="card-text">location: {booking.location}</p>
+                    <p className="card-text">Picture {booking.image}</p>
                   </div>
+                  <button
+                    className="btn btn-lg btn-primary mt-3 px-4"
+                    onClick={() => acceptRequest(booking._id)}
+                  >
+                    Accept
+                  </button>
+                  <button className="btn btn-lg btn-primary mt-3 px-4">
+                    Reject
+                  </button>
                 </div>
               </div>
             ))}
@@ -431,4 +368,4 @@ function MyPets() {
   );
 }
 
-export default MyPets;
+export default AdminRescue;

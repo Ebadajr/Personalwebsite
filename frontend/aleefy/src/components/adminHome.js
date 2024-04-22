@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { useNavigate } from "react-router-dom";
-
 import caro1 from "../img/carousel-1.jpg";
 import caro2 from "../img/carousel-2.jpg";
 import feat1 from "../img/feature.jpg";
 import userService from "../services/user.service";
+
 var res = 0;
-function ClinicHome() {
+function AdminHome() {
   const [formData, setFormData] = useState({
     username: "",
   });
@@ -17,7 +16,9 @@ function ClinicHome() {
     maxWidth: "900px",
     padding: "3px",
   };
-
+  const font = {
+    "font-size": "24px",
+  };
   const style3 = {
     height: "45px",
     width: "45px",
@@ -29,16 +30,11 @@ function ClinicHome() {
   const style5 = {
     background: "#111111",
   };
-  const font = {
-    "font-size": "24px",
-  };
   useEffect(() => {
     // Function to fetch username from backend when component mounts
     async function fetchUsername() {
       try {
-        console.log("hi");
         userService.getName().then((response) => {
-          console.log(response.data);
           setFormData((prevState) => ({
             ...prevState,
             username: response.data, // Update the username in the form data state
@@ -49,14 +45,8 @@ function ClinicHome() {
       }
     }
 
-    fetchUsername(); // Call the function to fetch username
+    fetchUsername();
   }, []);
-
-  let navigate = useNavigate();
-  async function login(e) {
-    e.preventDefault();
-    navigate("/login", { replace: true });
-  }
 
   return (
     <div>
@@ -143,15 +133,18 @@ function ClinicHome() {
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="/clinicHome" class="nav-item nav-link ">
+                <a href="/adminHome" class="nav-item nav-link ">
                   Home
                 </a>
 
-                <a href="/booking" class="nav-item nav-link">
-                  Bookings
+                <a href="/listSRequests" class="nav-item nav-link">
+                  Shelter Requests
                 </a>
-                <a href="/rescueForm" class="nav-item nav-link">
-                  Rescue form
+                <a href="/listCRequests" class="nav-item nav-link">
+                  Clinic Requests
+                </a>
+                <a href="/adminRescue" class="nav-item nav-link">
+                  Rescue forms
                 </a>
 
                 <div class="nav-item dropdown">
@@ -164,7 +157,7 @@ function ClinicHome() {
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a
-                      href="/DC"
+                      href="/DS"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
                       Donation
@@ -178,9 +171,6 @@ function ClinicHome() {
                   </div>
                 </div>
               </div>
-              <a href="/clinicProfile">
-                <i class="fa-regular fa-user" style={font}></i>
-              </a>
             </div>
           </nav>
         </div>
@@ -221,7 +211,7 @@ function ClinicHome() {
                       {formData.username}
                     </h3>
                     <a
-                      href="about.html"
+                      href="/about"
                       class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4"
                     >
                       Learn More
@@ -444,4 +434,4 @@ function ClinicHome() {
   );
 }
 
-export default ClinicHome;
+export default AdminHome;

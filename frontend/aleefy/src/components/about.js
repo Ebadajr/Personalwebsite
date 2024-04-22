@@ -7,17 +7,6 @@ import image3 from "../img/about-3.jpg";
 import image4 from "../img/feature.jpg";
 var res = 0;
 function About() {
-  const divStyle = {
-    maxWidth: "900px",
-    padding: "3px",
-  };
-  const style2 = {
-    height: "47px",
-  };
-  const style3 = {
-    height: "45px",
-    width: "45px",
-  };
   const style4 = {
     height: "36px",
     width: "36px",
@@ -67,34 +56,28 @@ function About() {
           <div class="row bg-secondary py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
               <div class="d-inline-flex align-items-center">
-                <a class="text-white pr-3" href="">
-                  FAQs
-                </a>
+                <a class="text-white pr-3">FAQs</a>
                 <span class="text-white">|</span>
-                <a class="text-white px-3" href="">
-                  Help
-                </a>
+                <a class="text-white px-3">Help</a>
                 <span class="text-white">|</span>
-                <a class="text-white pl-3" href="">
-                  Support
-                </a>
+                <a class="text-white pl-3">Support</a>
               </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
               <div class="d-inline-flex align-items-center">
-                <a class="text-white px-3" href="">
+                <a class="text-white px-3">
                   <i class="fab fa-facebook-f"></i>
                 </a>
-                <a class="text-white px-3" href="">
+                <a class="text-white px-3">
                   <i class="fab fa-twitter"></i>
                 </a>
-                <a class="text-white px-3" href="">
+                <a class="text-white px-3">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a class="text-white px-3" href="">
+                <a class="text-white px-3">
                   <i class="fab fa-instagram"></i>
                 </a>
-                <a class="text-white pl-3" href="">
+                <a class="text-white pl-3">
                   <i class="fab fa-youtube"></i>
                 </a>
               </div>
@@ -102,7 +85,7 @@ function About() {
           </div>
           <div class="row py-3 px-lg-5">
             <div class="col-lg-4">
-              <a href="" class="navbar-brand d-none d-lg-block">
+              <a class="navbar-brand d-none d-lg-block">
                 <h1 class="m-0 display-5 text-capitalize">
                   <span class="text-primary">Rafeeky</span>
                 </h1>
@@ -129,7 +112,7 @@ function About() {
 
         <div class="container-fluid p-0">
           <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
+            <a class="navbar-brand d-block d-lg-none">
               <h1 class="m-0 display-5 text-capitalize font-italic text-white">
                 <span class="text-primary">Rafeeky</span>
               </h1>
@@ -367,28 +350,24 @@ function About() {
                     <a
                       class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
                       style={style4}
-                      href="#"
                     >
                       <i class="fab fa-twitter"></i>
                     </a>
                     <a
                       class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
                       style={style4}
-                      href="#"
                     >
                       <i class="fab fa-facebook-f"></i>
                     </a>
                     <a
                       class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
                       style={style4}
-                      href="#"
                     >
                       <i class="fab fa-linkedin-in"></i>
                     </a>
                     <a
                       class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
                       style={style4}
-                      href="#"
                     >
                       <i class="fab fa-instagram"></i>
                     </a>

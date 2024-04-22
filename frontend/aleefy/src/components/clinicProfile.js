@@ -57,17 +57,7 @@ function ClinicProfile() {
 
     fetchUsername(); // Call the function to fetch username
   }, []);
-  const divStyle = {
-    maxWidth: "900px",
-    padding: "3px",
-  };
-  const style2 = {
-    height: "47px",
-  };
-  const style3 = {
-    height: "45px",
-    width: "45px",
-  };
+
   const style4 = {
     height: "36px",
     width: "36px",
@@ -75,12 +65,6 @@ function ClinicProfile() {
   const style5 = {
     background: "#111111",
   };
-
-  let navigate = useNavigate();
-  async function login(e) {
-    e.preventDefault();
-    navigate("/login", { replace: true });
-  }
 
   return (
     <div>

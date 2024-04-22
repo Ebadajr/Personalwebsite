@@ -31,6 +31,11 @@ import Blog from "./components/blogs";
 import RescueClinic from "./components/rescueClinic";
 import Donate from "./components/donation";
 import ListDonations from "./components/viewDonations";
+import QRCodeGenerator from "./components/qrcode";
+import AdminHome from "./components/adminHome";
+import ListshelterRequests from "./components/listShelterRequests";
+import ListclinicRequests from "./components/listClinicRequests";
+import AdminRescue from "./components/adminRescue";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -62,6 +67,11 @@ root.render(
       <Route path="/rescueForm" element={<RescueClinic />} />
       <Route path="/donate" element={<Donate />} />
       <Route path="/listDonations" element={<ListDonations />} />
+      <Route path="/qrCode" element={<QRCodeGenerator />} />
+      <Route path="/adminHome" element={<AdminHome />} />
+      <Route path="/listSRequests" element={<ListshelterRequests />} />
+      <Route path="/listCRequests" element={<ListclinicRequests />} />
+      <Route path="/adminRescue" element={<AdminRescue />} />
     </Routes>
   </BrowserRouter>
 );

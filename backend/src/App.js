@@ -22,6 +22,7 @@ const rescueController = require("./Controllers/rescueController");
 const blogsController = require("./Controllers/blogsController");
 const contactController = require("./Controllers/contactController");
 const donationController = require("./Controllers/donationController");
+const adminController = require("./Controllers/adminController");
 const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
@@ -65,6 +66,12 @@ app.post("/addContact", contactController.addContact);
 app.get("/getShelters", shelterController.getShelter);
 app.get("/getDonations", donationController.getDonations);
 app.post("/addDonation", donationController.addDonation);
+app.get("/getAdmins", adminController.getAdmins);
+app.post("/addClinicRequest", clinicController.addClinicRequest);
+app.post("/addShelterRequest", shelterController.addShelterRequest);
+app.get("/getClinicRequests", clinicController.getClinicRequests);
+app.get("/getShelterRequests", shelterController.getShelterRequests);
+
 app.use(auth);
 
 const server = app.listen(port, () => {
