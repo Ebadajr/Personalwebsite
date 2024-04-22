@@ -157,12 +157,6 @@ function AdminHome() {
                   </a>
                   <div class="dropdown-menu rounded-0 m-0">
                     <a
-                      href="/DS"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    >
-                      Donation
-                    </a>
-                    <a
                       href="/"
                       class="btn btn-lg btn-primary px-3 d-none d-lg-block"
                     >
