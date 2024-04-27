@@ -36,6 +36,7 @@ import AdminHome from "./components/adminHome";
 import ListshelterRequests from "./components/listShelterRequests";
 import ListclinicRequests from "./components/listClinicRequests";
 import AdminRescue from "./components/adminRescue";
+import ListAdoptions from "./components/adoptionRequests";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
@@ -72,6 +73,7 @@ root.render(
       <Route path="/listSRequests" element={<ListshelterRequests />} />
       <Route path="/listCRequests" element={<ListclinicRequests />} />
       <Route path="/adminRescue" element={<AdminRescue />} />
+      <Route path="/adoptionRequests" element={<ListAdoptions />} />
     </Routes>
   </BrowserRouter>
 );

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const userModel = require("./user.js");
 
 const petSchema = new Schema({
   name: {
@@ -9,6 +8,17 @@ const petSchema = new Schema({
   },
   Breed: {
     type: String,
+  },
+  age: {
+    type: Number,
+  },
+  description: {
+    type: String,
+  },
+  type: {
+    type: String,
+    enum: ["owned", "adoption"],
+    required: true,
   },
 });
 

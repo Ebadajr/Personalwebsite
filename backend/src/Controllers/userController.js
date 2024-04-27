@@ -160,6 +160,8 @@ const addPet = async (req, res) => {
   var c = pet.create({
     name: req.body.name,
     Breed: req.body.breed,
+    age: req.body.age,
+    type: "owned",
   });
 
   p.pets.push((await c)._id);

@@ -2,7 +2,7 @@ import http from "./http-common";
 
 class formService {
   newForm(book) {
-    console.log("here");
+    console.log(book);
 
     return http.post("/newForm", book);
   }

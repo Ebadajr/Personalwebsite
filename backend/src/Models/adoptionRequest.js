@@ -7,10 +7,10 @@ const adoptionRequestSchema = new Schema(
       type: String,
       required: true,
     },
-    mobile: {
+    PetName: {
       type: String,
     },
-    Address: {
+    Breed: {
       type: String,
     },
   },

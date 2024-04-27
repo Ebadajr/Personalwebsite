@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import caro1 from "../img/blog-1.jpg";
+import { useNavigate } from "react-router-dom";
 import userService from "../services/user.service";
 
-function Adoption() {
+var res = 0;
+function ListAdoptions() {
   const [bookings, setBookings] = useState([]);
 
-  const adopt = (id) => {
-    userService
-      .adoptPet(id)
-      .then(() => {
-        alert("Request sent");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   const style4 = {
     height: "36px",
     width: "36px",
@@ -25,17 +15,14 @@ function Adoption() {
   const style5 = {
     background: "#111111",
   };
-  const font = {
-    "font-size": "24px",
-  };
 
   useEffect(() => {
     async function fetchBookings() {
       try {
-        // Call the backend function listBookings here
-        const response = await fetch("http://localhost:7000/allpets");
+        const response = await fetch(
+          "http://localhost:7000/getAdoptionRequests"
+        );
         const data = await response.json();
-
         setBookings(data); // Assuming data is an array of booking objects
       } catch (error) {
         console.error("Error fetching bookings:", error);
@@ -45,39 +32,51 @@ function Adoption() {
 
     fetchBookings();
   }, []);
+  const acceptRequest = (id) => {
+    userService
+      .createClinic(id)
+      .then(() => {
+        alert("Accepted");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
-      <meta charset="utf-8" />
-      <title>Rafeeky</title>
-      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-      <meta content="Free HTML Templates" name="keywords" />
-      <meta content="Free HTML Templates" name="description" />
+      <head>
+        <meta charset="utf-8" />
+        <title>Rafeeky</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="Free HTML Templates" name="keywords" />
+        <meta content="Free HTML Templates" name="description" />
 
-      <link href="img/favicon.ico" rel="icon" />
+        <link href="img/favicon.ico" rel="icon" />
 
-      <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
-        rel="stylesheet"
-      />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
+          rel="stylesheet"
+        />
 
-      <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-        rel="stylesheet"
-      />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+          rel="stylesheet"
+        />
 
-      <link href="lib/flaticon/font/flaticon.css" rel="stylesheet" />
+        <link href="lib/flaticon/font/flaticon.css" rel="stylesheet" />
 
-      <link
-        href="lib/owlcarousel/assets/owl.carousel.min.css"
-        rel="stylesheet"
-      />
-      <link
-        href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-        rel="stylesheet"
-      />
+        <link
+          href="lib/owlcarousel/assets/owl.carousel.min.css"
+          rel="stylesheet"
+        />
+        <link
+          href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+          rel="stylesheet"
+        />
 
-      <link href="css/style.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+      </head>
 
       <body>
         <div class="container-fluid">
@@ -145,167 +144,59 @@ function Adoption() {
         </div>
 
         <div class="container-fluid p-0">
-          <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
-              <h1 class="m-0 display-5 text-capitalize font-italic text-white">
-                <span class="text-primary">Rafeeky</span>
-              </h1>
-            </a>
-            <button
-              type="button"
-              class="navbar-toggler"
-              data-toggle="collapse"
-              data-target="#navbarCollapse"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-between px-3"
-              id="navbarCollapse"
-            >
-              <div class="navbar-nav mr-auto py-0">
-                <a href="/home" class="nav-item nav-link  ">
-                  Home
-                </a>
-                <a href="/about" class="nav-item nav-link">
-                  About
-                </a>
-                <a href="/service" class="nav-item nav-link">
-                  Service
-                </a>
-                <a href="/cart" class="nav-item nav-link">
-                  products
-                </a>
-                <a href="/clinic" class="nav-item nav-link">
-                  Clinics
-                </a>
-                <a href="/contact" class="nav-item nav-link  ">
-                  Contact
-                </a>
-                <a href="/adoption" class="nav-item nav-link active ">
-                  Adoption
-                </a>
-                <div class="nav-item dropdown">
-                  <a
-                    href="#"
-                    class="nav-link dropdown-toggle"
-                    data-toggle="dropdown"
-                  >
-                    More
+          <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+              <a href="" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-5 text-capitalize font-italic text-white">
+                  <span class="text-primary">Rafeeky</span>
+                </h1>
+              </a>
+              <button
+                type="button"
+                class="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#navbarCollapse"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse justify-content-between px-3"
+                id="navbarCollapse"
+              >
+                <div class="navbar-nav mr-auto py-0">
+                  <a href="/adminHome" class="nav-item nav-link ">
+                    Home
                   </a>
-                  <div class="dropdown-menu rounded-0 m-0">
-                    <a
-                      href="/myPets"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    >
-                      my pets
-                    </a>
-                    <a
-                      href="/blogs"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    >
-                      blogs
-                    </a>
-                    <a
-                      href="/events"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    >
-                      Events
-                    </a>
-                    <a
-                      href="/rescue"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    >
-                      Rescue form
-                    </a>
-                    <a
-                      href="/donate"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    >
-                      Donation
-                    </a>
-                    <a
-                      href="/"
-                      class="btn btn-lg btn-primary px-3 d-none d-lg-block"
-                    >
-                      Logout
-                    </a>
-                  </div>
                 </div>
               </div>
-              <a href="/profile">
-                <i class="fa-regular fa-user" style={font}></i>
-              </a>
-            </div>
-          </nav>
+            </nav>
+          </div>
         </div>
 
-        <div class="container pt-5">
-          <div class="d-flex flex-column text-center mb-5 pt-5">
-            <h4 class="text-secondary mb-3">
-              Browse now through our collection
-            </h4>
-            <h1 class="display-4 m-0">
-              <span class="text-primary">Adoption</span>
-            </h1>
-          </div>
-
-          <div class="row pb-3">
-            <div class="row pb-3">
-              {bookings.map((booking, index) => (
-                <div class="col-lg-4 mb-4" key={index}>
-                  <div class="card border-0 mb-2">
-                    <img class="card-img-top" src={caro1} alt="" />
-                    <div class="card-body">
-                      <h5 class="card-title">{booking.name}</h5>
-                      <p class="card-text">Breed: {booking.Breed}</p>
-                      <p class="card-text">Age: {booking.age} years old</p>
-                      <p class="card-text">
-                        Description: {booking.description}
-                      </p>
-                      <button
-                        className="btn btn-lg btn-primary mt-3 px-4"
-                        onClick={() => adopt(booking._id)}
-                      >
-                        Accept
-                      </button>
-                    </div>
+        <div className="container">
+          <div className="row">
+            {bookings.map((booking, index) => (
+              <div className="col-lg-4" key={index}>
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      Client {booking.email} wants to adopt
+                    </h5>
+                    <p className="card-text">Pet: {booking.PetName}</p>
+                    <p className="card-text">Breed: {booking.Breed}</p>
                   </div>
+                  <button
+                    className="btn btn-lg btn-primary mt-3 px-4"
+                    onClick={() => acceptRequest(booking._id)}
+                  >
+                    Accept
+                  </button>
+                  <button className="btn btn-lg btn-primary mt-3 px-4">
+                    Reject
+                  </button>
                 </div>
-              ))}
-            </div>
-
-            <div class="col-lg-12">
-              <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center mb-4">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo; Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">
-                      1
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      2
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      3
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">Next &raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -474,4 +365,4 @@ function Adoption() {
   );
 }
 
-export default Adoption;
+export default ListAdoptions;

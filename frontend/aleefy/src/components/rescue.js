@@ -17,12 +17,12 @@ function Rescue() {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "picture") {
-      // If the input is for picture, update the state with the file
       setFormData({ ...formData, [name]: files[0] });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -311,8 +311,9 @@ function Rescue() {
                     <input
                       type="text"
                       className="form-control border-0 p-4"
+                      id="description"
                       placeholder="Description"
-                      name="Description"
+                      name="description"
                       value={formData.description}
                       onChange={handleChange}
                       required

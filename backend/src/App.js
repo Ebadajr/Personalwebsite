@@ -23,6 +23,7 @@ const blogsController = require("./Controllers/blogsController");
 const contactController = require("./Controllers/contactController");
 const donationController = require("./Controllers/donationController");
 const adminController = require("./Controllers/adminController");
+const adoptionController = require("./Controllers/adoptionController");
 const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
@@ -51,7 +52,9 @@ app.use(express.json());
 //app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+app.get("/allpets", petController.getPets);
 app.post("/newForm", rescueController.addRescue);
+
 app.post("/addClinic", clinicController.addClinic);
 app.get("/listBookings", bookingController.listBookings);
 app.get("/listForms", rescueController.listForms);
@@ -60,7 +63,7 @@ app.use("/login", userController.login);
 app.post("/add", userController.addUser);
 app.post("/addShelter", shelterController.addShelter);
 app.get("/myPet", userController.myPets);
-app.get("allpets", petController.getPets);
+
 app.get("/getClinics", clinicController.getClinics);
 app.post("/addContact", contactController.addContact);
 app.get("/getShelters", shelterController.getShelter);
@@ -71,7 +74,8 @@ app.post("/addClinicRequest", clinicController.addClinicRequest);
 app.post("/addShelterRequest", shelterController.addShelterRequest);
 app.get("/getClinicRequests", clinicController.getClinicRequests);
 app.get("/getShelterRequests", shelterController.getShelterRequests);
-
+app.post("/newAdoption", adoptionController.addAdoption);
+app.get("/getAdoptionRequests", adoptionController.getAdoptions);
 app.use(auth);
 
 const server = app.listen(port, () => {

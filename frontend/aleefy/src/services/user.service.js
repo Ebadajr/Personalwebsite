@@ -26,23 +26,8 @@ class UserService {
   getName() {
     return http.get("/getName");
   }
-  adoptBella(body) {
-    return http.post("/newPet", body);
-  }
-  adoptMax(body) {
-    return http.post("/newPet", body);
-  }
-  adoptDaisy(body) {
-    return http.post("/newPet", body);
-  }
-  adoptOliver(body) {
-    return http.post("/newPet", body);
-  }
-  adoptLuna(body) {
-    return http.post("/newPet", body);
-  }
-  adoptCharlie(body) {
-    return http.post("/newPet", body);
+  adoptPet(user) {
+    return http.post("/newAdoption", { id: user });
   }
   myPets() {
     return http.get("/myPet");

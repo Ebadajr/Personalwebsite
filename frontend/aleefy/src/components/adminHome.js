@@ -146,6 +146,9 @@ function AdminHome() {
                 <a href="/adminRescue" class="nav-item nav-link">
                   Rescue forms
                 </a>
+                <a href="/adoptionRequests" class="nav-item nav-link">
+                  Adoption Requests
+                </a>
 
                 <div class="nav-item dropdown">
                   <a

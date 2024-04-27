@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 const addRescue = async (req, res) => {
   try {
-    console.log(req.body);
+    console.log(req.body.picure);
     const rescueForm = await Rescue.create({
       name: req.body.name,
       email: req.body.email,
@@ -17,6 +17,7 @@ const addRescue = async (req, res) => {
 
     res.status(200).send("Rescue form sent");
   } catch (e) {
+    console.log(e);
     res.status(400).send(e);
   }
 };
