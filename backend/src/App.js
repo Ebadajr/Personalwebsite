@@ -24,7 +24,7 @@ const contactController = require("./Controllers/contactController");
 const donationController = require("./Controllers/donationController");
 const adminController = require("./Controllers/adminController");
 const adoptionController = require("./Controllers/adoptionController");
-const port = process.env.PORT || "7000";
+const port = process.env.PORT || "8000";
 const http = require("http");
 const { Server } = require("socket.io");
 
