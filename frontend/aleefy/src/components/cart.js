@@ -12,35 +12,35 @@ function Cart() {
       id: 1,
       name: "Stylish pet appearel",
       price: 26.0,
-      quantity: 4,
+      quantity: 0,
       imgsrc: im2,
     },
     {
       id: 2,
       name: "Interactive treat dispenser",
       price: 26.0,
-      quantity: 1,
+      quantity: 0,
       imgsrc: im1,
     },
     {
       id: 3,
       name: "Cat scratching post",
       price: 30.0,
-      quantity: 1,
+      quantity: 0,
       imgsrc: im3,
     },
     {
       id: 4,
       name: "Pet Dental Care Kit",
       price: 30.0,
-      quantity: 1,
+      quantity: 0,
       imgsrc: im4,
     },
     {
       id: 5,
       name: "Portable water bottle for pets",
       price: 40.0,
-      quantity: 1,
+      quantity: 0,
       imgsrc: im5,
     },
   ]);
@@ -224,7 +224,12 @@ function Cart() {
         <div className="col-lg-8">
           {cartItems.map((item) => (
             <div className="card border-0 mb-2" key={item.id}>
-              <img className="card-img-top" src={item.imgsrc} alt="" />
+              <img
+                className="card-img-top"
+                src={item.imgsrc}
+                alt={item.name}
+                style={{ maxWidth: "40%", height: "auto", padding: 20 }}
+              />
               <div className="card-body bg-light p-4">
                 <h4 className="card-title text-truncate">{item.name}</h4>
                 <div className="d-flex mb-3">

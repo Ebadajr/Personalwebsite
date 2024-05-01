@@ -52,10 +52,23 @@ const getClinicRequests = async (req, res) => {
 
   res.status(200).send(users);
 };
+const rejectclinic = async (req, res) => {
+  try {
+    id = req.body.id;
+
+    const request = await clinicRequest.findById(id);
+    request.deleteOne();
+    res.status(200).send("request rejected and deleted");
+  } catch (e) {
+    console.log(e);
+    res.status(400).send(e);
+  }
+};
 
 module.exports = {
   addClinic,
   getClinics,
   addClinicRequest,
   getClinicRequests,
+  rejectclinic,
 };

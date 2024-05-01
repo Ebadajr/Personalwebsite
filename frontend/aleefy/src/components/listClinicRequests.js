@@ -35,12 +35,24 @@ function ListclinicRequests() {
       .createClinic(id)
       .then(() => {
         alert("Accepted");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const rejectRequest = (id) => {
+    userService
+      .rejectclinic(id)
+      .then(() => {
+        alert("Rejected");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <head>
@@ -187,7 +199,10 @@ function ListclinicRequests() {
                   >
                     Accept
                   </button>
-                  <button className="btn btn-lg btn-primary mt-3 px-4">
+                  <button
+                    className="btn btn-lg btn-primary mt-3 px-4"
+                    onClick={() => rejectRequest(booking._id)}
+                  >
                     Reject
                   </button>
                 </div>

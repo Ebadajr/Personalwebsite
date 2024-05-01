@@ -76,6 +76,8 @@ app.get("/getClinicRequests", clinicController.getClinicRequests);
 app.get("/getShelterRequests", shelterController.getShelterRequests);
 app.post("/newAdoption", adoptionController.addAdoption);
 app.get("/getAdoptionRequests", adoptionController.getAdoptions);
+app.post("/rejectclinic", clinicController.rejectclinic);
+app.post("/rejectshelter", shelterController.rejectshelter);
 app.use(auth);
 
 const server = app.listen(port, () => {

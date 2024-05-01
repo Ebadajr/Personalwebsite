@@ -36,6 +36,18 @@ function ListshelterRequests() {
       .createShelter(id)
       .then(() => {
         alert("Accepted");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const rejectRequest = (id) => {
+    userService
+      .rejectshelter(id)
+      .then(() => {
+        alert("rejected");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -186,7 +198,10 @@ function ListshelterRequests() {
                   >
                     Accept
                   </button>
-                  <button className="btn btn-lg btn-primary mt-3 px-4">
+                  <button
+                    className="btn btn-lg btn-primary mt-3 px-4"
+                    onClick={() => rejectRequest(booking._id)}
+                  >
                     Reject
                   </button>
                 </div>

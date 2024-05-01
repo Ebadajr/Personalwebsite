@@ -47,6 +47,12 @@ class UserService {
   addBlogs(form) {
     return http.post("/addblog", form);
   }
+  rejectclinic(user) {
+    return http.post("/rejectclinic", { id: user });
+  }
+  rejectshelter(user) {
+    return http.post("/rejectshelter", { id: user });
+  }
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

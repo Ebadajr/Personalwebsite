@@ -275,7 +275,7 @@ function Login(props) {
                       type="tel"
                       className="form-control"
                       id="phone"
-                      name="phone"
+                      name="mobile"
                       value={user.mobile}
                       onChange={handleInputChange}
                       required

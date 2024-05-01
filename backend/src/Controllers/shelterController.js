@@ -53,10 +53,23 @@ const getShelterRequests = async (req, res) => {
 
   res.status(200).send(users);
 };
+const rejectshelter = async (req, res) => {
+  try {
+    id = req.body.id;
+
+    const request = await shelterRequest.findById(id);
+    request.deleteOne();
+    res.status(200).send("request rejected and deleted");
+  } catch (e) {
+    console.log(e);
+    res.status(400).send(e);
+  }
+};
 
 module.exports = {
   addShelter,
   getShelter,
   addShelterRequest,
   getShelterRequests,
+  rejectshelter,
 };

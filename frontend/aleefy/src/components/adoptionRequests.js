@@ -33,14 +33,7 @@ function ListAdoptions() {
     fetchBookings();
   }, []);
   const acceptRequest = (id) => {
-    userService
-      .createClinic(id)
-      .then(() => {
-        alert("Accepted");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    alert("Accepted");
   };
 
   return (
