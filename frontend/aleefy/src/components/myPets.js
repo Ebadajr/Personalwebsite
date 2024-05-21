@@ -259,6 +259,7 @@ function MyPets() {
                   <div className="card-body">
                     <h5 className="card-title">{booking.name}</h5>
                     <p className="card-text">Breed: {booking.Breed}</p>
+                    <p className="card-text">Clinic notes: {booking.notes}</p>
                   </div>
                 </div>
               </div>

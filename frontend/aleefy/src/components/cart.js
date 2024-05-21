@@ -6,6 +6,7 @@ import im1 from "../img/1.jpg";
 import im3 from "../img/3.jpg";
 import im4 from "../img/4.jpg";
 import im5 from "../img/5.jpg";
+
 function Cart() {
   const [cartItems, setCartItems] = useState([
     {
@@ -58,73 +59,117 @@ function Cart() {
     (total, item) => total + item.price * item.quantity,
     0
   );
-  const font = {
-    "font-size": "24px",
+
+  const handleIncrement = (id, quantity) => {
+    updateQuantity(id, quantity + 1);
   };
+
+  const handleDecrement = (id, quantity) => {
+    if (quantity > 0) {
+      updateQuantity(id, quantity - 1);
+    }
+  };
+
+  const font = {
+    fontSize: "24px",
+  };
+
   return (
     <div className="container">
-      <div class="row bg-secondary py-2 px-lg-5">
-        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-          <div class="d-inline-flex align-items-center">
-            <a class="text-white pr-3" href="">
-              FAQs
-            </a>
-            <span class="text-white">|</span>
-            <a class="text-white px-3" href="">
-              Help
-            </a>
-            <span class="text-white">|</span>
-            <a class="text-white pl-3" href="">
-              Support
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-6 text-center text-lg-right">
-          <div class="d-inline-flex align-items-center">
-            <a class="text-white px-3" href="">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a class="text-white px-3" href="">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a class="text-white px-3" href="">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a class="text-white px-3" href="">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a class="text-white pl-3" href="">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="row py-3 px-lg-5">
-        <div class="col-lg-4">
-          <a href="" class="navbar-brand d-none d-lg-block">
-            <h1 class="m-0 display-5 text-capitalize">
-              <span class="text-primary">Rafeeky</span>
-            </h1>
-          </a>
-        </div>
-        <div class="col-lg-8 text-center text-lg-right">
-          <div class="d-inline-flex align-items-center">
-            <div class="d-inline-flex flex-column text-center pr-3 border-right">
-              <h6>Opening Hours</h6>
-              <p class="m-0">8.00AM - 9.00PM</p>
-            </div>
-            <div class="d-inline-flex flex-column text-center px-3 border-right">
-              <h6>Email Us</h6>
-              <p class="m-0">info@example.com</p>
-            </div>
-            <div class="d-inline-flex flex-column text-center pl-3">
-              <h6>Call Us</h6>
-              <p class="m-0">+012 345 6789</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <meta charset="utf-8" />
+      <title>Rafeeky</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+      <meta content="Free HTML Templates" name="keywords" />
+      <meta content="Free HTML Templates" name="description" />
 
+      <link href="img/favicon.ico" rel="icon" />
+
+      <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet"
+      />
+
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        rel="stylesheet"
+      />
+
+      <link href="lib/flaticon/font/flaticon.css" rel="stylesheet" />
+
+      <link
+        href="lib/owlcarousel/assets/owl.carousel.min.css"
+        rel="stylesheet"
+      />
+      <link
+        href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+        rel="stylesheet"
+      />
+
+      <link href="css/style.css" rel="stylesheet" />
+
+      <div class="container-fluid">
+        <div class="row bg-secondary py-2 px-lg-5">
+          <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+            <div class="d-inline-flex align-items-center">
+              <a class="text-white pr-3" href="">
+                FAQs
+              </a>
+              <span class="text-white">|</span>
+              <a class="text-white px-3" href="">
+                Help
+              </a>
+              <span class="text-white">|</span>
+              <a class="text-white pl-3" href="">
+                Support
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+              <a class="text-white px-3" href="">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a class="text-white px-3" href="">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a class="text-white px-3" href="">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a class="text-white px-3" href="">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a class="text-white pl-3" href="">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row py-3 px-lg-5">
+          <div class="col-lg-4">
+            <a href="" class="navbar-brand d-none d-lg-block">
+              <h1 class="m-0 display-5 text-capitalize">
+                <span class="text-primary">Rafeeky</span>
+              </h1>
+            </a>
+          </div>
+          <div class="col-lg-8 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+              <div class="d-inline-flex flex-column text-center pr-3 border-right">
+                <h6>Opening Hours</h6>
+                <p class="m-0">8.00AM - 9.00PM</p>
+              </div>
+              <div class="d-inline-flex flex-column text-center px-3 border-right">
+                <h6>Email Us</h6>
+                <p class="m-0">info@example.com</p>
+              </div>
+              <div class="d-inline-flex flex-column text-center pl-3">
+                <h6>Call Us</h6>
+                <p class="m-0">+012 345 6789</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
           <a href="" class="navbar-brand d-block d-lg-none">
@@ -157,7 +202,7 @@ function Cart() {
               <a href="/cart" class="nav-item nav-link active">
                 products
               </a>
-              <a href="/clinic" class="nav-item nav-link">
+              <a href="/clinic" class="nav-item nav-link ">
                 Clinics
               </a>
               <a href="/contact" class="nav-item nav-link  ">
@@ -232,20 +277,24 @@ function Cart() {
               />
               <div className="card-body bg-light p-4">
                 <h4 className="card-title text-truncate">{item.name}</h4>
-                <div className="d-flex mb-3">
-                  <div className="price">${item.price.toFixed(2)}</div>
-                  <div className="quantity">
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      min="1"
-                      className="quantity-field"
-                      onChange={(e) =>
-                        updateQuantity(item.id, parseInt(e.target.value))
-                      }
-                    />
+                <div className="d-flex mb-3 align-items-center">
+                  <div className="price mr-3">${item.price.toFixed(2)}</div>
+                  <div className="quantity d-flex align-items-center">
+                    <button
+                      className="btn btn-secondary btn-sm mr-2"
+                      onClick={() => handleDecrement(item.id, item.quantity)}
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      className="btn btn-secondary btn-sm ml-2"
+                      onClick={() => handleIncrement(item.id, item.quantity)}
+                    >
+                      +
+                    </button>
                   </div>
-                  <div className="subtotal">
+                  <div className="subtotal ml-auto">
                     ${(item.price * item.quantity).toFixed(2)}
                   </div>
                 </div>

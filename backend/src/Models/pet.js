@@ -20,6 +20,12 @@ const petSchema = new Schema({
     enum: ["owned", "adoption"],
     required: true,
   },
+  notes: {
+    type: String,
+  },
+  owner: {
+    type: String,
+  },
 });
 
 //const patient = mongoose.model("patient", patientSchema);

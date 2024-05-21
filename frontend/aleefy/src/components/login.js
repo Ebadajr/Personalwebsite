@@ -8,6 +8,9 @@ function Login(props) {
     password: "",
     location: "",
     mobile: 0,
+    description: "",
+    firstName: "",
+    lastName: "",
   };
 
   const [user, setUser] = useState(initialUserState);
@@ -24,6 +27,7 @@ function Login(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     // Login logic
+    console.log(user.firstName);
     if (!signupMode) {
       UserService.login(user)
         .then((response) => {
@@ -221,37 +225,42 @@ function Login(props) {
                       </div>
                     </>
                   )}
+
                   <div className="row">
-                    <div className="col-xs-12 col-sm-6">
-                      <div className="form-group">
-                        <label htmlFor="first_name">
-                          First Name<span className="req">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="first_name"
-                          name="first_name"
-                          onChange={handleInputChange}
-                          required
-                        />
+                    {selectedSignupType === "user" && (
+                      <div className="col-xs-12 col-sm-6">
+                        <div className="form-group">
+                          <label htmlFor="first_name">
+                            First Name<span className="req">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="first_name"
+                            name="first_name"
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-xs-12 col-sm-6">
-                      <div className="form-group">
-                        <label htmlFor="last_name">
-                          Last Name<span className="req">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="last_name"
-                          name="last_name"
-                          onChange={handleInputChange}
-                          required
-                        />
+                    )}
+                    {selectedSignupType === "user" && (
+                      <div className="col-xs-12 col-sm-6">
+                        <div className="form-group">
+                          <label htmlFor="last_name">
+                            Last Name<span className="req">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="last_name"
+                            name="last_name"
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                   <div className="form-group">
                     <label htmlFor="email">
@@ -308,6 +317,21 @@ function Login(props) {
                       />
                     </div>
                   )}
+
+                  {selectedSignupType === "clinic" && (
+                    <div className="form-group">
+                      <label htmlFor="description">description</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="description"
+                        name="description"
+                        value={user.description}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  )}
+
                   {selectedSignupType === "shelter" && (
                     <div className="form-group">
                       <label htmlFor="location">Location</label>

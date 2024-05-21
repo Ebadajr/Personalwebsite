@@ -19,6 +19,33 @@ function Donate() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  const handleCardNumberChange = (e) => {
+    const { value } = e.target;
+    const formattedValue = value
+      .replace(/\s+/g, "")
+      .replace(/[^0-9]/gi, "")
+      .replace(/(\d{4})/g, "$1 ")
+      .trim();
+    setFormData({ ...formData, cardNumber: formattedValue });
+  };
+
+  const handleExpiryDateChange = (e) => {
+    const { value } = e.target;
+    const formattedValue = value
+      .replace(/[^0-9]/g, "")
+      .replace(/^([2-9])$/g, "0$1")
+      .replace(/^(1{1})([3-9]{1})$/g, "0$1/$2")
+      .replace(/^0{1,}/g, "0")
+      .replace(/^([0-1]{1}[0-9]{1})([0-9]{1,4}).*/g, "$1/$2")
+      .trim();
+    setFormData({ ...formData, expiryDate: formattedValue });
+  };
+
+  const handleCVVChange = (e) => {
+    const { value } = e.target;
+    const formattedValue = value.replace(/[^0-9]/g, "");
+    setFormData({ ...formData, cvv: formattedValue });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -279,23 +306,25 @@ function Donate() {
             <input
               type="text"
               className="form-control"
-              pattern="[0-9]{16}"
-              title="card number must be 16 digits"
               id="cardNumber"
               name="cardNumber"
               value={formData.cardNumber}
-              onChange={handleChange}
+              onChange={handleCardNumberChange}
+              maxLength="19"
+              placeholder="1234 5678 9012 3456"
             />
           </div>
           <div className="form-group">
-            <label htmlFor="expiryDate">Expiry Date:</label>
+            <label htmlFor="expiryDate">Expiry Date (MM/YY):</label>
             <input
               type="text"
               className="form-control"
               id="expiryDate"
               name="expiryDate"
               value={formData.expiryDate}
-              onChange={handleChange}
+              onChange={handleExpiryDateChange}
+              maxLength="5"
+              placeholder="MM/YY"
             />
           </div>
           <div className="form-group">
@@ -306,7 +335,9 @@ function Donate() {
               id="cvv"
               name="cvv"
               value={formData.cvv}
-              onChange={handleChange}
+              onChange={handleCVVChange}
+              maxLength="3"
+              placeholder="CVV"
             />
           </div>
           <div className="form-group">

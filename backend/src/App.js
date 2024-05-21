@@ -24,7 +24,7 @@ const contactController = require("./Controllers/contactController");
 const donationController = require("./Controllers/donationController");
 const adminController = require("./Controllers/adminController");
 const adoptionController = require("./Controllers/adoptionController");
-const port = process.env.PORT || "8000";
+const port = process.env.PORT || "7000";
 const http = require("http");
 const { Server } = require("socket.io");
 
@@ -54,7 +54,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.get("/allpets", petController.getPets);
 app.post("/newForm", rescueController.addRescue);
-
+app.post("/addNote", petController.addNote);
 app.post("/addClinic", clinicController.addClinic);
 app.get("/listBookings", bookingController.listBookings);
 app.get("/listForms", rescueController.listForms);
@@ -78,6 +78,7 @@ app.post("/newAdoption", adoptionController.addAdoption);
 app.get("/getAdoptionRequests", adoptionController.getAdoptions);
 app.post("/rejectclinic", clinicController.rejectclinic);
 app.post("/rejectshelter", shelterController.rejectshelter);
+app.get("/getAllPets", petController.getAllPets);
 app.use(auth);
 
 const server = app.listen(port, () => {

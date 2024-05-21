@@ -14,6 +14,12 @@ import p3 from "../img/price-3.jpg";
 var res = 0;
 function Clinics() {
   const [bookings, setBookings] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [locations, setLocations] = useState([]);
+
+  const handleLocationChange = (e) => {
+    setSelectedLocation(e.target.value);
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,7 +53,11 @@ function Clinics() {
         const response = await fetch("http://localhost:7000/getClinics");
         const data = await response.json();
         console.log("Fetched data:", data);
-        setBookings(data); // Assuming data is an array of booking objects
+        setBookings(data);
+        const uniqueLocations = [
+          ...new Set(data.map((clinic) => clinic.location)),
+        ];
+        setLocations(uniqueLocations);
       } catch (error) {
         console.error("Error fetching bookings:", error);
         // Handle error here
@@ -56,6 +66,9 @@ function Clinics() {
 
     fetchClinics();
   }, []);
+  const filteredBookings = selectedLocation
+    ? bookings.filter((booking) => booking.location === selectedLocation)
+    : bookings;
 
   const divStyle = {
     top: "0",
@@ -100,7 +113,10 @@ function Clinics() {
       <meta content="Free HTML Templates" name="description" />
 
       <link href="img/favicon.ico" rel="icon" />
-
+      <script
+        src="https://kit.fontawesome.com/87374739dc.js"
+        crossorigin="anonymous"
+      ></script>
       <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
         rel="stylesheet"
@@ -282,66 +298,44 @@ function Clinics() {
           </div>
         </nav>
       </div>
-      <div class="container-fluid bg-light pt-5">
-        <div class="container py-5">
-          <div class="row pb-3">
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
-                <h3 class="mb-3">Prime vet</h3>
-                <p>
-                  Address: New Cairo 1, Cairo Governorate, Egypt Phone: +010
-                  01053180 Website:www.pawsandclawsclinic.com Services:
-                  Vaccinations, surgeries, dental care, grooming Operating
-                  Hours: Mon-Sat 9:00 AM - 7:00 PM, Sun 10:00 AM - 9:00 PM
-                </p>
-                <a
-                  href="https://maps.app.goo.gl/NMwVVK1mUj5XfGq57"
-                  class="text-uppercase font-weight-bold"
-                >
-                  Location
-                </a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
-                <h3 class="mb-3">7 pets</h3>
-                <p>
-                  Address: Mohammed Nagib Axis, Cairo Egypt Phone: + 010
-                  66644045 Website: www.7pets.net Services: Vaccinations,
-                  surgeries, dental care, grooming Operating Hours: Mon-Sat 9:00
-                  AM -7:00 PM, Sun 10:00 AM - 10:00 PM
-                </p>
-                <a
-                  href="https://maps.app.goo.gl/K43kL49UbDiTx3oy5"
-                  class="text-uppercase font-weight-bold"
-                >
-                  Location
-                </a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
-                <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
-                <h3 class="mb-3">Petsy</h3>
-                <p>
-                  Address: 5th settlement Cairo Egypt Phone: + 012 81808459
-                  Website: www.petsy.online Services: Vaccinations, surgeries,
-                  dental care, grooming Operating Hours: Mon-Sat 9:00 AM -
-                  7:00PM, Sun 10:00 AM - 10:00 PM
-                </p>
-                <a
-                  href="https://maps.app.goo.gl/GwTQkmT7xFPspD1M7"
-                  class="text-uppercase font-weight-bold"
-                >
-                  Location
-                </a>
-              </div>
-            </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <select
+              value={selectedLocation}
+              onChange={handleLocationChange}
+              style={{ marginTop: "10px" }}
+            >
+              <option value="">All Locations</option>
+              {locations.map((location) => (
+                <option key={location} value={location}>
+                  {location}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
+      <div className="container-fluid bg-light pt-5">
+        <div className="row">
+          {filteredBookings.map((booking, index) => (
+            <div className="col-md-6 col-lg-4 mb-4" key={index}>
+              <div className="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                <h3 className="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
+                <h3 className="mb-3">{booking.email}</h3>
+                <p> {booking.description}</p>
+                <a
+                  href={booking.Address}
+                  className="text-uppercase font-weight-bold"
+                >
+                  Location
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div class="container-fluid bg-light">
         <div class="container">
           <div class="row align-items-center">

@@ -14,13 +14,13 @@ const addUser = async (req, res) => {
     const user = await User.create({
       email: req.body.username,
       password: hashedPassword,
-      firstName: req.body.firstname,
-      lastName: req.body.lastname,
+      firstName: req.body.first_name,
+      lastName: req.body.last_name,
       mobile: req.body.mobile,
     });
 
     const token = createToken(user.name);
-
+    const maxAge = 3 * 24 * 60 * 60;
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).send("admin added");
   } catch (e) {
@@ -57,7 +57,6 @@ const login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email: req.body.username });
-
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -99,7 +98,7 @@ const getUser = async (req, res) => {
   });
   const p = await user.findById(id);
 
-  res.status(200).json(p.email);
+  res.status(200).json(p.firstName);
 };
 
 const getMobile = async (req, res) => {
@@ -162,6 +161,7 @@ const addPet = async (req, res) => {
     Breed: req.body.breed,
     age: req.body.age,
     type: "owned",
+    owner: p.email,
   });
 
   p.pets.push((await c)._id);

@@ -6,6 +6,9 @@ const clinicSchema = new Schema({
   Address: {
     type: String,
   },
+  description: {
+    type: String,
+  },
 });
 
 //const patient = mongoose.model("patient", patientSchema);

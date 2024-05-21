@@ -219,25 +219,6 @@ function Events() {
       </div>
 
       {/* Upcoming Events */}
-      <div className="container mt-5">
-        <h2 className="text-center mb-5">Upcoming Events</h2>
-        <div className="row">
-          {upcomingEvents.map((event, index) => (
-            <div className="col-lg-4" key={index}>
-              <div className="card mb-4">
-                <img src={caro1} className="card-img-top" alt="Event" />
-                <div className="card-body">
-                  <h5 className="card-title">{event.title}</h5>
-                  <p className="card-text">{event.date}</p>
-                  <p className="card-text">{event.time}</p>
-                  <p className="card-text">{event.location}</p>
-                  <p className="card-text">{event.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

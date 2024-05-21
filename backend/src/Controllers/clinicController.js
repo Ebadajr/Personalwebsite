@@ -16,6 +16,7 @@ const addClinic = async (req, res) => {
       password: request.password,
       mobile: request.mobile,
       Address: request.Address,
+      description: request.description,
     });
     request.deleteOne();
     res.status(200).send(Clinc);
@@ -33,6 +34,7 @@ const addClinicRequest = async (req, res) => {
       password: hashedPassword,
       mobile: req.body.mobile,
       Address: req.body.location,
+      description: req.body.description,
     });
 
     res.status(200).send(Clinc);

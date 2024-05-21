@@ -43,7 +43,6 @@ function HomePage() {
   useEffect(() => {
     async function fetchUsername() {
       try {
-        console.log("hi");
         userService.getName().then((response) => {
           console.log(response.data);
           setFormData((prevState) => ({
@@ -237,7 +236,7 @@ function HomePage() {
                     </h3>
                     <h1 class="display-3 text-white mb-3">Like never before</h1>
                     <h3 class="text-white mb-3 d-none d-sm-block">
-                      {formData.username}
+                      Hello, {formData.username}
                     </h3>
                     <a
                       href="/about"

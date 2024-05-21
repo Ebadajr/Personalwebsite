@@ -17,6 +17,9 @@ const clinicRequestSchema = new Schema(
     Address: {
       type: String,
     },
+    description: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

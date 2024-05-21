@@ -153,6 +153,9 @@ function ClinicHome() {
                 <a href="/rescueForm" class="nav-item nav-link">
                   Rescue form
                 </a>
+                <a href="/listPets" class="nav-item nav-link">
+                  Pets
+                </a>
 
                 <div class="nav-item dropdown">
                   <a

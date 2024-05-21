@@ -5,6 +5,7 @@ class UserService {
     return http.post("/login", user);
   }
   createUser(user) {
+    console.log(user);
     return http.post("/add", user);
   }
   createClinic(user) {
@@ -52,6 +53,9 @@ class UserService {
   }
   rejectshelter(user) {
     return http.post("/rejectshelter", { id: user });
+  }
+  addNote(user) {
+    return http.post("/addNote", user);
   }
 }
 
