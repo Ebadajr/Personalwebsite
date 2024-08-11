@@ -5,15 +5,6 @@ import im2 from "../img/me.jpg";
 import lcl from "../img/lcl.jpg";
 import pets from "../img/pets.png";
 function HomePage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    date: "",
-    time: "",
-    service: "",
-    username: "",
-  });
-
   return (
     <div>
       <body>
