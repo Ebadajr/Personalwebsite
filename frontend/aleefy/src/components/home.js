@@ -64,9 +64,11 @@ function HomePage() {
                   Email
                 </a>
 
-                <button type="button" class="btn btn-outline-light">
-                  Send contact form
-                </button>
+                <a href="/contact">
+                  <button type="button" class="btn btn-outline-light">
+                    Send contact form
+                  </button>
+                </a>
               </div>
               <div class="col-lg-6">
                 <img class="downloadingI" src={im2} alt="iphone-mockup" />

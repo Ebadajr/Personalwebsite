@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import formService from "../services/form.service";
+
 var res = 0;
 function Contact() {
   const [formData, setFormData] = useState({
@@ -55,61 +55,67 @@ function Contact() {
           </nav>
         </div>
       </section>
-      <form className="py-5" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control border-0 p-4"
-            placeholder="Your Name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="email"
-            className="form-control border-0 p-4"
-            placeholder="Your Email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control border-0 p-4"
-            placeholder="Message subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <textarea
-            className="form-control border-0 p-4"
-            placeholder="Your message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows="4"
-          ></textarea>
-        </div>
+      <div className="d-flex justify-content-center align-items-center min-vh-100">
+        <form
+          className="p-5 bg-light rounded shadow-sm w-100"
+          onSubmit={handleSubmit}
+          style={{ maxWidth: "600px" }}
+        >
+          <div className="form-group mb-4">
+            <input
+              type="text"
+              className="form-control border-0 p-4"
+              placeholder="Your Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group mb-4">
+            <input
+              type="email"
+              className="form-control border-0 p-4"
+              placeholder="Your Email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group mb-4">
+            <input
+              type="text"
+              className="form-control border-0 p-4"
+              placeholder="Message subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group mb-4">
+            <textarea
+              className="form-control border-0 p-4"
+              placeholder="Your message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows="4"
+            ></textarea>
+          </div>
 
-        <div>
-          <button
-            className="btn btn-dark btn-block border-0 py-3"
-            type="submit"
-          >
-            Send Now
-          </button>
-        </div>
-      </form>
+          <div>
+            <button
+              className="btn btn-dark btn-block border-0 py-3 w-100"
+              type="submit"
+            >
+              Send Now
+            </button>
+          </div>
+        </form>
+      </div>
 
       <div
         class="container-fluid text-white py-4 px-sm-3 px-md-5"
