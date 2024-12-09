@@ -1,172 +1,284 @@
-#title {
-  background-color: #2a4d69; /* Dark Blue */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
+
+/* General Styles */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards; /* Adds fade-in animation */
 }
 
-#features {
-  padding: 10% 5%;
-  background-color: #f4f4f4; /* Light Gray */
-  position: relative;
-  z-index: 1;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-#cta {
-  background-color: #2a4d69; /* Dark Blue */
-  padding: 13% 5%;
-  text-align: center;
-}
-
-#footer {
-  background-color: #f4f4f4; /* Light Gray */
-  padding: 7% 7%;
-  text-align: center;
-}
-
+/* General Styles */
 body {
-  font-family: Montserrat;
+  font-family: "Open Sans", sans-serif; /* Use a professional font for body text */
+  background-color: #f4f4f4; /* Light Grey */
 }
 
-h1 {
-  font-family: Montserrat-black;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  padding-bottom: 3rem;
-  color: white; /* Dark Blue */
-}
-
-h3 {
-  font-family: Montserrat-bold;
-  font-size: 2.5rem;
-  color: #2a4d69; /* Dark Blue */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif; /* Use a more professional font for headings */
 }
 
 p {
-  color: #6c6c6c; /* Medium Gray */
+  font-family: "Open Sans", sans-serif; /* Ensure paragraphs use the same font */
+  color: #333; /* Dark Grey */
+}
+
+h1 {
+  font-weight: 100;
+  margin-bottom: 9%;
+  font-size: 3rem; /* Font size for h1 */
 }
 
 h2 {
-  font-family: Montserrat-black;
-  font-size: 3rem;
+  font-size: 2.5rem; /* Font size for h2 */
   line-height: 1.5;
-  color: #fff;
 }
 
-/* title-section */
+h3 {
+  font-weight: bold;
+  font-size: 2rem; /* Font size for h3 */
+  color: #333; /* Dark Grey */
+}
 
+/* Paragraph Styles */
+p {
+  color: white; /* Default paragraph color */
+}
+
+/* Title Section */
+#title {
+  background-color: #333; /* Dark Grey */
+  color: white;
+}
+
+/* Container and Navbar */
 .container-fluid {
   padding: 3% 15% 7%;
 }
 
 .navbar {
   padding-bottom: 4.5rem;
+  margin-top: -90px; /* Adjust this value as needed */
 }
 
 .navbar-brand {
-  font-family: Ubuntu-bold;
+  font-family: Ubuntu, sans-serif;
   font-size: 2.5rem;
-  color: #2a4d69; /* Dark Blue */
+  color: #e74c3c; /* Red */
 }
 
-.nav-item {
-  padding: 0 18px;
+.nav-link {
+  color: white;
 }
 
-.downloadingI {
-  width: 50%; /* Increase the size by adjusting the width */
-  border-radius: 50%; /* Make the image round */
-  transform: none; /* Remove the rotation */
-  position: static; /* Ensure the image is not positioned absolutely */
-  display: block; /* Centering the image */
-  margin: 0 auto; /* Center the image horizontally */
+.nav-item:hover .nav-link {
+  color: white; /* Red on hover */
 }
 
-/* features-section */
+/* Features Section */
+#features {
+  padding: 10% 5%;
+  background-color: #f4f4f4; /* Light Grey */
+}
 
 .featurebox {
   text-align: center;
 }
 
 .checking {
-  color: #4a6fa5; /* Lighter Blue */
+  color: #e74c3c; /* Red */
   padding: 3%;
 }
 
 .checking:hover {
-  color: #2a4d69; /* Dark Blue */
+  color: #333; /* Dark Grey */
 }
 
-/* testimonial-section */
-
+/* Testimonials Section */
 #testimonials {
-  background-color: #4a6fa5; /* Lighter Blue */
+  background-color: rgb(174, 172, 172); /* Grey */
   text-align: center;
-  color: #fff;
 }
 
-.testI {
-  width: 7%;
-  border-radius: 100%;
-  margin: 3px;
+.testimonial-slide {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between text and image */
+  align-items: center; /* Center vertically */
+  padding: 50px; /* Padding for spacing */
 }
 
-/* press-section */
+.testimonial-text {
+  flex: 1; /* Take up available space */
+  max-width: 50%; /* Limit max width */
+}
 
+.testimonial-image {
+  flex: 1; /* Take up available space */
+  display: flex; /* Center image vertically */
+  justify-content: center; /* Center image horizontally */
+}
+
+.testimonial-image img {
+  max-width: 60%; /* Make image smaller while maintaining its content */
+  max-height: 50%;
+  border-radius: 15px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+/* Press Section */
 #press {
-  background-color: #4a6fa5; /* Lighter Blue */
+  background-color: #999; /* Grey */
   text-align: center;
-  padding-bottom: 3%;
-  padding-top: 3%;
+  padding: 3%;
 }
 
 .pressI {
   width: 30%;
-  margin: 50px 50px 50px 30px;
+  margin: 50px;
 }
 
+/* Projects Section */
 #pricing {
   text-align: center;
   padding: 100px;
 }
 
-@media (max-width: 1028px) {
-  #title {
-    text-align: center;
-  }
-
-  .downloadingI {
-    width: 50%; /* Increase the size by adjusting the width */
-    border-radius: 50%; /* Make the image round */
-    transform: none; /* Remove the rotation */
-    position: static; /* Ensure the image is not positioned absolutely */
-    display: block; /* Centering the image */
-    margin: 0 auto; /* Center the image horizontally */
-  }
-}
-
-.last {
-  font-family: Montserrat-black;
-}
 .col .card {
-  max-width: 300px; /* Set a maximum width for the card */
-  margin: 0 auto; /* Center the card within its column */
-  transform: scale(0.9); /* Scale down the card size */
+  max-width: 300px;
+  margin: 0 auto;
+  transform: scale(0.9);
+  background-color: #333; /* Dark Grey */
+  color: white;
 }
 
 .col .card .card-body {
-  padding: 15px; /* Adjust padding to keep the content well-proportioned */
+  padding: 15px;
 }
 
 .col .card .card-header {
-  padding: 10px 15px; /* Adjust padding for the header */
+  background-color: #e74c3c; /* Red */
+  color: white;
 }
 
 .col .card h1.card-title {
-  font-size: 1.5rem; /* Decrease the font size of the title */
-}
-
-.col .card h2 {
-  font-size: 1.2rem; /* Decrease the font size of the subtitle */
+  font-size: 1.5rem;
 }
 
 .col .card p {
-  font-size: 0.9rem; /* Decrease the font size of the text */
+  font-size: 0.9rem;
+}
+
+/* CTA Section */
+#cta {
+  background-color: #333; /* Dark Grey */
+  padding: 13% 5%;
+  text-align: center;
+  color: white;
+}
+
+/* Footer Section */
+#footer {
+  background-color: #999; /* Grey */
+  padding: 7% 7%;
+  text-align: center;
+  color: white;
+}
+
+#footer i {
+  color: #e74c3c;
+  padding: 10px;
+}
+
+#footer p {
+  color: white;
+}
+#nutrition {
+  background-color: rgb(174, 172, 172);
+  text-align: center;
+  color: white;
+  padding-top: 5%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  .downloadingI {
+    width: 70%;
+  }
+
+  .testI {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .carousel-item {
+    height: 300px;
+  }
+
+  .testimonial-slide {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .testimonial-text {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-image img {
+    max-width: 80%;
+  }
+
+  #pricing {
+    padding: 50px 20px;
+  }
+}
+
+#title {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.background-image {
+  background-image: url("../img/aa.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.downloadingI {
+  width: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
 }

@@ -6,11 +6,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import HomePage from "./components/home";
 import Contact from "./components/contact";
+import SplashScreen from "./components/sale";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<SplashScreen />} />
+      <Route path="/home" element={<HomePage />} />
+
       <Route path="/contact" element={<Contact />} />
     </Routes>
   </BrowserRouter>
